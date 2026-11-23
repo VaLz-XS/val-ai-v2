@@ -575,11 +575,13 @@
     .ws-header {
       background-color: var(--bg-surface);
       border-bottom: 2px solid var(--border-black);
-      padding: 0.5rem 0.72rem;
+      padding: 0.5rem 0.65rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      width: 100%;
+      overflow: hidden;
       flex-shrink: 0;
       z-index: 30;
     }
@@ -662,7 +664,8 @@
     .chat-scroll-area {
       flex: 1;
       overflow-y: auto;
-      padding: 0.82rem;
+      overflow-x: hidden;
+      padding: 0.82rem 0.82rem 7rem;
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
@@ -672,6 +675,7 @@
     .msg-card {
       max-width: 840px;
       width: 100%;
+      min-width: 0;
       margin: 0 auto;
       background-color: var(--bg-surface);
       border: 2px solid var(--border-black);
@@ -698,11 +702,45 @@
 
     .code-block-shell {
       margin-top: 0.65rem;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       background-color: var(--bg-primary);
       border: 2px solid var(--border-black);
       box-shadow: 3px 3px 0px #000000;
       border-radius: 10px;
       overflow: hidden;
+    }
+
+    .code-block-topbar {
+      background-color: var(--bg-elevated);
+      border-bottom: 2px solid var(--border-black);
+      padding: 0.45rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .code-block-pre {
+      padding: 0.75rem;
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+      overflow-y: visible;
+      max-height: none;
+      white-space: pre;
+      -webkit-overflow-scrolling: touch;
+      margin: 0;
+    }
+
+    .code-block-pre code {
+      white-space: pre;
+      word-break: normal;
+      overflow-wrap: normal;
+      display: inline-block;
+      min-width: 100%;
     }
 
     .code-block-topbar {
@@ -1074,39 +1112,39 @@
   <section id="workspace-view" class="view-hidden" aria-label="Workspace Coding Studio">
     <!-- Top Header -->
     <header class="ws-header">
-      <div style="display: flex; align-items: center; gap: 0.38rem; min-width: 0;">
+      <div style="display: flex; align-items: center; gap: 0.35rem; min-width: 0; flex: 1;">
         <!-- File Drawer Button (Visible on both Mobile & Desktop with attached count) -->
-        <button id="drawer-toggle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.62rem; font-size: 0.8rem;" title="Buka / Tutup File Drawer">
+        <button id="drawer-toggle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.56rem; font-size: 0.8rem; flex-shrink: 0;" title="Buka / Tutup File Drawer">
           <i class="fa-solid fa-folder-open" style="color: var(--accent-cyan);"></i>
           <span id="header-file-badge" style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800;">0</span>
         </button>
 
         <!-- Return to @landing Button -->
-        <button id="ws-home-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.62rem; font-size: 0.8rem;" title="Kembali ke @landing">
+        <button id="ws-home-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.56rem; font-size: 0.8rem; flex-shrink: 0;" title="Kembali ke @landing">
           <i class="fa-solid fa-house" style="color: var(--accent-lime);"></i>
         </button>
 
         <!-- Active Model Pill -->
-        <button id="header-model-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.36rem 0.6rem; font-size: 0.74rem; max-width: 195px;" title="Pilih Model AI">
-          <i class="fa-solid fa-microchip" style="color: var(--accent-lime);"></i>
-          <span id="header-active-model-label" style="font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">claude-sonnet-5-5</span>
-          <span id="header-vision-tag" style="background-color: var(--accent-purple); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.58rem; font-weight: 800; padding: 0.05rem 0.3rem; border-radius: 4px; border: 1px solid #000;">VISION</span>
+        <button id="header-model-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.36rem 0.55rem; font-size: 0.72rem; min-width: 0; flex: 1; max-width: 210px; justify-content: flex-start;" title="Pilih Model AI">
+          <i class="fa-solid fa-microchip" style="color: var(--accent-lime); flex-shrink: 0;"></i>
+          <span id="header-active-model-label" style="font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;">claude-sonnet-5-5</span>
+          <span id="header-vision-tag" style="background-color: var(--accent-purple); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.56rem; font-weight: 800; padding: 0.05rem 0.28rem; border-radius: 4px; border: 1px solid #000; flex-shrink: 0;">VISION</span>
         </button>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 0.38rem; flex-shrink: 0;">
-        <!-- Cumulative Saved Tokens Counter (Visible on Mobile & Desktop) -->
-        <span id="session-saved-badge" style="background-color: var(--bg-elevated); color: var(--accent-lime); border: 2px solid var(--border-black); box-shadow: var(--shadow-hard-sm); padding: 0.32rem 0.55rem; border-radius: 7px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;">
-          <i class="fa-solid fa-piggy-bank"></i> Hemat: 0 tok
+      <div style="display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0;">
+        <!-- Cumulative Saved Tokens Counter (Compact Format for 360px Mobile) -->
+        <span id="session-saved-badge" style="background-color: var(--bg-elevated); color: var(--accent-lime); border: 2px solid var(--border-black); box-shadow: var(--shadow-hard-sm); padding: 0.32rem 0.48rem; border-radius: 7px; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; white-space: nowrap; flex-shrink: 0;" title="Total token dihemat sesi ini">
+          <i class="fa-solid fa-piggy-bank"></i> 0
         </span>
 
         <!-- Clear Chat -->
-        <button id="clear-chat-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.58rem; font-size: 0.8rem;" title="Bersihkan Riwayat Chat">
+        <button id="clear-chat-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.54rem; font-size: 0.8rem; flex-shrink: 0;" title="Bersihkan Riwayat Chat">
           <i class="fa-solid fa-broom" style="color: var(--accent-coral);"></i>
         </button>
 
         <!-- Solid Lime API Key Button -->
-        <button id="open-config-modal-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.65rem; font-size: 0.8rem;" title="Atur API Key">
+        <button id="open-config-modal-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.6rem; font-size: 0.8rem; flex-shrink: 0;" title="Atur API Key & Max Output">
           <i class="fa-solid fa-key"></i>
           <span class="hide-on-mobile">API Key</span>
         </button>
@@ -1187,7 +1225,7 @@
             <!-- Vision Image Preview Strip -->
             <div id="vision-preview-strip" class="vision-preview-strip view-hidden"></div>
 
-            <!-- Toolbar Row 1: Model Picker, Primary/Small Toggle & Live Token Estimate -->
+            <!-- Toolbar Row 1: Model Picker, Primary/Small Toggle, Live Token Estimate & Max Output Pill -->
             <div style="display: flex; align-items: center; gap: 0.38rem; flex-wrap: wrap;">
               <button id="composer-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.34rem 0.62rem; font-size: 0.74rem; max-width: 195px;" title="Pilih Model">
                 <i class="fa-solid fa-robot" style="color: var(--accent-cyan);"></i>
@@ -1203,6 +1241,11 @@
               <span id="live-token-pill" style="background-color: var(--accent-yellow); color: var(--text-dark); border: 2px solid var(--border-black); box-shadow: var(--shadow-hard-sm); padding: 0.24rem 0.55rem; border-radius: 7px; font-family: var(--font-mono); font-size: 0.71rem; font-weight: 800;">
                 <i class="fa-solid fa-gauge"></i> <span id="live-token-value">~0 tok</span>
               </span>
+
+              <button id="composer-max-tok-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.28rem 0.54rem; font-size: 0.7rem; font-family: var(--font-mono);" title="Atur Max Output Tokens (Anti-Cutoff)">
+                <i class="fa-solid fa-arrow-up-right-dots" style="color: var(--accent-cyan);"></i>
+                <span id="composer-max-tok-label">Max: 500k</span>
+              </button>
             </div>
 
             <!-- Toolbar Row 2: Output Intent Mode, Compression Mode & Upload Gambar -->
@@ -1212,23 +1255,22 @@
                 <span id="output-mode-text">Auto Intent</span>
               </button>
 
-              <button id="quick-mode-cycle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.58rem; font-size: 0.71rem;" title="Mode Kompresi Token: Ultra Hemat / Balanced / Full">
+              <button id="quick-mode-cycle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.58rem; font-size: 0.71rem;" title="Mode Kompresi Riwayat Token">
                 <i class="fa-solid fa-compress" style="color: var(--accent-lime);"></i>
                 <span id="quick-mode-text">Ultra Hemat</span>
               </button>
 
-              <label for="vision-image-upload" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.32rem 0.62rem; font-size: 0.71rem;" title="Upload Gambar Vision">
+              <label for="vision-image-upload" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.32rem 0.62rem; font-size: 0.71rem; cursor: pointer;" title="Lampirkan Gambar Vision (Otomatis dikompresi)">
                 <i class="fa-solid fa-image"></i>
                 <span>Upload Gambar</span>
               </label>
               <input id="vision-image-upload" type="file" accept="image/*" multiple class="view-hidden" />
             </div>
 
-            <!-- Prompt Input + Send / Stop Button -->
+            <!-- Prompt Input & Send / Stop Action Row -->
             <div style="display: flex; align-items: flex-end; gap: 0.45rem;">
-              <textarea id="prompt-textarea" rows="2" placeholder="Tulis prompt, paste gambar (Ctrl+V), atau ketik x1..." class="neo-input" style="flex: 1; padding: 0.58rem 0.72rem; font-size: 0.84rem; resize: none; line-height: 1.45; min-height: 48px; max-height: 140px;"></textarea>
-
-              <button id="send-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0 0.95rem; height: 48px; font-size: 0.86rem; flex-shrink: 0;">
+              <textarea id="prompt-textarea" rows="2" placeholder="Tulis prompt coding, paste gambar (Ctrl+V), atau ketik x1..." class="neo-input" style="flex: 1; padding: 0.55rem 0.72rem; font-size: 0.84rem; line-height: 1.45; resize: none; min-height: 46px; max-height: 140px;"></textarea>
+              <button id="send-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.65rem 0.95rem; font-size: 0.84rem; min-height: 46px; flex-shrink: 0;" title="Kirim prompt">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span class="hide-on-mobile">Kirim</span>
               </button>
@@ -1339,6 +1381,23 @@
           <button id="toggle-key-eye-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0 0.75rem;" title="Tampilkan / Sembunyikan API Key">
             <i class="fa-solid fa-eye"></i>
           </button>
+        </div>
+      </div>
+
+      <!-- Max Output Tokens Input + 1-Tap Presets -->
+      <div style="display: flex; flex-direction: column; gap: 0.42rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem;">
+          <label for="cfg-max-tokens" style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--accent-cyan);">
+            MAX OUTPUT TOKENS
+          </label>
+          <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">Auto-fallback &amp; continue</span>
+        </div>
+        <input id="cfg-max-tokens" type="number" min="1024" max="2000000" step="1000" value="500000" class="neo-input" style="width: 100%; padding: 0.52rem 0.72rem; font-size: 0.82rem;" />
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem;">
+          <button type="button" class="max-tok-preset-btn neo-btn neo-btn-dark neo-btn-sm" data-preset="500000" style="padding: 0.32rem 0.3rem; font-family: var(--font-mono); font-size: 0.7rem;">500000</button>
+          <button type="button" class="max-tok-preset-btn neo-btn neo-btn-dark neo-btn-sm" data-preset="128000" style="padding: 0.32rem 0.3rem; font-family: var(--font-mono); font-size: 0.7rem;">128000</button>
+          <button type="button" class="max-tok-preset-btn neo-btn neo-btn-dark neo-btn-sm" data-preset="64000" style="padding: 0.32rem 0.3rem; font-family: var(--font-mono); font-size: 0.7rem;">64000</button>
+          <button type="button" class="max-tok-preset-btn neo-btn neo-btn-dark neo-btn-sm" data-preset="32000" style="padding: 0.32rem 0.3rem; font-family: var(--font-mono); font-size: 0.7rem;">32000</button>
         </div>
       </div>
 
@@ -1517,6 +1576,7 @@
       config: {
         baseURL: 'https://api.vanns.my.id/v1',
         apiKey: '',
+        maxOutputTokens: 500000,
         primaryModel: 'claude-sonnet-5-5',
         smallModel: 'claude-haiku-4-5',
         activeSlot: 'primary',
@@ -1525,41 +1585,6 @@
         totalSavedTokens: 0
       }
     };
-
-    // --initApplication--
-
-    function initApplication() {
-      loadLocalState();
-      buildMeteorsAndStars();
-      bindAllEvents();
-      renderFileDrawer();
-      renderChatMessages();
-      syncAllModelUI();
-      updateLiveTokenEstimator();
-    }
-
-    // --loadLocalState--
-
-    function loadLocalState() {
-      try {
-        const rawFiles = localStorage.getItem(STORAGE_KEYS.FILES);
-        const rawMsgs = localStorage.getItem(STORAGE_KEYS.MESSAGES);
-        const rawCfg = localStorage.getItem(STORAGE_KEYS.CONFIG);
-        const rawCustomModels = localStorage.getItem(STORAGE_KEYS.CUSTOM_MODELS);
-
-        state.files = rawFiles ? JSON.parse(rawFiles) : structuredClone(DEFAULT_FILES);
-        state.messages = rawMsgs ? JSON.parse(rawMsgs) : structuredClone(DEFAULT_MESSAGES);
-        state.customModels = rawCustomModels ? JSON.parse(rawCustomModels) : [];
-
-        if (rawCfg) {
-          state.config = { ...state.config, ...JSON.parse(rawCfg) };
-        }
-      } catch (err) {
-        state.files = structuredClone(DEFAULT_FILES);
-        state.messages = structuredClone(DEFAULT_MESSAGES);
-        state.customModels = [];
-      }
-    }
 
     // --saveLocalState--
 
@@ -1571,6 +1596,33 @@
         localStorage.setItem(STORAGE_KEYS.CUSTOM_MODELS, JSON.stringify(state.customModels));
       } catch (err) {
         showToast('Storage browser penuh.');
+      }
+    }
+
+    // --loadLocalState--
+
+    function loadLocalState() {
+      try {
+        const savedFiles = JSON.parse(localStorage.getItem(STORAGE_KEYS.FILES) || 'null');
+        const savedMsgs = JSON.parse(localStorage.getItem(STORAGE_KEYS.MESSAGES) || 'null');
+        const savedCfg = JSON.parse(localStorage.getItem(STORAGE_KEYS.CONFIG) || 'null');
+        const savedCustom = JSON.parse(localStorage.getItem(STORAGE_KEYS.CUSTOM_MODELS) || 'null');
+
+        state.files = Array.isArray(savedFiles) ? savedFiles : structuredClone(DEFAULT_FILES);
+        state.messages = Array.isArray(savedMsgs) && savedMsgs.length > 0 ? savedMsgs : structuredClone(DEFAULT_MESSAGES);
+        state.customModels = Array.isArray(savedCustom) ? savedCustom : [];
+
+        if (savedCfg && typeof savedCfg === 'object') {
+          state.config = {
+            ...state.config,
+            ...savedCfg,
+            maxOutputTokens: Math.max(1024, Number(savedCfg.maxOutputTokens) || 500000)
+          };
+        }
+      } catch (err) {
+        state.files = structuredClone(DEFAULT_FILES);
+        state.messages = structuredClone(DEFAULT_MESSAGES);
+        state.customModels = [];
       }
     }
 
@@ -1622,6 +1674,19 @@
       toastTimeout = setTimeout(() => {
         el.classList.remove('visible');
       }, 2400);
+    }
+
+    // --formatCompactTokenCount--
+
+    function formatCompactTokenCount(num) {
+      const val = Number(num) || 0;
+      if (val >= 1000000) {
+        return `${(val / 1000000).toFixed(1).replace(/\.0$/, '')}M`;
+      }
+      if (val >= 10000) {
+        return `${(val / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+      }
+      return val.toLocaleString('id-ID');
     }
 
     // --syncAllModelUI--
@@ -1677,9 +1742,17 @@
       };
       document.getElementById('quick-mode-text').textContent = modeLabels[state.config.compressionMode] || 'Ultra Hemat';
 
-      const savedFormatted = `${state.config.totalSavedTokens.toLocaleString('id-ID')} tok`;
-      document.getElementById('session-saved-badge').innerHTML = `<i class="fa-solid fa-piggy-bank"></i> Hemat: ${savedFormatted}`;
-      document.getElementById('saved-tokens-drawer-label').textContent = `Hemat: ${savedFormatted}`;
+      const maxOutVal = Math.max(1024, Number(state.config.maxOutputTokens) || 500000);
+      state.config.maxOutputTokens = maxOutVal;
+      const maxLabelEl = document.getElementById('composer-max-tok-label');
+      if (maxLabelEl) {
+        maxLabelEl.textContent = `Max: ${formatCompactTokenCount(maxOutVal)}`;
+      }
+
+      const compactSaved = formatCompactTokenCount(state.config.totalSavedTokens);
+      const fullSaved = `${state.config.totalSavedTokens.toLocaleString('id-ID')} tok`;
+      document.getElementById('session-saved-badge').innerHTML = `<i class="fa-solid fa-piggy-bank"></i> ${compactSaved}`;
+      document.getElementById('saved-tokens-drawer-label').textContent = `Hemat: ${fullSaved}`;
 
       document.getElementById('summary-primary-id').textContent = state.config.primaryModel;
       document.getElementById('summary-small-id').textContent = state.config.smallModel;
@@ -1687,6 +1760,10 @@
 
       document.getElementById('cfg-baseurl').value = state.config.baseURL || 'https://api.vanns.my.id/v1';
       document.getElementById('cfg-apikey').value = state.config.apiKey || '';
+      const maxTokInput = document.getElementById('cfg-max-tokens');
+      if (maxTokInput) {
+        maxTokInput.value = String(maxOutVal);
+      }
     }
 
     // --renderModelCatalog--
@@ -2486,7 +2563,14 @@
       const feed = document.getElementById('chat-feed');
       feed.innerHTML = '';
 
-      state.messages.forEach((msg) => {
+      const lastAiIndex = (() => {
+        for (let i = state.messages.length - 1; i >= 0; i--) {
+          if (state.messages[i].role === 'ai' && state.messages[i].id !== 'msg-init') return i;
+        }
+        return -1;
+      })();
+
+      state.messages.forEach((msg, msgIdx) => {
         const card = document.createElement('div');
         const extraClass = msg.role === 'user' ? 'user-msg' : msg.role === 'system' ? 'system-msg' : '';
         card.className = `msg-card ${extraClass}`;
@@ -2515,18 +2599,39 @@
               </div>`
             : '';
 
+        const isUnclosed = msg.role === 'ai' && (msg.truncated || hasUnclosedCodeFence(msg.text));
+        const showContinueBtn = msg.role === 'ai' && (isUnclosed || msgIdx === lastAiIndex);
+        const continueFooterHtml = showContinueBtn
+          ? `<div style="margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; gap: 0.45rem; flex-wrap: wrap;">
+              <span style="font-family: var(--font-mono); font-size: 0.68rem; color: ${isUnclosed ? 'var(--accent-yellow)' : 'var(--text-muted)'};">
+                ${isUnclosed ? '<i class="fa-solid fa-scissors"></i> Output mencapai batas / belum tuntas' : '<i class="fa-solid fa-check"></i> Selesai'}
+              </span>
+              <button type="button" class="continue-reply-btn neo-btn ${isUnclosed ? 'neo-btn-yellow' : 'neo-btn-dark'} neo-btn-sm" data-msg-id="${msg.id}" style="padding: 0.28rem 0.65rem; font-size: 0.72rem;">
+                <i class="fa-solid fa-forward"></i> Lanjutkan Jawaban
+              </button>
+            </div>`
+          : '';
+
         card.innerHTML = `
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700;">
             ${roleHeader}
             ${tokBadge}
           </div>
           ${imagesHtml}
-          <div style="font-size: 0.9rem; line-height: 1.6;">
+          <div style="font-size: 0.9rem; line-height: 1.6; min-width: 0; max-width: 100%;">
             ${renderFormattedContent(msg.text)}
           </div>
+          ${continueFooterHtml}
         `;
 
         feed.appendChild(card);
+      });
+
+      feed.querySelectorAll('.continue-reply-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-msg-id');
+          if (targetId) continueExistingAiMessage(targetId);
+        });
       });
 
       feed.querySelectorAll('.chat-msg-img').forEach((imgEl) => {
@@ -2700,6 +2805,7 @@
         state.config = {
           baseURL: 'https://api.vanns.my.id/v1',
           apiKey: '',
+          maxOutputTokens: 500000,
           primaryModel: 'claude-sonnet-5-5',
           smallModel: 'claude-haiku-4-5',
           activeSlot: 'primary',
@@ -2722,19 +2828,6 @@
         syncAllModelUI();
         updateLiveTokenEstimator();
         showToast('Session & storage di-reset bersih!');
-        return true;
-      }
-
-      if (cmd === 'x1 --help') {
-        state.messages.push({
-          id: `msg-help-${Date.now()}`,
-          role: 'system',
-          text: '**Perintah Cepat `x1` (0 Token):**\n• `x1 --help` — Daftar perintah & shortcut Studio\n• `x1 --themelist` — Spesifikasi tema Neobrutalism Dark solid\n• `x1 --sizelist` — Preset layar (`phone`, `windows`, `multisize`)\n• `x1 --models` — Pemilih 20+ model & Custom Model Manager\n• `x1 --reset` — Hapus semua cache, riwayat & reset Studio',
-          tokensUsed: 0,
-          images: []
-        });
-        saveLocalState();
-        renderChatMessages();
         return true;
       }
 
@@ -2765,6 +2858,699 @@
       }
 
       return false;
+    }
+
+    // --hasUnclosedCodeFence--
+
+    function hasUnclosedCodeFence(text) {
+      if (!text) return false;
+      const fences = text.match(/```/g);
+      return Array.isArray(fences) && fences.length % 2 === 1;
+    }
+
+    // --extractAllowedCapFromError--
+
+    function extractAllowedCapFromError(errMsg, attemptedCap) {
+      const msg = String(errMsg || '');
+      const capMatches = [
+        ...msg.matchAll(/(?:<=|max_tokens|maximum(?:\s+allowed)?(?:\s+is)?|limit(?:\s+is)?|exceeds|most)\D{0,18}(\d{4,7})/gi),
+        ...msg.matchAll(/\d{4,7}\s*>\s*(\d{4,7})/g)
+      ];
+
+      let parsedCap = null;
+      for (const m of capMatches) {
+        const candidate = Number(m[1]);
+        if (candidate >= 1024 && candidate < attemptedCap) {
+          if (!parsedCap || candidate > parsedCap) {
+            parsedCap = candidate;
+          }
+        }
+      }
+
+      if (parsedCap) return parsedCap;
+
+      const ladder = [500000, 128000, 64000, 32000, 16384, 8192];
+      for (const step of ladder) {
+        if (step < attemptedCap) return step;
+      }
+      return null;
+    }
+
+    // --isUpstreamCapError--
+
+    function isUpstreamCapError(status, errBodyText) {
+      if (status !== 400 && status !== 422) return false;
+      const lower = String(errBodyText || '').toLowerCase();
+      return (
+        lower.includes('max_tokens') ||
+        lower.includes('max_completion_tokens') ||
+        lower.includes('output token') ||
+        lower.includes('maximum context') ||
+        lower.includes('exceeds') ||
+        lower.includes('too large')
+      );
+    }
+
+    // --runWithAutoContinueHops--
+
+    async function runWithAutoContinueHops({
+      initialResult,
+      basePromptText,
+      compressedFiles,
+      images,
+      apiModelId,
+      historyMsgLimit,
+      intent,
+      signal,
+      typingUI
+    }) {
+      let accumulatedText = initialResult.text || '';
+      let lastFinishReason = initialResult.finishReason || 'stop';
+
+      if (!initialResult.wasStreamed && accumulatedText) {
+        accumulatedText = await revealTextWithTypewriter(accumulatedText, typingUI);
+      }
+
+      const MAX_CONTINUE_HOPS = 3;
+      let hop = 0;
+
+      while (
+        !state.stopTypewriter &&
+        hop < MAX_CONTINUE_HOPS &&
+        (lastFinishReason === 'length' || lastFinishReason === 'max_tokens' || hasUnclosedCodeFence(accumulatedText))
+      ) {
+        hop++;
+        typingUI.statusEl.textContent = `Melanjutkan otomatis (${hop}/${MAX_CONTINUE_HOPS})...`;
+
+        const tailAnchor = accumulatedText.slice(-1800);
+        const continuePrompt =
+          'Lanjutkan persis dari karakter terakhir jawabanmu di atas tanpa mengulang teks atau kode sebelumnya, langsung sambung sampai selesai tuntas.';
+
+        const nextHopResult = await sendRequestToEndpoint({
+          promptText: continuePrompt,
+          compressedFiles: hop === 1 ? compressedFiles : [],
+          images: [],
+          apiModelId,
+          historyMsgLimit,
+          intent: 'code',
+          extraAssistantPrefix: tailAnchor,
+          signal,
+          onStreamChunk: (partialHop) => {
+            typingUI.updateStreamText(accumulatedText + partialHop);
+          }
+        });
+
+        if (nextHopResult.wasStreamed) {
+          accumulatedText += nextHopResult.text;
+        } else if (nextHopResult.text) {
+          accumulatedText += nextHopResult.text;
+          typingUI.updateStreamText(accumulatedText);
+        }
+
+        lastFinishReason = nextHopResult.finishReason || 'stop';
+        if (!nextHopResult.text || !nextHopResult.text.trim()) break;
+      }
+
+      const stillTruncated =
+        lastFinishReason === 'length' ||
+        lastFinishReason === 'max_tokens' ||
+        hasUnclosedCodeFence(accumulatedText);
+
+      return { text: accumulatedText, truncated: stillTruncated };
+    }
+
+    // --continueExistingAiMessage--
+
+    async function continueExistingAiMessage(msgId) {
+      if (state.isBusy) return;
+      const targetMsg = state.messages.find((m) => m.id === msgId);
+      if (!targetMsg) return;
+
+      const targetApiModelId = normalizeApiModelId(targetMsg.modelUsed || getActiveModelObj().id);
+      state.abortController = new AbortController();
+      state.stopTypewriter = false;
+      state.skipTypewriter = false;
+      setComposerBusyState(true);
+
+      const typingUI = createLiveTypingBubble(targetApiModelId);
+      typingUI.statusEl.textContent = 'Melanjutkan jawaban...';
+      typingUI.updateStreamText(targetMsg.text);
+
+      try {
+        const continued = await runWithAutoContinueHops({
+          initialResult: {
+            text: targetMsg.text,
+            wasStreamed: true,
+            finishReason: 'length'
+          },
+          basePromptText: '',
+          compressedFiles: [],
+          images: [],
+          apiModelId: targetApiModelId,
+          historyMsgLimit: 4,
+          intent: 'code',
+          signal: state.abortController.signal,
+          typingUI
+        });
+
+        typingUI.destroy();
+        targetMsg.text = continued.text;
+        targetMsg.tokensUsed = estimateTokens(continued.text);
+        targetMsg.truncated = continued.truncated;
+      } catch (err) {
+        typingUI.destroy();
+        if (err.name !== 'AbortError' && !state.stopTypewriter) {
+          showToast(`Gagal melanjutkan: ${err.message}`);
+        }
+      } finally {
+        state.abortController = null;
+        setComposerBusyState(false);
+        saveLocalState();
+        renderChatMessages();
+        updateLiveTokenEstimator();
+      }
+    }
+
+    // --handleSendAction--
+
+    async function handleSendAction() {
+      if (state.isBusy) {
+        handleStopGeneration();
+        return;
+      }
+
+      const textarea = document.getElementById('prompt-textarea');
+      const promptText = textarea.value.trim();
+      const attachedImages = [...state.pendingImages];
+
+      if (!promptText && attachedImages.length === 0) return;
+
+      if (promptText.toLowerCase().startsWith('x1 --')) {
+        if (runX1Command(promptText)) return;
+      }
+
+      const breakdown = computePayloadTokenBreakdown(promptText);
+      const compressedFiles = breakdown.activeFiles.map((f) => ({
+        name: f.name,
+        content: compressCodeForContext(f.content, state.config.compressionMode)
+      }));
+
+      const resolvedIntent = detectPromptIntent(promptText, compressedFiles.length > 0, attachedImages.length > 0);
+      const activeModelObj = getActiveModelObj();
+      const targetDisplayId = activeModelObj.id;
+      const targetApiModelId = normalizeApiModelId(targetDisplayId);
+
+      state.config.totalSavedTokens += breakdown.savedThisTurn;
+
+      state.messages.push({
+        id: `msg-u-${Date.now()}`,
+        role: 'user',
+        text: promptText || '(Analisa gambar lampiran)',
+        tokensUsed: breakdown.compressedTokens,
+        images: attachedImages
+      });
+
+      textarea.value = '';
+      state.pendingImages = [];
+      document.getElementById('x1-autocomplete-menu').classList.add('view-hidden');
+      renderVisionPreviewStrip();
+      renderChatMessages();
+      syncAllModelUI();
+      updateLiveTokenEstimator();
+
+      state.abortController = new AbortController();
+      state.stopTypewriter = false;
+      state.skipTypewriter = false;
+      setComposerBusyState(true);
+
+      const typingUI = createLiveTypingBubble(targetDisplayId);
+      let streamedSoFar = '';
+
+      try {
+        let finalReply = '';
+        let isTruncated = false;
+        const key = (state.config.apiKey || '').trim();
+
+        if (key && key !== 'PASTE_YOUR_API_KEY_HERE') {
+          const initialResult = await sendRequestToEndpoint({
+            promptText: promptText || 'Jelaskan dan bantu coding dari gambar ini.',
+            compressedFiles,
+            images: attachedImages,
+            apiModelId: targetApiModelId,
+            historyMsgLimit: breakdown.historyMsgLimit,
+            intent: resolvedIntent,
+            signal: state.abortController.signal,
+            onStreamChunk: (partial) => {
+              streamedSoFar = partial;
+              typingUI.updateStreamText(partial);
+            }
+          });
+
+          const completed = await runWithAutoContinueHops({
+            initialResult,
+            basePromptText: promptText,
+            compressedFiles,
+            images: attachedImages,
+            apiModelId: targetApiModelId,
+            historyMsgLimit: breakdown.historyMsgLimit,
+            intent: resolvedIntent,
+            signal: state.abortController.signal,
+            typingUI
+          });
+
+          finalReply = completed.text;
+          isTruncated = completed.truncated;
+        } else {
+          await new Promise((r) => setTimeout(r, 420));
+          if (!state.stopTypewriter) {
+            const demoText = buildOfflineDemoReply(
+              promptText,
+              compressedFiles,
+              attachedImages,
+              targetDisplayId,
+              breakdown.savedThisTurn,
+              resolvedIntent
+            );
+            finalReply = await revealTextWithTypewriter(demoText, typingUI);
+          }
+        }
+
+        typingUI.destroy();
+
+        const resolvedText =
+          finalReply.trim() ||
+          streamedSoFar.trim() ||
+          (state.stopTypewriter ? '*Generasi dihentikan oleh pengguna.*' : 'Respons kosong.');
+
+        state.messages.push({
+          id: `msg-ai-${Date.now()}`,
+          role: 'ai',
+          text: resolvedText,
+          tokensUsed: estimateTokens(resolvedText),
+          modelUsed: targetApiModelId,
+          truncated: isTruncated,
+          images: []
+        });
+      } catch (err) {
+        typingUI.destroy();
+
+        if (err.name === 'AbortError' || state.stopTypewriter) {
+          const partialCommit = streamedSoFar.trim()
+            ? `${streamedSoFar.trim()}\n\n*(Dihentikan)*`
+            : '*Generasi dihentikan oleh pengguna.*';
+          state.messages.push({
+            id: `msg-abort-${Date.now()}`,
+            role: 'ai',
+            text: partialCommit,
+            tokensUsed: estimateTokens(partialCommit),
+            modelUsed: targetApiModelId,
+            truncated: hasUnclosedCodeFence(streamedSoFar),
+            images: []
+          });
+        } else {
+          state.messages.push({
+            id: `msg-err-${Date.now()}`,
+            role: 'system',
+            text: `**Gagal Terhubung (${targetApiModelId}):** ${err.message}`,
+            tokensUsed: 0,
+            images: []
+          });
+        }
+      } finally {
+        state.abortController = null;
+        setComposerBusyState(false);
+        saveLocalState();
+        renderChatMessages();
+        updateLiveTokenEstimator();
+      }
+    }
+
+    // --buildIntentSystemAndMaxTokens--
+
+    function buildIntentSystemAndMaxTokens(intent) {
+      const configuredMaxTokens = Math.max(1024, Number(state.config.maxOutputTokens) || 500000);
+
+      if (intent === 'chat') {
+        const systemPrompt =
+          'Kamu adalah val private ai. Jawab pertanyaan pengguna dengan jelas, langsung ke inti, dan tuntas tanpa memotong kalimat. Jangan menulis blok kode kecuali diminta.';
+        return { systemPrompt, maxTokens: configuredMaxTokens };
+      }
+
+      return {
+        systemPrompt:
+          'Kamu adalah val private ai, senior developer. Berikan solusi coding yang lengkap, utuh dari awal hingga kurung tutup terakhir tanpa memotong kode, dengan bahasa & nama file (contoh: ```tsx:App.tsx).',
+        maxTokens: configuredMaxTokens
+      };
+    }
+
+    // --sendRequestToEndpoint--
+
+    async function sendRequestToEndpoint({
+      promptText,
+      compressedFiles,
+      images,
+      apiModelId,
+      historyMsgLimit,
+      intent,
+      extraAssistantPrefix,
+      signal,
+      onStreamChunk
+    }) {
+      const cleanBaseUrl = (state.config.baseURL || 'https://api.vanns.my.id/v1').trim().replace(/\/+$/, '');
+      const apiKey = (state.config.apiKey || '').trim();
+
+      if (!apiKey || apiKey === 'PASTE_YOUR_API_KEY_HERE') {
+        throw new Error('API Key kosong. Klik tombol API Key di kanan atas lalu masukkan API Key kamu.');
+      }
+
+      const { systemPrompt, maxTokens: initialMaxTokens } = buildIntentSystemAndMaxTokens(intent);
+
+      const fileContext =
+        compressedFiles.length > 0
+          ? `\n\n[ACTIVE FILES - ${state.config.compressionMode.toUpperCase()}]:\n` +
+            compressedFiles.map((f) => `File: ${f.name}\n\`\`\`\n${f.content}\n\`\`\``).join('\n')
+          : '';
+
+      const recentHistory = state.messages
+        .slice(-(historyMsgLimit + 1), -1)
+        .filter((m) => m.role === 'user' || m.role === 'ai')
+        .map((m) => ({
+          role: m.role,
+          text: state.config.compressionMode === 'full' ? m.text : stripOlderCodeBlocks(m.text)
+        }));
+
+      if (extraAssistantPrefix) {
+        recentHistory.push({ role: 'ai', text: extraAssistantPrefix });
+      }
+
+      const fullUserText = promptText + fileContext;
+
+      // 1. Direct Browser SSE Streaming Priority (avoids Vercel serverless timeout cutoffs)
+      try {
+        return await callDirectEndpointWithFallback({
+          baseUrl: cleanBaseUrl,
+          apiKey,
+          modelId: apiModelId,
+          systemPrompt,
+          history: recentHistory,
+          userFullText: fullUserText,
+          images,
+          maxTokens: initialMaxTokens,
+          signal,
+          onStreamChunk
+        });
+      } catch (directErr) {
+        if (directErr.name === 'AbortError') throw directErr;
+
+        const isCorsOrNetwork =
+          directErr.isCorsOrNetwork ||
+          (directErr.message &&
+            (directErr.message.includes('Failed to fetch') ||
+              directErr.message.includes('NetworkError') ||
+              directErr.message.includes('CORS')));
+
+        if (!isCorsOrNetwork) {
+          throw directErr;
+        }
+      }
+
+      // 2. Fallback to Vercel Serverless Proxy /api/chat if browser blocks direct CORS
+      let activeProxyCap = initialMaxTokens;
+      for (let attempt = 0; attempt < 5; attempt++) {
+        const proxyRes = await fetch('/api/chat', {
+          method: 'POST',
+          signal,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apiKey,
+            baseURL: cleanBaseUrl,
+            model: apiModelId,
+            system: systemPrompt,
+            messages: [...recentHistory, { role: 'user', text: fullUserText, images }],
+            max_tokens: activeProxyCap,
+            temperature: 0.6
+          })
+        });
+
+        if (proxyRes.status === 404 || proxyRes.status === 405) {
+          throw new Error(
+            `Browser memblokir akses langsung ke ${cleanBaseUrl} (CORS) dan endpoint /api/chat belum tersedia.`
+          );
+        }
+
+        const cType = proxyRes.headers.get('content-type') || '';
+        if (proxyRes.ok && cType.includes('text/event-stream') && proxyRes.body) {
+          const streamed = await consumeSseStream(proxyRes.body, onStreamChunk);
+          return { text: streamed.text, wasStreamed: true, finishReason: streamed.finishReason };
+        }
+
+        const proxyData = await proxyRes.json().catch(() => ({}));
+        if (!proxyRes.ok) {
+          const errMsg = proxyData.error || `Server Proxy HTTP ${proxyRes.status}`;
+          if (isUpstreamCapError(proxyRes.status, errMsg)) {
+            const nextCap = extractAllowedCapFromError(errMsg, activeProxyCap);
+            if (nextCap && nextCap < activeProxyCap) {
+              activeProxyCap = nextCap;
+              continue;
+            }
+          }
+          throw new Error(errMsg);
+        }
+
+        const extracted =
+          proxyData.text ||
+          (Array.isArray(proxyData.content)
+            ? proxyData.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
+            : proxyData.choices?.[0]?.message?.content) ||
+          '';
+        const finishReason =
+          proxyData.finish_reason ||
+          proxyData.choices?.[0]?.finish_reason ||
+          proxyData.stop_reason ||
+          'stop';
+        return { text: extracted, wasStreamed: false, finishReason };
+      }
+
+      throw new Error('Gagal menyesuaikan batas max_tokens pada proxy.');
+    }
+
+    // --callDirectEndpointWithFallback--
+
+    async function callDirectEndpointWithFallback({
+      baseUrl,
+      apiKey,
+      modelId,
+      systemPrompt,
+      history,
+      userFullText,
+      images,
+      maxTokens,
+      signal,
+      onStreamChunk
+    }) {
+      const formattedHistory = history.map((m) => ({
+        role: m.role === 'ai' ? 'assistant' : 'user',
+        content: m.text
+      }));
+
+      let userContentPayload;
+      if (images.length > 0) {
+        userContentPayload = [{ type: 'text', text: userFullText }];
+        images.forEach((im) => {
+          userContentPayload.push({
+            type: 'image_url',
+            image_url: { url: im.dataUrl }
+          });
+        });
+      } else {
+        userContentPayload = userFullText;
+      }
+
+      let currentCap = maxTokens;
+
+      for (let attempt = 0; attempt < 5; attempt++) {
+        let res;
+        try {
+          res = await fetch(`${baseUrl}/chat/completions`, {
+            method: 'POST',
+            signal,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+              model: modelId,
+              max_tokens: currentCap,
+              stream: true,
+              messages: [
+                { role: 'system', content: systemPrompt },
+                ...formattedHistory,
+                { role: 'user', content: userContentPayload }
+              ]
+            })
+          });
+        } catch (netErr) {
+          if (netErr.name === 'AbortError') throw netErr;
+          const corsErr = new Error(
+            `Browser memblokir akses langsung ke ${baseUrl} (CORS). Mencoba fallback /api/chat...`
+          );
+          corsErr.isCorsOrNetwork = true;
+          throw corsErr;
+        }
+
+        // If /chat/completions returns 404/405 and model is Claude, try Anthropic /messages
+        if ((res.status === 404 || res.status === 405) && modelId.toLowerCase().includes('claude')) {
+          const anthropicUserContent = [];
+          images.forEach((im) => {
+            anthropicUserContent.push({
+              type: 'image',
+              source: {
+                type: 'base64',
+                media_type: im.mediaType || 'image/jpeg',
+                data: im.base64Data
+              }
+            });
+          });
+          anthropicUserContent.push({ type: 'text', text: userFullText });
+
+          const anthRes = await fetch(`${baseUrl}/messages`, {
+            method: 'POST',
+            signal,
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': apiKey,
+              'anthropic-version': '2023-06-01'
+            },
+            body: JSON.stringify({
+              model: modelId,
+              system: systemPrompt,
+              max_tokens: currentCap,
+              messages: [
+                ...formattedHistory,
+                { role: 'user', content: anthropicUserContent }
+              ]
+            })
+          });
+
+          if (!anthRes.ok) {
+            const errText = await anthRes.text().catch(() => '');
+            if (isUpstreamCapError(anthRes.status, errText)) {
+              const nextCap = extractAllowedCapFromError(errText, currentCap);
+              if (nextCap && nextCap < currentCap) {
+                currentCap = nextCap;
+                continue;
+              }
+            }
+            throw new Error(`HTTP ${anthRes.status} ${errText.slice(0, 140)}`);
+          }
+
+          const anthData = await anthRes.json();
+          const plain = Array.isArray(anthData.content)
+            ? anthData.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
+            : '';
+          return {
+            text: plain || 'Respons kosong.',
+            wasStreamed: false,
+            finishReason: anthData.stop_reason || 'stop'
+          };
+        }
+
+        if (!res.ok) {
+          const errBody = await res.text().catch(() => '');
+          if (isUpstreamCapError(res.status, errBody)) {
+            const nextCap = extractAllowedCapFromError(errBody, currentCap);
+            if (nextCap && nextCap < currentCap) {
+              currentCap = nextCap;
+              continue;
+            }
+          }
+          throw new Error(`HTTP ${res.status} ${errBody.slice(0, 140)}`);
+        }
+
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/event-stream') && res.body) {
+          const streamed = await consumeSseStream(res.body, onStreamChunk);
+          return {
+            text: streamed.text,
+            wasStreamed: true,
+            finishReason: streamed.finishReason
+          };
+        }
+
+        const data = await res.json();
+        const plain =
+          data.choices?.[0]?.message?.content ||
+          (Array.isArray(data.content)
+            ? data.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
+            : '') ||
+          'Respons kosong dari server.';
+        const finishReason =
+          data.choices?.[0]?.finish_reason || data.stop_reason || 'stop';
+        return { text: plain, wasStreamed: false, finishReason };
+      }
+
+      throw new Error('Melebihi batas percobaan penyesuaian max_tokens.');
+    }
+
+    // --consumeSseStream--
+
+    async function consumeSseStream(readableBody, onStreamChunk) {
+      const reader = readableBody.getReader();
+      const decoder = new TextDecoder('utf-8');
+      let buffer = '';
+      let accumulated = '';
+      let finishReason = 'stop';
+
+      const processLine = (rawLine) => {
+        const line = rawLine.trim();
+        if (!line.startsWith('data:')) return;
+        const payloadStr = line.slice(5).trim();
+        if (!payloadStr || payloadStr === '[DONE]') return;
+
+        try {
+          const parsed = JSON.parse(payloadStr);
+          const choiceFinish = parsed.choices?.[0]?.finish_reason;
+          const anthStop = parsed.delta?.stop_reason || parsed.message?.stop_reason;
+          if (choiceFinish) finishReason = choiceFinish;
+          if (anthStop) finishReason = anthStop;
+
+          const deltaText =
+            parsed.choices?.[0]?.delta?.content ||
+            parsed.delta?.text ||
+            parsed.choices?.[0]?.message?.content ||
+            '';
+          if (deltaText) {
+            accumulated += deltaText;
+            if (typeof onStreamChunk === 'function') {
+              onStreamChunk(accumulated);
+            }
+          }
+        } catch (e) {
+          // Skip partial JSON frames
+        }
+      };
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const rawLine of lines) {
+          processLine(rawLine);
+        }
+      }
+
+      buffer += decoder.decode();
+      if (buffer.trim()) {
+        for (const remLine of buffer.split('\n')) {
+          processLine(remLine);
+        }
+      }
+
+      return { text: accumulated, finishReason };
     }
 
     // --setComposerBusyState--
@@ -2913,446 +3699,6 @@
         }
       }
       showToast('Generasi AI dihentikan (hemat token).');
-    }
-
-    // --handleSendAction--
-
-    async function handleSendAction() {
-      if (state.isBusy) {
-        handleStopGeneration();
-        return;
-      }
-
-      const textarea = document.getElementById('prompt-textarea');
-      const promptText = textarea.value.trim();
-      const attachedImages = [...state.pendingImages];
-
-      if (!promptText && attachedImages.length === 0) return;
-
-      if (promptText.toLowerCase().startsWith('x1 --')) {
-        if (runX1Command(promptText)) return;
-      }
-
-      const breakdown = computePayloadTokenBreakdown(promptText);
-      const compressedFiles = breakdown.activeFiles.map((f) => ({
-        name: f.name,
-        content: compressCodeForContext(f.content, state.config.compressionMode)
-      }));
-
-      const resolvedIntent = detectPromptIntent(promptText, compressedFiles.length > 0, attachedImages.length > 0);
-      const activeModelObj = getActiveModelObj();
-      const targetDisplayId = activeModelObj.id;
-      const targetApiModelId = normalizeApiModelId(targetDisplayId);
-
-      state.config.totalSavedTokens += breakdown.savedThisTurn;
-
-      state.messages.push({
-        id: `msg-u-${Date.now()}`,
-        role: 'user',
-        text: promptText || '(Analisa gambar lampiran)',
-        tokensUsed: breakdown.compressedTokens,
-        images: attachedImages
-      });
-
-      textarea.value = '';
-      state.pendingImages = [];
-      document.getElementById('x1-autocomplete-menu').classList.add('view-hidden');
-      renderVisionPreviewStrip();
-      renderChatMessages();
-      syncAllModelUI();
-      updateLiveTokenEstimator();
-
-      state.abortController = new AbortController();
-      state.stopTypewriter = false;
-      state.skipTypewriter = false;
-      setComposerBusyState(true);
-
-      const typingUI = createLiveTypingBubble(targetDisplayId);
-      let streamedSoFar = '';
-
-      try {
-        let finalReply = '';
-        const key = (state.config.apiKey || '').trim();
-
-        if (key && key !== 'PASTE_YOUR_API_KEY_HERE') {
-          const result = await sendRequestToEndpoint({
-            promptText: promptText || 'Jelaskan dan bantu coding dari gambar ini.',
-            compressedFiles,
-            images: attachedImages,
-            apiModelId: targetApiModelId,
-            historyMsgLimit: breakdown.historyMsgLimit,
-            intent: resolvedIntent,
-            signal: state.abortController.signal,
-            onStreamChunk: (partial) => {
-              streamedSoFar = partial;
-              typingUI.updateStreamText(partial);
-            }
-          });
-
-          if (result.wasStreamed) {
-            finalReply = result.text;
-          } else {
-            finalReply = await revealTextWithTypewriter(result.text, typingUI);
-          }
-        } else {
-          await new Promise((r) => setTimeout(r, 420));
-          if (!state.stopTypewriter) {
-            const demoText = buildOfflineDemoReply(
-              promptText,
-              compressedFiles,
-              attachedImages,
-              targetDisplayId,
-              breakdown.savedThisTurn,
-              resolvedIntent
-            );
-            finalReply = await revealTextWithTypewriter(demoText, typingUI);
-          }
-        }
-
-        typingUI.destroy();
-
-        const resolvedText =
-          finalReply.trim() ||
-          streamedSoFar.trim() ||
-          (state.stopTypewriter ? '*Generasi dihentikan oleh pengguna.*' : 'Respons kosong.');
-
-        state.messages.push({
-          id: `msg-ai-${Date.now()}`,
-          role: 'ai',
-          text: resolvedText,
-          tokensUsed: estimateTokens(resolvedText),
-          modelUsed: targetApiModelId,
-          images: []
-        });
-      } catch (err) {
-        typingUI.destroy();
-
-        if (err.name === 'AbortError' || state.stopTypewriter) {
-          const partialCommit = streamedSoFar.trim()
-            ? `${streamedSoFar.trim()}\n\n*(Dihentikan)*`
-            : '*Generasi dihentikan oleh pengguna.*';
-          state.messages.push({
-            id: `msg-abort-${Date.now()}`,
-            role: 'ai',
-            text: partialCommit,
-            tokensUsed: estimateTokens(partialCommit),
-            modelUsed: targetApiModelId,
-            images: []
-          });
-        } else {
-          state.messages.push({
-            id: `msg-err-${Date.now()}`,
-            role: 'system',
-            text: `**Gagal Terhubung (${targetApiModelId}):** ${err.message}`,
-            tokensUsed: 0,
-            images: []
-          });
-        }
-      } finally {
-        state.abortController = null;
-        setComposerBusyState(false);
-        saveLocalState();
-        renderChatMessages();
-        updateLiveTokenEstimator();
-      }
-    }
-
-    // --buildIntentSystemAndMaxTokens--
-
-    function buildIntentSystemAndMaxTokens(intent) {
-      const comp = state.config.compressionMode;
-      const outMode = state.config.outputMode;
-
-      if (intent === 'chat') {
-        const maxTokens = comp === 'ultra' ? 220 : comp === 'balanced' ? 600 : 1024;
-        const systemPrompt =
-          'Kamu adalah val private ai. Jawab SANGAT SINGKAT dalam 1-3 kalimat pendek saja. DILARANG KERAS menulis blok kode (```), contoh kode, atau penjelasan panjang.';
-        return { systemPrompt, maxTokens };
-      }
-
-      const maxTokens = comp === 'ultra' ? 1400 : comp === 'balanced' ? 2400 : 4096;
-      if (outMode === 'code') {
-        return {
-          systemPrompt:
-            'Kamu adalah val private ai, senior developer. Berikan kode bersih dengan bahasa & nama file (contoh: ```tsx:App.tsx) dan maksimal 2 baris penjelasan singkat.',
-          maxTokens
-        };
-      }
-
-      return {
-        systemPrompt:
-          'Kamu adalah val private ai, senior developer. Berikan kode bersih dengan bahasa & nama file (contoh: ```tsx:App.tsx) dan maksimal 2 baris penjelasan singkat.',
-        maxTokens
-      };
-    }
-
-    // --sendRequestToEndpoint--
-
-    async function sendRequestToEndpoint({
-      promptText,
-      compressedFiles,
-      images,
-      apiModelId,
-      historyMsgLimit,
-      intent,
-      signal,
-      onStreamChunk
-    }) {
-      const cleanBaseUrl = (state.config.baseURL || 'https://api.vanns.my.id/v1').trim().replace(/\/+$/, '');
-      const apiKey = (state.config.apiKey || '').trim();
-
-      if (!apiKey || apiKey === 'PASTE_YOUR_API_KEY_HERE') {
-        throw new Error('API Key kosong. Klik tombol API Key di kanan atas lalu masukkan API Key kamu.');
-      }
-
-      const { systemPrompt, maxTokens } = buildIntentSystemAndMaxTokens(intent);
-
-      const fileContext =
-        compressedFiles.length > 0
-          ? `\n\n[ACTIVE FILES - ${state.config.compressionMode.toUpperCase()}]:\n` +
-            compressedFiles.map((f) => `File: ${f.name}\n\`\`\`\n${f.content}\n\`\`\``).join('\n')
-          : '';
-
-      const recentHistory = state.messages
-        .slice(-(historyMsgLimit + 1), -1)
-        .filter((m) => m.role === 'user' || m.role === 'ai')
-        .map((m) => ({
-          role: m.role,
-          text: state.config.compressionMode === 'full' ? m.text : stripOlderCodeBlocks(m.text)
-        }));
-
-      const fullUserText = promptText + fileContext;
-
-      // 1. Try POST /api/chat first (Vercel CORS proxy)
-      try {
-        const proxyRes = await fetch('/api/chat', {
-          method: 'POST',
-          signal,
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            apiKey,
-            baseURL: cleanBaseUrl,
-            model: apiModelId,
-            system: systemPrompt,
-            messages: [...recentHistory, { role: 'user', text: fullUserText, images }],
-            max_tokens: maxTokens,
-            temperature: 0.6
-          })
-        });
-
-        if (proxyRes.status !== 404 && proxyRes.status !== 405) {
-          const cType = proxyRes.headers.get('content-type') || '';
-          if (proxyRes.ok && cType.includes('text/event-stream') && proxyRes.body) {
-            const streamedText = await consumeSseStream(proxyRes.body, onStreamChunk);
-            return { text: streamedText, wasStreamed: true };
-          }
-
-          const proxyData = await proxyRes.json().catch(() => ({}));
-          if (!proxyRes.ok) {
-            throw new Error(proxyData.error || `Server Proxy HTTP ${proxyRes.status}`);
-          }
-          const extracted =
-            proxyData.text ||
-            (Array.isArray(proxyData.content)
-              ? proxyData.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
-              : proxyData.choices?.[0]?.message?.content) ||
-            '';
-          return { text: extracted, wasStreamed: false };
-        }
-      } catch (proxyErr) {
-        if (proxyErr.name === 'AbortError') throw proxyErr;
-        if (
-          proxyErr.message &&
-          !proxyErr.message.includes('Failed to fetch') &&
-          !proxyErr.message.includes('404')
-        ) {
-          throw proxyErr;
-        }
-      }
-
-      // 2. Fallback automatically to {baseURL}/chat/completions (or /messages if Anthropic)
-      return await callDirectEndpointWithFallback({
-        baseUrl: cleanBaseUrl,
-        apiKey,
-        modelId: apiModelId,
-        systemPrompt,
-        history: recentHistory,
-        userFullText: fullUserText,
-        images,
-        maxTokens,
-        signal,
-        onStreamChunk
-      });
-    }
-
-    // --callDirectEndpointWithFallback--
-
-    async function callDirectEndpointWithFallback({
-      baseUrl,
-      apiKey,
-      modelId,
-      systemPrompt,
-      history,
-      userFullText,
-      images,
-      maxTokens,
-      signal,
-      onStreamChunk
-    }) {
-      const formattedHistory = history.map((m) => ({
-        role: m.role === 'ai' ? 'assistant' : 'user',
-        content: m.text
-      }));
-
-      let userContentPayload;
-      if (images.length > 0) {
-        userContentPayload = [{ type: 'text', text: userFullText }];
-        images.forEach((im) => {
-          userContentPayload.push({
-            type: 'image_url',
-            image_url: { url: im.dataUrl }
-          });
-        });
-      } else {
-        userContentPayload = userFullText;
-      }
-
-      let res;
-      try {
-        res = await fetch(`${baseUrl}/chat/completions`, {
-          method: 'POST',
-          signal,
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`
-          },
-          body: JSON.stringify({
-            model: modelId,
-            max_tokens: maxTokens,
-            stream: true,
-            messages: [
-              { role: 'system', content: systemPrompt },
-              ...formattedHistory,
-              { role: 'user', content: userContentPayload }
-            ]
-          })
-        });
-      } catch (netErr) {
-        if (netErr.name === 'AbortError') throw netErr;
-        throw new Error(
-          `Browser memblokir akses langsung ke ${baseUrl} (CORS). Deploy di Vercel dengan file api/chat.js atau cek koneksi internet.`
-        );
-      }
-
-      // If /chat/completions returns 404/405 and model is Claude, try Anthropic /messages
-      if ((res.status === 404 || res.status === 405) && modelId.toLowerCase().includes('claude')) {
-        const anthropicUserContent = [];
-        images.forEach((im) => {
-          anthropicUserContent.push({
-            type: 'image',
-            source: {
-              type: 'base64',
-              media_type: im.mediaType || 'image/jpeg',
-              data: im.base64Data
-            }
-          });
-        });
-        anthropicUserContent.push({ type: 'text', text: userFullText });
-
-        const anthRes = await fetch(`${baseUrl}/messages`, {
-          method: 'POST',
-          signal,
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': apiKey,
-            'anthropic-version': '2023-06-01'
-          },
-          body: JSON.stringify({
-            model: modelId,
-            system: systemPrompt,
-            max_tokens: maxTokens,
-            messages: [
-              ...formattedHistory,
-              { role: 'user', content: anthropicUserContent }
-            ]
-          })
-        });
-
-        if (!anthRes.ok) {
-          const errText = await anthRes.text().catch(() => '');
-          throw new Error(`HTTP ${anthRes.status} ${errText.slice(0, 120)}`);
-        }
-
-        const anthData = await anthRes.json();
-        const plain = Array.isArray(anthData.content)
-          ? anthData.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
-          : '';
-        return { text: plain || 'Respons kosong.', wasStreamed: false };
-      }
-
-      if (!res.ok) {
-        const errBody = await res.text().catch(() => '');
-        throw new Error(`HTTP ${res.status} ${errBody.slice(0, 120)}`);
-      }
-
-      const contentType = res.headers.get('content-type') || '';
-      if (contentType.includes('text/event-stream') && res.body) {
-        const streamedText = await consumeSseStream(res.body, onStreamChunk);
-        return { text: streamedText, wasStreamed: true };
-      }
-
-      const data = await res.json();
-      const plain =
-        data.choices?.[0]?.message?.content ||
-        (Array.isArray(data.content)
-          ? data.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n')
-          : '') ||
-        'Respons kosong dari server.';
-      return { text: plain, wasStreamed: false };
-    }
-
-    // --consumeSseStream--
-
-    async function consumeSseStream(readableBody, onStreamChunk) {
-      const reader = readableBody.getReader();
-      const decoder = new TextDecoder('utf-8');
-      let buffer = '';
-      let accumulated = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-
-        for (const rawLine of lines) {
-          const line = rawLine.trim();
-          if (!line.startsWith('data:')) continue;
-          const payloadStr = line.slice(5).trim();
-          if (!payloadStr || payloadStr === '[DONE]') continue;
-
-          try {
-            const parsed = JSON.parse(payloadStr);
-            const deltaText =
-              parsed.choices?.[0]?.delta?.content ||
-              parsed.delta?.text ||
-              parsed.choices?.[0]?.message?.content ||
-              '';
-            if (deltaText) {
-              accumulated += deltaText;
-              if (typeof onStreamChunk === 'function') {
-                onStreamChunk(accumulated);
-              }
-            }
-          } catch (e) {
-            // Skip partial JSON frames
-          }
-        }
-      }
-
-      return accumulated;
     }
 
     // --buildOfflineDemoReply--
@@ -3592,6 +3938,24 @@
         document.getElementById('config-modal').classList.remove('view-hidden');
       });
 
+      document.getElementById('composer-max-tok-pill').addEventListener('click', () => {
+        syncAllModelUI();
+        document.getElementById('test-conn-status').classList.add('view-hidden');
+        document.getElementById('config-modal').classList.remove('view-hidden');
+        document.getElementById('cfg-max-tokens').focus();
+      });
+
+      document.querySelectorAll('.max-tok-preset-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const preset = Number(btn.getAttribute('data-preset')) || 500000;
+          document.getElementById('cfg-max-tokens').value = String(preset);
+          state.config.maxOutputTokens = preset;
+          saveLocalState();
+          syncAllModelUI();
+          showToast(`Max Output Tokens: ${preset.toLocaleString('id-ID')}`);
+        });
+      });
+
       document.getElementById('close-config-modal-btn').addEventListener('click', () => {
         document.getElementById('config-modal').classList.add('view-hidden');
       });
@@ -3606,11 +3970,13 @@
       document.getElementById('save-config-btn').addEventListener('click', () => {
         state.config.baseURL = document.getElementById('cfg-baseurl').value.trim() || 'https://api.vanns.my.id/v1';
         state.config.apiKey = document.getElementById('cfg-apikey').value.trim();
+        const parsedMax = Number(document.getElementById('cfg-max-tokens').value);
+        state.config.maxOutputTokens = parsedMax >= 1024 ? parsedMax : 500000;
         saveLocalState();
         syncAllModelUI();
         updateLiveTokenEstimator();
         document.getElementById('config-modal').classList.add('view-hidden');
-        showToast('API Key disimpan.');
+        showToast(`Disimpan (Max Output: ${state.config.maxOutputTokens.toLocaleString('id-ID')}).`);
       });
 
       // Code File Upload & Inline Creation
@@ -3791,6 +4157,18 @@
       });
 
       document.getElementById('send-btn').addEventListener('click', handleSendAction);
+    }
+
+    // --initApplication--
+
+    function initApplication() {
+      loadLocalState();
+      buildMeteorsAndStars();
+      renderFileDrawer();
+      renderChatMessages();
+      syncAllModelUI();
+      updateLiveTokenEstimator();
+      bindAllEvents();
     }
 
     window.addEventListener('DOMContentLoaded', initApplication);
