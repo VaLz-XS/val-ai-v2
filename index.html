@@ -888,528 +888,430 @@
 <body>
 
   <!-- ======================================================================
-       FULL-SCREEN ROCKET & METEOR SLIDE TRANSITION OVERLAY
+       ROCKET + METEOR FULLSCREEN SLIDE TRANSITION OVERLAY
        ====================================================================== -->
   <div id="rocket-overlay" aria-hidden="true">
     <div id="meteor-layer" class="meteor-layer"></div>
 
     <div class="rocket-stage">
       <div id="rocket-vessel" class="rocket-hover">
-        <!-- Custom SVG Rocket Pointing Left (Solid Colors Only) -->
-        <svg width="168" height="90" viewBox="0 0 168 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Custom Neobrutalist Rocket SVG facing Left -->
+        <svg width="164" height="84" viewBox="0 0 164 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Exhaust Flame -->
           <g class="rocket-flame">
-            <polygon points="124,30 166,45 124,60" fill="#FACC15" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
-            <polygon points="124,36 148,45 124,54" fill="#FB7185" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+            <polygon points="118,28 160,42 118,56" fill="#FACC15" stroke="#000000" stroke-width="3" />
+            <polygon points="118,34 144,42 118,50" fill="#FB7185" stroke="#000000" stroke-width="2" />
           </g>
-          <polygon points="94,25 122,8 115,27" fill="#A3E635" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
-          <polygon points="94,65 122,82 115,63" fill="#A3E635" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
-          <rect x="114" y="32" width="12" height="26" rx="2" fill="#2E3440" stroke="#000000" stroke-width="3"/>
-          <path d="M44 25H108C112.418 25 116 28.5817 116 33V57C116 61.4183 112.418 65 108 65H44V25Z" fill="#F4F6F8" stroke="#000000" stroke-width="3.5"/>
-          <path d="M44 25L10 45L44 65V25Z" fill="#A3E635" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
-          <rect x="80" y="42" width="28" height="6" rx="2" fill="#C084FC" stroke="#000000" stroke-width="2.5"/>
-          <circle cx="64" cy="45" r="10" fill="#38BDF8" stroke="#000000" stroke-width="3"/>
-          <circle cx="61" cy="42" r="3" fill="#F4F6F8"/>
+          <!-- Top & Bottom Fins -->
+          <polygon points="94,22 116,8 112,26" fill="#38BDF8" stroke="#000000" stroke-width="3" />
+          <polygon points="94,62 116,76 112,58" fill="#38BDF8" stroke="#000000" stroke-width="3" />
+          <!-- Rocket Fuselage -->
+          <path d="M40 22 H112 V62 H40 L10 42 Z" fill="#F4F6F8" stroke="#000000" stroke-width="3.5" stroke-linejoin="round" />
+          <!-- Nose Cone -->
+          <polygon points="40,22 10,42 40,62" fill="#A3E635" stroke="#000000" stroke-width="3.5" stroke-linejoin="round" />
+          <!-- Cockpit Window -->
+          <circle cx="66" cy="42" r="11" fill="#0D0F12" stroke="#000000" stroke-width="3" />
+          <circle cx="63" cy="39" r="3.5" fill="#38BDF8" />
+          <!-- Thruster Nozzle -->
+          <rect x="112" y="30" width="8" height="24" fill="#94A3B8" stroke="#000000" stroke-width="3" />
         </svg>
       </div>
 
-      <div style="text-align: center;">
-        <p id="rocket-status-text" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; color: #F4F6F8;">
+      <div class="neo-card" style="padding: 0.65rem 1.15rem; background-color: #161A20; border-color: #A3E635; text-align: center; min-width: 220px;">
+        <div id="rocket-status-text" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #A3E635;">
           Memuat Studio...
-        </p>
-        <div style="width: 210px; height: 10px; background-color: #161A20; border: 2px solid #000000; border-radius: 6px; margin: 0.6rem auto 0; overflow: hidden;">
-          <div id="rocket-progress-fill" style="width: 0%; height: 100%; background-color: #A3E635; transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1);"></div>
+        </div>
+        <div style="width: 100%; height: 8px; background-color: #0D0F12; border: 2px solid #000000; border-radius: 999px; margin-top: 0.45rem; overflow: hidden;">
+          <div id="rocket-progress-fill" style="width: 0%; height: 100%; background-color: #A3E635; transition: width 0.42s ease;"></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ======================================================================
-       VIEW 1: LANDING PAGE (@landing)
+       VIEW 1: @LANDING PAGE (NEOBRUTALISM DARK SOLID)
        ====================================================================== -->
-  <section id="landing-view">
-    <header class="floating-pill-nav">
-      <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="2" width="32" height="32" rx="8" fill="#A3E635" stroke="#000000" stroke-width="2.5"/>
-          <polygon points="10,11 18,25 26,11 21,11 18,17 15,11" fill="#0D0F12"/>
-          <rect x="23" y="21" width="5" height="4" rx="1" fill="#0D0F12"/>
+  <div id="landing-view">
+    <!-- Floating Pill Navbar -->
+    <nav class="floating-pill-nav" aria-label="Navigasi Utama">
+      <div style="display: flex; align-items: center; gap: 0.55rem;">
+        <!-- Custom SVG Emblem -->
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="28" height="28" rx="7" fill="#A3E635" stroke="#000000" stroke-width="2.5" />
+          <path d="M9 11L15 22L23 10" stroke="#0D0F12" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em;">val private ai</span>
+        <span style="font-weight: 700; font-size: 1rem; letter-spacing: -0.02em;">val private ai</span>
       </div>
 
-      <nav class="nav-links-group" aria-label="Navigasi Landing">
-        <a href="#fitur" class="nav-pill-link hide-on-mobile">Fitur</a>
-        <a href="#model" class="nav-pill-link hide-on-mobile">21+ Model</a>
-        <button id="nav-open-studio-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.45rem 0.95rem; border-radius: 9999px; font-size: 0.84rem;">
+      <div class="nav-links-group">
+        <a href="#fitur-hemat" class="nav-pill-link hide-on-mobile">Hemat Token</a>
+        <a href="#fitur-vision" class="nav-pill-link hide-on-mobile">Vision &amp; File</a>
+        <button id="nav-open-studio-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.45rem 0.9rem; border-radius: 9999px; font-size: 0.82rem;">
+          <i class="fa-solid fa-rocket"></i>
           <span>Buka Studio</span>
-          <i class="fa-solid fa-arrow-right"></i>
         </button>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
     <main class="landing-main">
-      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1.3rem;">
-        <div style="display: inline-flex; align-items: center; gap: 0.45rem; background-color: var(--bg-elevated); border: 2px solid var(--border-black); box-shadow: 3px 3px 0px #000000; padding: 0.32rem 0.75rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">
-          <i class="fa-solid fa-layer-group"></i>
-          <span>MULTI-MODEL STUDIO &bull; VANNAPI + OPENAI + CUSTOM</span>
+      <!-- Hero Section -->
+      <section style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="feature-badge-strip">
+          <span class="neo-badge-chip"><i class="fa-solid fa-shield-halved" style="color: var(--accent-lime);"></i> Private Local Storage</span>
+          <span class="neo-badge-chip"><i class="fa-solid fa-piggy-bank" style="color: var(--accent-yellow);"></i> Anti-Boros Token</span>
+          <span class="neo-badge-chip"><i class="fa-solid fa-eye" style="color: var(--accent-purple);"></i> Image Vision</span>
         </div>
 
         <h1 class="hero-headline">
-          Studio AI Coding.<br />
-          <span class="hero-accent-box">Pilih Model Bebas</span> &amp; Hemat.
+          AI Coding Private.<br />
+          <span class="hero-accent-box">Hemat Token</span> &amp; Multi-Model.
         </h1>
 
-        <p style="font-size: clamp(1rem, 2.5vw, 1.18rem); color: var(--text-muted); max-width: 580px; font-weight: 500;">
-          21+ model siap pakai (Claude 5/4, GPT-4.1, DeepSeek R1, Gemini 2.5, Qwen Coder) + Custom Model &amp; Fetch <code>/v1/models</code> otomatis.
+        <p style="color: var(--text-muted); font-size: 1.02rem; max-width: 620px;">
+          Workspace coding ringan khusus Android &amp; Desktop seperti Claude AI. Baca &amp; kirim file dua arah, analisa screenshot dengan Vision, dan pangkas pemakaian token hingga 70%.
         </p>
 
-        <div id="fitur" class="feature-badge-strip">
-          <span class="neo-badge-chip">
-            <i class="fa-solid fa-sliders" style="color: var(--accent-lime);"></i>
-            <span>Primary / Small Toggle</span>
-          </span>
-          <span class="neo-badge-chip">
-            <i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i>
-            <span>Prism Syntax Color</span>
-          </span>
-          <span class="neo-badge-chip">
-            <i class="fa-solid fa-eye" style="color: var(--accent-purple);"></i>
-            <span>Vision Compress</span>
-          </span>
-          <span class="neo-badge-chip">
-            <i class="fa-solid fa-bolt" style="color: var(--accent-yellow);"></i>
-            <span>Anti-Boros Token</span>
-          </span>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.25rem;">
-          <button id="hero-start-coding-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.85rem 1.45rem; font-size: 1rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; padding-top: 0.25rem;">
+          <button id="hero-start-coding-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.85rem 1.35rem; font-size: 0.96rem;">
             <i class="fa-solid fa-terminal"></i>
-            <span>Mulai Coding</span>
+            <span>Mulai Coding Sekarang</span>
           </button>
 
-          <button id="hero-config-btn" type="button" class="neo-btn neo-btn-dark" style="padding: 0.85rem 1.15rem; font-size: 0.92rem;">
+          <button id="hero-config-btn" type="button" class="neo-btn neo-btn-dark" style="padding: 0.85rem 1.2rem; font-size: 0.92rem;">
             <i class="fa-solid fa-key" style="color: var(--accent-yellow);"></i>
-            <span>Setup Base URL &amp; Key</span>
+            <span>Pasang API Key</span>
           </button>
         </div>
-      </div>
+      </section>
 
-      <div id="model" class="landing-grid-two">
-        <div class="neo-card" style="padding: 1rem 1.1rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
-            <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--accent-purple);">
-              <i class="fa-solid fa-microchip"></i> MULTI-PROVIDER MODEL DRAWER
-            </span>
-            <span style="background-color: var(--accent-purple); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">
-              /V1/MODELS
-            </span>
+      <!-- Clean 2-Card Feature Summary (No AI Slop) -->
+      <section id="fitur-hemat" class="landing-grid-two">
+        <div class="neo-card" style="padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-lime); font-weight: 700;">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Mesin Kompresi &amp; Slot Small</span>
           </div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            Ganti model 1-tap langsung di composer, tambah model custom sendiri, atau tarik daftar model langsung dari server endpoint kamu.
+            Pilih file spesifik lewat checkbox agar file lain terhitung 0 token, kompres komentar otomatis, dan switch 1-tap antara model Primary &amp; Small.
           </p>
         </div>
 
-        <div class="neo-card" style="padding: 1rem 1.1rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
-            <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--accent-cyan);">
-              <i class="fa-solid fa-bolt"></i> ANTI-BOROS &amp; VISION ENGINE
-            </span>
-            <span style="background-color: var(--accent-yellow); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">
-              ULTRA HEMAT
-            </span>
+        <div id="fitur-vision" class="neo-card" style="padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-cyan); font-weight: 700;">
+            <i class="fa-solid fa-code"></i>
+            <span>Syntax Highlight &amp; File Two-Way</span>
           </div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            Pangkas komentar &amp; spasi otomatis, kompres gambar Vision di Canvas, serta lacak total token yang berhasil dihemat per sesi.
+            Blok kode AI otomatis berwarna sesuai bahasa (TSX, PY, PHP, HTML, JSON) dan bisa langsung disimpan ke drawer file atau diunduh ke HP.
           </p>
         </div>
-      </div>
+      </section>
     </main>
-
-    <footer style="width: 100%; max-width: 960px; margin: 0 auto; padding-top: 0.75rem; border-top: 2px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted);">
-      <span>val private ai &bull; https://api.vanns.my.id/v1</span>
-      <span style="color: var(--accent-lime);">root@zeroo22</span>
-    </footer>
-  </section>
+  </div>
 
   <!-- ======================================================================
-       VIEW 2: STUDIO WORKSPACE (100dvh ANDROID & DESKTOP)
+       VIEW 2: WORKSPACE STUDIO (MOBILE & DESKTOP RESPONSIVE)
        ====================================================================== -->
-  <section id="workspace-view" class="view-hidden">
-    <!-- Top Bar -->
+  <div id="workspace-view" class="view-hidden">
+    <!-- Top Header -->
     <header class="ws-header">
       <div style="display: flex; align-items: center; gap: 0.4rem; min-width: 0;">
-        <button id="mobile-drawer-toggle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.4rem 0.58rem;" title="Buka File Drawer">
+        <!-- Mobile File Drawer Toggle -->
+        <button id="mobile-drawer-toggle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.42rem 0.62rem; font-size: 0.8rem;" title="Buka Drawer File">
           <i class="fa-solid fa-folder-open" style="color: var(--accent-cyan);"></i>
           <span id="mobile-file-badge" style="font-family: var(--font-mono); font-size: 0.72rem;">2</span>
         </button>
 
-        <button id="ws-home-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.55rem;" title="Kembali ke Landing">
-          <svg width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="32" height="32" rx="8" fill="#A3E635" stroke="#000000" stroke-width="2.5"/>
-            <polygon points="10,11 18,25 26,11 21,11 18,17 15,11" fill="#0D0F12"/>
-          </svg>
-          <span class="hide-on-mobile" style="font-size: 0.84rem;">val private ai</span>
+        <!-- Back to @landing -->
+        <button id="ws-home-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.62rem; font-size: 0.8rem;" title="Kembali ke Landing">
+          <i class="fa-solid fa-house"></i>
         </button>
 
-        <!-- Prominent Header Model Switcher Pill -->
-        <button id="header-model-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.62rem; font-size: 0.74rem; font-family: var(--font-mono); max-width: 245px; overflow: hidden;" title="Pilih atau Tambah Model">
-          <i class="fa-solid fa-microchip" style="color: var(--accent-lime); flex-shrink: 0;"></i>
-          <span id="header-active-model-label" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">claude-sonnet-5-5</span>
-          <span id="header-vision-tag" style="background-color: var(--accent-purple); color: var(--text-dark); padding: 0.06rem 0.34rem; border-radius: 4px; font-size: 0.62rem; font-weight: 700; border: 1px solid #000; flex-shrink: 0;">
-            VISION
-          </span>
-          <i class="fa-solid fa-chevron-down" style="font-size: 0.66rem; color: var(--text-muted); flex-shrink: 0;"></i>
+        <!-- Active Model Pill -->
+        <button id="header-model-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.38rem 0.62rem; font-size: 0.75rem; max-width: 195px;" title="Pilih Model AI">
+          <i class="fa-solid fa-microchip" style="color: var(--accent-lime);"></i>
+          <span id="header-active-model-label" style="font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">claude-sonnet-5-5</span>
+          <span id="header-vision-tag" style="background-color: var(--accent-purple); color: #0D0F12; font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700; padding: 0.04rem 0.3rem; border-radius: 4px; border: 1px solid #000;">VISION</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; color: var(--text-muted);"></i>
         </button>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 0.38rem;">
-        <button id="clear-chat-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Bersihkan Riwayat Chat">
+      <div style="display: flex; align-items: center; gap: 0.4rem;">
+        <button id="clear-chat-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.62rem; font-size: 0.8rem;" title="Bersihkan Riwayat Chat">
           <i class="fa-solid fa-broom" style="color: var(--accent-coral);"></i>
-          <span class="hide-on-mobile">Clear</span>
         </button>
 
-        <button id="open-config-modal-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.4rem 0.7rem; font-size: 0.75rem;" title="Pengaturan Base URL & API Key">
+        <button id="open-config-modal-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.68rem; font-size: 0.8rem;" title="Atur API Key">
           <i class="fa-solid fa-key"></i>
-          <span class="hide-on-mobile">API &amp; Key</span>
+          <span class="hide-on-mobile">API Key</span>
         </button>
       </div>
     </header>
 
-    <!-- Workspace Split Body -->
+    <!-- Context & Token Savings Sub-bar -->
+    <div style="background-color: var(--bg-primary); border-bottom: 2px solid var(--border-black); padding: 0.36rem 0.75rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); flex-wrap: wrap;">
+      <div id="context-pill-bar" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+        <span>Konteks:</span>
+      </div>
+      <span id="session-saved-badge" style="background-color: var(--bg-elevated); color: var(--accent-lime); padding: 0.1rem 0.48rem; border-radius: 5px; border: 1.5px solid var(--border-black); font-weight: 700;">
+        <i class="fa-solid fa-piggy-bank"></i> Hemat: 0 tok
+      </span>
+    </div>
+
+    <!-- Main Body: File Drawer + Chat Area -->
     <div class="ws-body">
       <div id="drawer-backdrop" class="drawer-backdrop view-hidden"></div>
 
-      <!-- LEFT COLLAPSIBLE FILE DRAWER -->
-      <aside id="ws-file-drawer" class="ws-file-drawer" aria-label="File Manager">
-        <div style="padding: 0.75rem; border-bottom: 2px solid var(--border-black); display: flex; flex-direction: column; gap: 0.55rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan);">
-              <i class="fa-solid fa-folder-tree"></i> FILE WORKSPACE
-            </span>
-            <div style="display: flex; align-items: center; gap: 0.45rem;">
-              <span id="drawer-active-count" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-lime);">1/2 aktif</span>
-              <button id="close-drawer-mobile-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
+      <!-- Left File & Token Control Drawer -->
+      <aside id="ws-file-drawer" class="ws-file-drawer" aria-label="File Konteks & Penghemat Token">
+        <div style="padding: 0.72rem; border-bottom: 2px solid var(--border-black); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 0.45rem;">
+            <i class="fa-solid fa-folder-tree" style="color: var(--accent-cyan);"></i>
+            <span style="font-weight: 700; font-size: 0.88rem;">File Konteks</span>
+            <span id="drawer-active-count" style="font-family: var(--font-mono); font-size: 0.68rem; background-color: var(--bg-primary); padding: 0.08rem 0.4rem; border-radius: 4px; border: 1.5px solid #000; color: var(--accent-lime);">1/2 aktif</span>
           </div>
+          <button id="close-drawer-mobile-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.25rem 0.5rem; font-size: 0.78rem;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
 
+        <!-- Token Compression Selector -->
+        <div style="padding: 0.65rem 0.72rem; border-bottom: 2px solid var(--border-black); display: flex; flex-direction: column; gap: 0.45rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem;">
+            <span style="color: var(--text-muted); font-weight: 700;">MODE HEMAT TOKEN</span>
+            <span id="saved-tokens-drawer-label" style="color: var(--accent-lime); font-weight: 700;">Hemat: 0 tok</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.32rem;">
+            <button type="button" class="token-mode-btn neo-btn neo-btn-lime neo-btn-sm" data-mode="ultra" style="padding: 0.34rem 0.25rem; font-size: 0.68rem;">Ultra</button>
+            <button type="button" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" data-mode="balanced" style="padding: 0.34rem 0.25rem; font-size: 0.68rem;">Balanced</button>
+            <button type="button" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" data-mode="full" style="padding: 0.34rem 0.25rem; font-size: 0.68rem;">Full</button>
+          </div>
+        </div>
+
+        <!-- Upload & Create New File Actions -->
+        <div style="padding: 0.65rem 0.72rem; border-bottom: 2px solid var(--border-black); display: flex; flex-direction: column; gap: 0.45rem;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem;">
-            <label for="code-file-upload" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.46rem 0.5rem; font-size: 0.75rem; cursor: pointer;">
-              <i class="fa-solid fa-file-arrow-up"></i>
+            <label for="code-file-upload" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.42rem 0.5rem; font-size: 0.74rem; text-align: center;">
+              <i class="fa-solid fa-upload"></i>
               <span>Upload File</span>
             </label>
-            <input id="code-file-upload" type="file" multiple accept=".ts,.tsx,.js,.jsx,.py,.php,.html,.css,.json,.md,.env,.txt,.sql,.sh,.yml,.yaml" style="display: none;" />
+            <input id="code-file-upload" type="file" multiple class="view-hidden" />
 
-            <button id="toggle-new-file-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.46rem 0.5rem; font-size: 0.75rem;">
-              <i class="fa-solid fa-plus"></i>
-              <span>File Baru</span>
+            <button id="toggle-new-file-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.5rem; font-size: 0.74rem;">
+              <i class="fa-solid fa-file-circle-plus" style="color: var(--accent-lime);"></i>
+              <span>+ File Baru</span>
             </button>
           </div>
 
-          <!-- Inline Create New File -->
           <div id="new-file-box" class="view-hidden" style="display: flex; gap: 0.35rem;">
-            <input id="new-file-input" type="text" placeholder="contoh: api.ts" class="neo-input" style="flex: 1; padding: 0.42rem 0.55rem; font-size: 0.76rem;" />
-            <button id="confirm-new-file-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.65rem; font-size: 0.76rem;">
-              Buat
-            </button>
+            <input id="new-file-input" type="text" placeholder="contoh: utils.ts" class="neo-input" style="flex: 1; padding: 0.38rem 0.55rem; font-size: 0.75rem;" />
+            <button id="confirm-new-file-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.38rem 0.6rem; font-size: 0.74rem;">Buat</button>
           </div>
         </div>
 
         <!-- File List -->
-        <div style="flex: 1; overflow-y: auto; padding: 0.65rem; display: flex; flex-direction: column; gap: 0.45rem;">
-          <p style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
-            Centang file untuk dikirim ke AI (uncheck = 0 token). Klik nama file untuk baca/edit.
-          </p>
-          <div id="drawer-file-list" style="display: flex; flex-direction: column; gap: 0.45rem;"></div>
-        </div>
-
-        <!-- Anti-Boros Compression Mode Switcher -->
-        <div style="padding: 0.75rem; border-top: 2px solid var(--border-black); background-color: var(--bg-elevated);">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
-            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--accent-yellow);">
-              <i class="fa-solid fa-bolt"></i> ANTI-BOROS TOKEN
-            </span>
-            <span id="saved-tokens-drawer-label" style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--accent-lime);">
-              Hemat: 0 tok
-            </span>
-          </div>
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem;">
-            <button type="button" data-mode="ultra" class="token-mode-btn neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
-              Ultra Hemat
-            </button>
-            <button type="button" data-mode="balanced" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
-              Balanced
-            </button>
-            <button type="button" data-mode="full" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
-              Full
-            </button>
-          </div>
-        </div>
+        <div id="drawer-file-list" style="flex: 1; overflow-y: auto; padding: 0.65rem 0.72rem; display: flex; flex-direction: column; gap: 0.45rem;"></div>
       </aside>
 
-      <!-- CENTER CHAT WORKSPACE -->
-      <main class="ws-chat-main">
-        <!-- Context & Saved Token Status Strip -->
-        <div style="padding: 0.38rem 0.85rem; background-color: var(--bg-surface); border-bottom: 2px solid var(--border-black); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
-          <div id="context-pill-bar" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">
-            <span>Konteks:</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.68rem;">
-            <span id="session-saved-badge" style="background-color: var(--bg-elevated); color: var(--accent-lime); border: 1.5px solid var(--border-black); padding: 0.08rem 0.45rem; border-radius: 5px; font-weight: 700;">
-              <i class="fa-solid fa-piggy-bank"></i> Hemat: 0 tok
-            </span>
-          </div>
-        </div>
+      <!-- Right Chat Feed & Composer -->
+      <section class="ws-chat-main">
+        <div id="chat-feed" class="chat-scroll-area" role="log" aria-live="polite"></div>
 
-        <!-- Messages Feed -->
-        <div id="chat-feed" class="chat-scroll-area"></div>
-
-        <!-- Composer Dock -->
+        <!-- Bottom Composer Dock -->
         <div class="composer-dock">
           <div class="composer-container">
-            <!-- Vision Thumbnails Preview Strip -->
+            <!-- x1 Prefix Command Dropdown -->
+            <div id="x1-autocomplete-menu" class="view-hidden" role="listbox" aria-label="Perintah Cepat x1"></div>
+
+            <!-- Vision Image Preview Strip -->
             <div id="vision-preview-strip" class="vision-preview-strip view-hidden"></div>
 
-            <!-- Floating x1 Autocomplete Menu -->
-            <div id="x1-autocomplete-menu" class="view-hidden" role="listbox" aria-label="x1 Prefix Commands"></div>
+            <!-- Row 1: Model Switcher & Primary/Small Slot Toggle -->
+            <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+              <button id="composer-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.36rem 0.65rem; font-size: 0.75rem;">
+                <i class="fa-solid fa-robot" style="color: var(--accent-cyan);"></i>
+                <span id="composer-active-model-name">Claude Sonnet 5.5</span>
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
 
-            <!-- Row 1: Prominent Model Switcher Pill + Primary/Small 1-Tap Toggle -->
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; gap: 0.38rem; flex-wrap: wrap; min-width: 0;">
-                <!-- Model Picker Trigger Pill -->
-                <button id="composer-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.34rem 0.62rem; font-size: 0.73rem; font-family: var(--font-mono); max-width: 230px;" title="Buka Pemilih Model">
-                  <i class="fa-solid fa-robot" style="color: var(--accent-cyan);"></i>
-                  <span id="composer-active-model-name" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Claude Sonnet 5.5</span>
-                  <i class="fa-solid fa-caret-down" style="color: var(--accent-lime);"></i>
-                </button>
+              <button id="slot-toggle-pill-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.36rem 0.65rem; font-size: 0.74rem;" title="Ganti cepat antara Primary & Small Model">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span id="slot-toggle-label">Slot: PRIMARY</span>
+              </button>
 
-                <!-- 1-Tap Primary vs Small (Hemat) Toggle Pill -->
-                <button id="slot-toggle-pill-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.34rem 0.58rem; font-size: 0.71rem; font-family: var(--font-mono);" title="Switch cepat antara Primary Model dan Small Model (Hemat)">
-                  <i class="fa-solid fa-repeat"></i>
-                  <span id="slot-toggle-label">Slot: PRIMARY</span>
-                </button>
-              </div>
-
-              <!-- Live Token Estimator Badge -->
-              <div id="live-token-badge" style="background-color: var(--accent-yellow); color: var(--text-dark); border: 2px solid var(--border-black); box-shadow: 2px 2px 0px #000000; border-radius: 6px; padding: 0.22rem 0.58rem; font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700;">
-                <i class="fa-solid fa-gauge-high"></i>
-                <span id="live-token-value">~0 tok</span>
-              </div>
-            </div>
-
-            <!-- Row 2: Vision Upload + Compression Cycle -->
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; gap: 0.38rem;">
-                <label for="vision-image-upload" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.32rem 0.6rem; font-size: 0.73rem; cursor: pointer;">
-                  <i class="fa-solid fa-image"></i>
-                  <span>Upload Gambar</span>
-                </label>
-                <input id="vision-image-upload" type="file" accept="image/*" multiple style="display: none;" />
-
-                <button id="quick-mode-cycle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.58rem; font-size: 0.71rem; font-family: var(--font-mono);">
-                  <i class="fa-solid fa-compress" style="color: var(--accent-lime);"></i>
-                  <span id="quick-mode-text">Ultra Hemat</span>
-                </button>
-              </div>
-
-              <span style="font-family: var(--font-mono); font-size: 0.67rem; color: var(--text-muted);">
-                Paste gambar (<strong style="color: var(--accent-purple);">Ctrl+V</strong>) / ketik <strong style="color: var(--accent-lime);">x1</strong>
+              <span style="background-color: var(--accent-yellow); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; padding: 0.32rem 0.6rem; border-radius: 7px; border: 2px solid #000000; box-shadow: 2px 2px 0px #000000;">
+                <i class="fa-solid fa-gauge-high"></i> <span id="live-token-value">~0 tok</span>
               </span>
             </div>
 
-            <!-- Row 3: Prompt Textarea & Send Button -->
-            <div style="display: flex; align-items: flex-end; gap: 0.5rem;">
-              <textarea
-                id="prompt-textarea"
-                rows="2"
-                placeholder="Tulis prompt coding, paste gambar, atau ketik x1..."
-                class="neo-input"
-                style="flex: 1; padding: 0.58rem 0.72rem; font-size: 0.85rem; resize: none; max-height: 140px;"
-              ></textarea>
+            <!-- Row 2: Upload Image Vision & Compression Mode Cycle -->
+            <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+              <label for="vision-image-upload" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.36rem 0.65rem; font-size: 0.74rem;">
+                <i class="fa-solid fa-image"></i>
+                <span>Upload Gambar</span>
+              </label>
+              <input id="vision-image-upload" type="file" accept="image/*" multiple class="view-hidden" />
 
-              <button id="send-btn" type="button" class="neo-btn neo-btn-lime" style="height: 48px; padding: 0 1rem; font-size: 0.88rem; flex-shrink: 0;">
+              <button id="quick-mode-cycle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.36rem 0.65rem; font-size: 0.74rem;" title="Klik untuk ganti mode kompresi token">
+                <i class="fa-solid fa-compress" style="color: var(--accent-lime);"></i>
+                <span id="quick-mode-text">Ultra Hemat</span>
+              </button>
+
+              <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+                Paste gambar (<span style="color: var(--accent-purple);">Ctrl+V</span>) / ketik <span style="color: var(--accent-lime); font-weight: 700;">x1</span>
+              </span>
+            </div>
+
+            <!-- Row 3: Prompt Input & Send Button -->
+            <div style="display: flex; align-items: flex-end; gap: 0.45rem;">
+              <textarea id="prompt-textarea" rows="2" placeholder="Tulis prompt coding, paste gambar, atau ketik x1..." class="neo-input" style="flex: 1; padding: 0.58rem 0.72rem; font-size: 0.84rem; resize: none; line-height: 1.45;"></textarea>
+
+              <button id="send-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.72rem 0.95rem; font-size: 0.86rem; height: 100%; min-height: 50px;">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span class="hide-on-mobile">Kirim</span>
               </button>
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </div>
-  </section>
+  </div>
 
   <!-- ======================================================================
-       MODAL 1: EXPANDED MODEL PICKER & MULTI-MODEL MANAGER
+       MODAL 1: MULTI-MODEL PICKER & CUSTOM MODEL MANAGER
        ====================================================================== -->
   <div id="model-picker-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-labelledby="model-picker-title">
-    <div class="neo-card-elevated" style="width: 100%; max-width: 640px; max-height: 92dvh; display: flex; flex-direction: column; padding: 1rem; gap: 0.75rem; overflow: hidden;">
-      <!-- Modal Header -->
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
-        <div style="display: flex; align-items: center; gap: 0.45rem;">
+    <div class="neo-card-elevated" style="width: 100%; max-width: 640px; max-height: 90dvh; display: flex; flex-direction: column; padding: 1rem; gap: 0.72rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
           <i class="fa-solid fa-microchip" style="color: var(--accent-lime);"></i>
-          <h2 id="model-picker-title" style="font-size: 1rem; font-weight: 700;">Pilih &amp; Kelola Model AI</h2>
-          <span id="model-total-count-badge" style="background-color: var(--accent-cyan); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.08rem 0.42rem; border-radius: 4px; border: 1.5px solid #000;">21</span>
+          <h2 id="model-picker-title" style="font-size: 1rem; font-weight: 700;">Pilih Model AI</h2>
+          <span id="model-total-count-badge" style="background-color: var(--accent-cyan); color: #0D0F12; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; padding: 0.08rem 0.42rem; border-radius: 4px; border: 1.5px solid #000;">21</span>
         </div>
-
-        <div style="display: flex; align-items: center; gap: 0.4rem;">
-          <button id="fetch-models-server-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.34rem 0.62rem; font-size: 0.72rem;" title="Tarik daftar model dari {baseURL}/models">
-            <i class="fa-solid fa-cloud-arrow-down"></i>
-            <span>Fetch /v1/models</span>
-          </button>
-
-          <button id="close-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.34rem 0.6rem; font-size: 0.8rem;">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Active Primary & Small Model Summary Bar -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.45rem;">
-        <div style="background-color: var(--bg-primary); border: 2px solid var(--accent-lime); border-radius: 8px; padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem;">
-          <div style="color: var(--accent-lime); font-weight: 700;">PRIMARY MODEL</div>
-          <div id="summary-primary-id" style="color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">vanns/claude-sonnet-5-5</div>
-        </div>
-        <div style="background-color: var(--bg-primary); border: 2px solid var(--accent-yellow); border-radius: 8px; padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem;">
-          <div style="color: var(--accent-yellow); font-weight: 700;">SMALL MODEL (HEMAT)</div>
-          <div id="summary-small-id" style="color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">vanns/claude-haiku-4-5</div>
-        </div>
-      </div>
-
-      <!-- Search Filter & Add Custom Toggle -->
-      <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
-        <div style="position: relative; flex: 1; min-width: 190px;">
-          <input id="model-search-input" type="text" placeholder="Cari model (opus, sonnet, gpt, deepseek, gemini...)" class="neo-input" style="width: 100%; padding: 0.48rem 0.7rem 0.48rem 2rem; font-size: 0.78rem;" />
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 0.68rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.76rem;"></i>
-        </div>
-
-        <button id="toggle-custom-model-form-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.46rem 0.72rem; font-size: 0.75rem;">
-          <i class="fa-solid fa-plus"></i>
-          <span>Tambah Model Custom</span>
+        <button id="close-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.6rem; font-size: 0.8rem;">
+          <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Inline + Tambah Model Custom Form -->
-      <div id="custom-model-inline-form" class="view-hidden" style="background-color: var(--bg-primary); border: 2px solid var(--accent-lime); border-radius: 10px; padding: 0.7rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-lime);">
-          + TAMBAH MODEL CUSTOM KE LOCALSTORAGE
+      <!-- Active Slot Summary -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.45rem; background-color: var(--bg-primary); border: 2px solid var(--border-black); border-radius: 8px; padding: 0.55rem 0.65rem; font-family: var(--font-mono); font-size: 0.72rem;">
+        <div>
+          <span style="color: var(--accent-lime); font-weight: 700;">PRIMARY:</span>
+          <span id="summary-primary-id" style="color: var(--text-primary); word-break: break-all;">vanns/claude-sonnet-5-5</span>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.45rem;">
-          <input id="custom-model-id-input" type="text" placeholder="Model ID (misal: claude-3-7-sonnet)" class="neo-input" style="padding: 0.45rem 0.6rem; font-size: 0.76rem;" />
-          <input id="custom-model-name-input" type="text" placeholder="Display Name (misal: Claude 3.7 Sonnet)" class="neo-input" style="padding: 0.45rem 0.6rem; font-size: 0.76rem;" />
+        <div>
+          <span style="color: var(--accent-yellow); font-weight: 700;">SMALL (HEMAT):</span>
+          <span id="summary-small-id" style="color: var(--text-primary); word-break: break-all;">vanns/claude-haiku-4-5</span>
         </div>
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.74rem; cursor: pointer;">
-            <input id="custom-model-vision-cb" type="checkbox" checked class="neo-checkbox" style="width: 17px; height: 17px; min-width: 17px;" />
-            <span>Dukung Vision / Gambar (attachment)</span>
+      </div>
+
+      <!-- Search & Action Row -->
+      <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+        <input id="model-search-input" type="text" placeholder="Cari model (claude, gpt, deepseek, gemini...)" class="neo-input" style="flex: 1; min-width: 180px; padding: 0.46rem 0.65rem; font-size: 0.78rem;" />
+
+        <button id="toggle-custom-model-form-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.44rem 0.68rem; font-size: 0.74rem;">
+          <i class="fa-solid fa-plus"></i>
+          <span>Custom</span>
+        </button>
+
+        <button id="fetch-models-server-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.44rem 0.68rem; font-size: 0.74rem;">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+          <span>Fetch /v1/models</span>
+        </button>
+      </div>
+
+      <!-- Add Custom Model Inline Form -->
+      <div id="custom-model-inline-form" class="view-hidden" style="background-color: var(--bg-primary); border: 2px solid var(--accent-yellow); border-radius: 8px; padding: 0.65rem; display: flex; flex-direction: column; gap: 0.45rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem;">
+          <input id="custom-model-id-input" type="text" placeholder="Model ID (contoh: claude-opus-5-5)" class="neo-input" style="padding: 0.42rem 0.58rem; font-size: 0.75rem;" />
+          <input id="custom-model-name-input" type="text" placeholder="Label Tampilan (Opsional)" class="neo-input" style="padding: 0.42rem 0.58rem; font-size: 0.75rem;" />
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+          <label style="display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.72rem; cursor: pointer;">
+            <input id="custom-model-vision-cb" type="checkbox" class="neo-checkbox" checked style="width: 16px; height: 16px; min-width: 16px;" />
+            <span>Dukung Vision (Gambar)</span>
           </label>
-          <button id="save-custom-model-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.85rem; font-size: 0.75rem;">
-            <i class="fa-solid fa-check"></i> Simpan Model
+          <button id="save-custom-model-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.36rem 0.75rem; font-size: 0.74rem;">
+            <i class="fa-solid fa-check"></i> Tambah &amp; Aktifkan
           </button>
         </div>
       </div>
 
       <!-- Category Tabs -->
-      <div id="model-category-tabs" class="model-tab-strip" role="tablist">
-        <button type="button" data-cat="all" class="model-cat-tab active">Semua</button>
-        <button type="button" data-cat="Claude 5" class="model-cat-tab">Claude 5</button>
-        <button type="button" data-cat="Claude 4" class="model-cat-tab">Claude 4</button>
-        <button type="button" data-cat="Multi-Provider" class="model-cat-tab">Multi-Provider</button>
-        <button type="button" data-cat="Custom" class="model-cat-tab">Custom</button>
+      <div class="model-tab-strip" role="tablist">
+        <button type="button" class="model-cat-tab active" data-cat="all">Semua</button>
+        <button type="button" class="model-cat-tab" data-cat="Claude 5">Claude 5</button>
+        <button type="button" class="model-cat-tab" data-cat="Claude 4">Claude 4</button>
+        <button type="button" class="model-cat-tab" data-cat="Multi-Provider">Multi-Provider</button>
+        <button type="button" class="model-cat-tab" data-cat="Custom">Custom</button>
       </div>
 
-      <!-- Scrollable Model List -->
+      <!-- Catalog List -->
       <div id="model-catalog-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.55rem; padding-right: 0.15rem;"></div>
     </div>
   </div>
 
   <!-- ======================================================================
-       MODAL 2: API ENDPOINT CONFIG & OPENCODE JSON IMPORTER
+       MODAL 2: SIMPLIFIED API KEY & CONNECTION TESTER
        ====================================================================== -->
   <div id="config-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-labelledby="config-modal-title">
-    <div class="neo-card-elevated" style="width: 100%; max-width: 560px; max-height: 92dvh; overflow-y: auto; padding: 1.05rem; display: flex; flex-direction: column; gap: 0.85rem;">
+    <div class="neo-card-elevated" style="width: 100%; max-width: 440px; padding: 1.05rem; display: flex; flex-direction: column; gap: 0.85rem;">
       <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-plug" style="color: var(--accent-lime);"></i>
-          <h2 id="config-modal-title" style="font-size: 1rem; font-weight: 700;">VannAPI Base URL, Key &amp; JSON Import</h2>
+          <i class="fa-solid fa-key" style="color: var(--accent-lime);"></i>
+          <h2 id="config-modal-title" style="font-size: 1rem; font-weight: 700;">API Key VannAPI</h2>
         </div>
         <button id="close-config-modal-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.6rem; font-size: 0.8rem;">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Base URL & API Key -->
-      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-cyan);">
-          BASE URL ENDPOINT
-        </label>
-        <input id="cfg-baseurl" type="text" placeholder="https://api.vanns.my.id/v1" class="neo-input" style="padding: 0.5rem 0.68rem; font-size: 0.78rem;" />
-
-        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-lime); margin-top: 0.15rem;">
-          API KEY (DISIMPAN LOKAL DI BROWSER)
+      <!-- Primary API Key Input -->
+      <div style="display: flex; flex-direction: column; gap: 0.42rem;">
+        <label for="cfg-apikey" style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--accent-lime);">
+          MASUKKAN API KEY
         </label>
         <div style="display: flex; gap: 0.4rem;">
-          <input id="cfg-apikey" type="password" placeholder="Paste API Key di sini..." class="neo-input" style="flex: 1; padding: 0.5rem 0.68rem; font-size: 0.78rem;" />
-          <button id="toggle-key-eye-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0 0.7rem;">
+          <input id="cfg-apikey" type="password" placeholder="sk-... atau paste API Key kamu" class="neo-input" style="flex: 1; padding: 0.58rem 0.72rem; font-size: 0.82rem;" />
+          <button id="toggle-key-eye-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0 0.75rem;" title="Tampilkan / Sembunyikan API Key">
             <i class="fa-solid fa-eye"></i>
           </button>
         </div>
-
-        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--text-muted); margin-top: 0.15rem;">
-          PROTOCOL MODE
-        </label>
-        <select id="cfg-protocol" class="neo-input" style="padding: 0.5rem 0.68rem; font-size: 0.78rem;">
-          <option value="auto">Auto (Anthropic -&gt; OpenAI Fallback)</option>
-          <option value="anthropic">Anthropic (/v1/messages)</option>
-          <option value="openai">OpenAI Compatible (/v1/chat/completions)</option>
-        </select>
       </div>
 
-      <!-- Inline + Tambah Model Custom inside API Modal -->
-      <div style="display: flex; flex-direction: column; gap: 0.45rem; border-top: 2px solid var(--border-subtle); padding-top: 0.7rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-purple);">
-            QUICK ADD CUSTOM MODEL / FETCH SERVER
+      <!-- Tiny Collapsible Base URL (Optional) -->
+      <details style="background-color: var(--bg-primary); border: 2px solid var(--border-black); border-radius: 8px; padding: 0.45rem 0.65rem;">
+        <summary style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-muted); cursor: pointer; user-select: none;">
+          Base URL (Opsional)
+        </summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem;">
+          <input id="cfg-baseurl" type="text" placeholder="https://api.vanns.my.id/v1" class="neo-input" style="width: 100%; padding: 0.45rem 0.6rem; font-size: 0.76rem;" />
+          <span style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-muted);">
+            Default: https://api.vanns.my.id/v1
           </span>
-          <div style="display: flex; gap: 0.35rem;">
-            <button id="api-modal-fetch-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.28rem 0.55rem; font-size: 0.7rem;">
-              <i class="fa-solid fa-cloud-arrow-down"></i> Fetch /v1/models
-            </button>
-            <button id="api-modal-open-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.28rem 0.55rem; font-size: 0.7rem;">
-              <i class="fa-solid fa-list"></i> Daftar Model
-            </button>
-          </div>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.35rem;">
-          <input id="cfg-quick-model-id" type="text" placeholder="Model ID..." class="neo-input" style="padding: 0.42rem 0.55rem; font-size: 0.74rem;" />
-          <input id="cfg-quick-model-name" type="text" placeholder="Nama Model..." class="neo-input" style="padding: 0.42rem 0.55rem; font-size: 0.74rem;" />
-          <button id="cfg-quick-add-btn" type="button" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.42rem 0.65rem; font-size: 0.74rem;">
-            + Add
-          </button>
-        </div>
-      </div>
+      </details>
 
-      <!-- Paste OpenCode JSON Config Box -->
-      <div style="display: flex; flex-direction: column; gap: 0.42rem; border-top: 2px solid var(--border-subtle); padding-top: 0.7rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-yellow);">
-            PASTE OPENCODE JSON CONFIG
-          </label>
-          <button id="import-json-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.28rem 0.6rem; font-size: 0.72rem;">
-            <i class="fa-solid fa-file-import"></i> Import JSON
-          </button>
-        </div>
-        <textarea id="cfg-json-paste" rows="3" placeholder='Paste JSON config dengan "baseURL", "apiKey", "model", "small_model", "models"...' class="neo-input" style="padding: 0.48rem 0.62rem; font-size: 0.74rem; resize: vertical;"></textarea>
-      </div>
+      <!-- Live Connection Test Status Box -->
+      <div id="test-conn-status" class="view-hidden" style="background-color: var(--bg-primary); border: 2px solid var(--accent-cyan); border-radius: 8px; padding: 0.52rem 0.68rem; font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.45;"></div>
 
-      <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-top: 0.15rem;">
-        <button id="modal-reset-all-btn" type="button" class="neo-btn neo-btn-coral neo-btn-sm" style="padding: 0.5rem 0.8rem; font-size: 0.76rem;">
-          <i class="fa-solid fa-rotate-left"></i> x1 --reset
+      <!-- Action Buttons: Tes Koneksi & Simpan -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+        <button id="test-connection-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.58rem 0.75rem; font-size: 0.8rem;">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Tes Koneksi</span>
         </button>
 
-        <button id="save-config-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.5rem 1.05rem; font-size: 0.8rem;">
-          <i class="fa-solid fa-check"></i> Simpan Config
+        <button id="save-config-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.58rem 0.75rem; font-size: 0.8rem;">
+          <i class="fa-solid fa-check"></i>
+          <span>Simpan</span>
+        </button>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 0.45rem; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+        <span>Tersimpan lokal di browser HP</span>
+        <button id="modal-reset-all-btn" type="button" style="background: none; border: none; color: var(--accent-coral); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; cursor: pointer;">
+          Reset Sesi
         </button>
       </div>
     </div>
@@ -1755,9 +1657,8 @@ export default function PrivateCodingStudio() {
       document.getElementById('model-total-count-badge').textContent = String(getAllModels().length);
 
       // Config Modal Fields
-      document.getElementById('cfg-baseurl').value = state.config.baseURL;
-      document.getElementById('cfg-apikey').value = state.config.apiKey;
-      document.getElementById('cfg-protocol').value = state.config.protocol;
+      document.getElementById('cfg-baseurl').value = state.config.baseURL || 'https://api.vanns.my.id/v1';
+      document.getElementById('cfg-apikey').value = state.config.apiKey || '';
     }
 
     // --render_model_catalog--
@@ -2886,7 +2787,7 @@ export default function PrivateCodingStudio() {
         state.messages.push({
           id: `msg-err-${Date.now()}`,
           role: 'system',
-          text: `Error Endpoint (${targetApiModelId}): ${err.message}. Cek API Key atau Protocol Mode di menu API & Key.`,
+          text: `**Gagal Terhubung (${targetApiModelId}):** ${err.message}`,
           tokensUsed: 0,
           images: []
         });
@@ -2903,9 +2804,12 @@ export default function PrivateCodingStudio() {
     // --send_request_to_endpoint--
 
     async function sendRequestToEndpoint({ promptText, compressedFiles, images, apiModelId, historyLimit }) {
-      const cleanBaseUrl = (state.config.baseURL || 'https://api.vanns.my.id/v1').replace(/\/+$/, '');
-      const apiKey = state.config.apiKey.trim();
-      const protocol = state.config.protocol || 'auto';
+      const cleanBaseUrl = (state.config.baseURL || 'https://api.vanns.my.id/v1').trim().replace(/\/+$/, '');
+      const apiKey = (state.config.apiKey || '').trim();
+
+      if (!apiKey || apiKey === 'PASTE_YOUR_API_KEY_HERE') {
+        throw new Error('API Key kosong. Klik ikon Kunci di kanan atas lalu masukkan API Key kamu.');
+      }
 
       const fileContext =
         compressedFiles.length > 0
@@ -2922,18 +2826,61 @@ export default function PrivateCodingStudio() {
         .slice(-(historyLimit + 1), -1)
         .filter((m) => m.role === 'user' || m.role === 'ai');
 
-      if (protocol === 'anthropic') {
-        return await callAnthropicEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
-      }
+      const fullUserText = promptText + fileContext;
 
-      if (protocol === 'openai') {
-        return await callOpenAiEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
-      }
-
+      // 1. Primary path: Same-origin Vercel Serverless Proxy (/api/chat) to bypass browser CORS
       try {
-        return await callAnthropicEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
-      } catch (anthErr) {
-        return await callOpenAiEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
+        const proxyRes = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apiKey,
+            baseURL: cleanBaseUrl,
+            model: apiModelId,
+            system: systemPrompt,
+            messages: [...recentHistory, { role: 'user', text: fullUserText, images }],
+            max_tokens: 4096,
+            temperature: 0.7
+          })
+        });
+
+        // If /api/chat route exists on Vercel, handle its response directly
+        if (proxyRes.status !== 404 && proxyRes.status !== 405) {
+          const proxyData = await proxyRes.json().catch(() => ({}));
+          if (!proxyRes.ok) {
+            throw new Error(proxyData.error || `Server Proxy HTTP ${proxyRes.status}`);
+          }
+          if (proxyData.text) return proxyData.text;
+          if (Array.isArray(proxyData.content)) {
+            return proxyData.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n');
+          }
+          if (proxyData.choices?.[0]?.message?.content) {
+            return proxyData.choices[0].message.content;
+          }
+          throw new Error('Respons kosong dari /api/chat.');
+        }
+      } catch (proxyErr) {
+        // Only fall through to direct browser fetch if /api/chat is missing (404/network); rethrow real API errors
+        if (proxyErr.message && !proxyErr.message.includes('Failed to fetch') && !proxyErr.message.includes('404')) {
+          throw proxyErr;
+        }
+      }
+
+      // 2. Fallback path: Direct browser fetch (OpenAI-compatible first to avoid custom header CORS blocks, then Anthropic)
+      try {
+        return await callOpenAiEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, fullUserText, images);
+      } catch (openAiErr) {
+        try {
+          return await callAnthropicEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, fullUserText, images);
+        } catch (anthErr) {
+          const rawErr = openAiErr.message || anthErr.message || 'Failed to fetch';
+          if (rawErr.toLowerCase().includes('failed to fetch')) {
+            throw new Error(
+              `Browser memblokir akses langsung ke ${cleanBaseUrl} (CORS) dan route /api/chat belum ada di Vercel. Tambahkan file api/chat.js di repo GitHub kamu lalu redeploy.`
+            );
+          }
+          throw new Error(rawErr);
+        }
       }
     }
 
@@ -3056,72 +3003,56 @@ export default function PrivateCodingStudio() {
       return `**Mode Preview Offline (${displayModelId})**: ${visionNote}${fileNote}${savedNote}Isi API Key di tombol **API & Key** untuk terhubung langsung ke \`${state.config.baseURL}\`.\n\n\`\`\`tsx:MultiModelClient.tsx\nimport React from 'react';\n\nexport async function sendPrompt(baseURL: string, model: string, prompt: string) {\n  const cleanModel = model.replace(/^vanns\\//, '');\n  const res = await fetch(\`\${baseURL}/messages\`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ model: cleanModel, max_tokens: 4096, messages: [{ role: 'user', content: prompt }] })\n  });\n  return res.json();\n}\n\`\`\``;
     }
 
-    // --import_opencode_json_config--
+    // --test_api_connection--
 
-    function importOpenCodeJsonConfig() {
-      const rawJson = document.getElementById('cfg-json-paste').value.trim();
-      if (!rawJson) {
-        showToast('Paste JSON config terlebih dahulu.');
+    async function testApiConnection() {
+      const statusBox = document.getElementById('test-conn-status');
+      const testBtn = document.getElementById('test-connection-btn');
+      const rawKey = document.getElementById('cfg-apikey').value.trim();
+      const rawUrl = document.getElementById('cfg-baseurl').value.trim() || 'https://api.vanns.my.id/v1';
+
+      if (!rawKey) {
+        statusBox.classList.remove('view-hidden');
+        statusBox.style.borderColor = 'var(--accent-coral)';
+        statusBox.style.color = 'var(--accent-coral)';
+        statusBox.textContent = 'Isi API Key terlebih dahulu sebelum tes koneksi.';
         return;
       }
 
+      // Persist temporary values so router uses them
+      state.config.apiKey = rawKey;
+      state.config.baseURL = rawUrl;
+      saveLocalState();
+
+      const activeModelId = normalizeApiModelId(getActiveModelObj().id);
+      const origHtml = testBtn.innerHTML;
+      testBtn.disabled = true;
+      testBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Testing...</span>`;
+
+      statusBox.classList.remove('view-hidden');
+      statusBox.style.borderColor = 'var(--accent-yellow)';
+      statusBox.style.color = 'var(--accent-yellow)';
+      statusBox.textContent = `Menghubungi ${activeModelId}...`;
+
       try {
-        const parsed = JSON.parse(rawJson);
-
-        if (parsed.model) {
-          ensureModelInCatalog(parsed.model, parsed.model.replace(/^vanns\//, ''));
-          state.config.primaryModel = parsed.model;
-          state.config.activeSlot = 'primary';
-        }
-
-        if (parsed.small_model) {
-          ensureModelInCatalog(parsed.small_model, parsed.small_model.replace(/^vanns\//, ''));
-          state.config.smallModel = parsed.small_model;
-        }
-
-        if (parsed.provider && typeof parsed.provider === 'object') {
-          Object.entries(parsed.provider).forEach(([provKey, provObj]) => {
-            if (provObj?.options?.baseURL) {
-              state.config.baseURL = provObj.options.baseURL;
-            }
-            if (provObj?.options?.apiKey && provObj.options.apiKey !== 'PASTE_YOUR_API_KEY_HERE') {
-              state.config.apiKey = provObj.options.apiKey;
-            }
-            if (provObj?.models && typeof provObj.models === 'object') {
-              Object.entries(provObj.models).forEach(([mKey, meta]) => {
-                const fullId = mKey.includes('/') ? mKey : `${provKey}/${mKey}`;
-                ensureModelInCatalog(fullId, meta?.name || mKey, Boolean(meta?.attachment ?? true));
-              });
-            }
-          });
-        }
-
-        saveLocalState();
-        syncAllModelUI();
-        renderModelCatalog();
-        showToast('OpenCode JSON Config berhasil diimpor!');
-      } catch (err) {
-        showToast('Format JSON tidak valid.');
-      }
-    }
-
-    // --ensure_model_in_catalog--
-
-    function ensureModelInCatalog(modelId, displayName, hasVision = true) {
-      if (!modelId) return;
-      const all = getAllModels();
-      if (!all.some((m) => m.id.toLowerCase() === modelId.toLowerCase())) {
-        state.customModels.push({
-          id: modelId,
-          name: displayName || modelId,
-          category: 'Custom',
-          provider: 'JSON Import',
-          vision: hasVision,
-          reasoning: true,
-          context: '200K',
-          badge: 'Imported',
-          isCustom: true
+        const reply = await sendRequestToEndpoint({
+          promptText: 'Balas hanya dengan kata: OK',
+          compressedFiles: [],
+          images: [],
+          apiModelId: activeModelId,
+          historyLimit: 0
         });
+
+        statusBox.style.borderColor = 'var(--accent-lime)';
+        statusBox.style.color = 'var(--accent-lime)';
+        statusBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Terhubung!</strong> (${escapeHtml(activeModelId)}): "${escapeHtml(reply.slice(0, 60))}"`;
+      } catch (err) {
+        statusBox.style.borderColor = 'var(--accent-coral)';
+        statusBox.style.color = 'var(--accent-coral)';
+        statusBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${escapeHtml(err.message)}`;
+      } finally {
+        testBtn.disabled = false;
+        testBtn.innerHTML = origHtml;
       }
     }
 
@@ -3235,25 +3166,6 @@ export default function PrivateCodingStudio() {
         fetchModelsFromEndpoint(e.currentTarget);
       });
 
-      document.getElementById('api-modal-fetch-btn').addEventListener('click', (e) => {
-        fetchModelsFromEndpoint(e.currentTarget);
-      });
-
-      // Quick Add Custom Model inside API Config Modal
-      document.getElementById('cfg-quick-add-btn').addEventListener('click', () => {
-        const idVal = document.getElementById('cfg-quick-model-id').value;
-        const nameVal = document.getElementById('cfg-quick-model-name').value;
-        if (addCustomModelEntry(idVal, nameVal, true)) {
-          document.getElementById('cfg-quick-model-id').value = '';
-          document.getElementById('cfg-quick-model-name').value = '';
-        }
-      });
-
-      document.getElementById('api-modal-open-picker-btn').addEventListener('click', () => {
-        document.getElementById('config-modal').classList.add('view-hidden');
-        openModelPickerModal();
-      });
-
       // Clear Chat Button
       document.getElementById('clear-chat-btn').addEventListener('click', () => {
         state.messages = [
@@ -3271,9 +3183,10 @@ export default function PrivateCodingStudio() {
         showToast('Chat dibersihkan.');
       });
 
-      // API Config Modal Open/Close/Save
+      // API Key Modal Open/Close/Test/Save
       document.getElementById('open-config-modal-btn').addEventListener('click', () => {
         syncAllModelUI();
+        document.getElementById('test-conn-status').classList.add('view-hidden');
         document.getElementById('config-modal').classList.remove('view-hidden');
       });
 
@@ -3286,17 +3199,16 @@ export default function PrivateCodingStudio() {
         keyInput.type = keyInput.type === 'password' ? 'text' : 'password';
       });
 
-      document.getElementById('import-json-btn').addEventListener('click', importOpenCodeJsonConfig);
+      document.getElementById('test-connection-btn').addEventListener('click', testApiConnection);
 
       document.getElementById('save-config-btn').addEventListener('click', () => {
         state.config.baseURL = document.getElementById('cfg-baseurl').value.trim() || 'https://api.vanns.my.id/v1';
         state.config.apiKey = document.getElementById('cfg-apikey').value.trim();
-        state.config.protocol = document.getElementById('cfg-protocol').value;
         saveLocalState();
         syncAllModelUI();
         updateLiveTokenEstimator();
         document.getElementById('config-modal').classList.add('view-hidden');
-        showToast('Konfigurasi endpoint & API Key disimpan.');
+        showToast('API Key disimpan.');
       });
 
       document.getElementById('modal-reset-all-btn').addEventListener('click', () => {
