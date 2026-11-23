@@ -1,0 +1,3513 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0D0F12" />
+  <title>val private ai — Multi-Model Coding Studio, Vision &amp; Hemat Token</title>
+
+  <!-- Font Awesome 6.5.1 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Prism.js Core & Language Components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js" crossorigin="anonymous"></script>
+
+  <style>
+
+    /* --design_tokens-- */
+
+    :root {
+      --bg-primary: #0D0F12;
+      --bg-surface: #161A20;
+      --bg-elevated: #1E232B;
+      --border-subtle: #2E3440;
+      --border-black: #000000;
+      --accent-lime: #A3E635;
+      --accent-cyan: #38BDF8;
+      --accent-yellow: #FACC15;
+      --accent-coral: #FB7185;
+      --accent-purple: #C084FC;
+      --text-primary: #F4F6F8;
+      --text-muted: #94A3B8;
+      --text-dark: #0D0F12;
+      --shadow-hard: 4px 4px 0px #000000;
+      --shadow-hard-sm: 2px 2px 0px #000000;
+      --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* --base_reset-- */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100dvh;
+      width: 100%;
+      overflow-x: hidden;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--border-subtle);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: var(--accent-lime);
+    }
+
+    /* --neobrutalist_primitives-- */
+
+    .neo-card {
+      background-color: var(--bg-surface);
+      border: 2px solid var(--border-black);
+      box-shadow: var(--shadow-hard);
+      border-radius: 12px;
+      transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.16s ease,
+                  border-color 0.16s ease;
+    }
+
+    .neo-card-elevated {
+      background-color: var(--bg-elevated);
+      border: 2px solid var(--border-black);
+      box-shadow: var(--shadow-hard);
+      border-radius: 14px;
+    }
+
+    .neo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.42rem;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      border: 2px solid var(--border-black);
+      box-shadow: var(--shadow-hard);
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.14s ease,
+                  background-color 0.14s ease,
+                  border-color 0.14s ease;
+    }
+
+    .neo-btn:hover:not(:disabled) {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0px #000000;
+    }
+
+    .neo-btn:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0px #000000;
+    }
+
+    .neo-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .neo-btn-sm {
+      box-shadow: var(--shadow-hard-sm);
+    }
+
+    .neo-btn-sm:hover:not(:disabled) {
+      box-shadow: 3px 3px 0px #000000;
+    }
+
+    .neo-btn-lime {
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+    }
+
+    .neo-btn-cyan {
+      background-color: var(--accent-cyan);
+      color: var(--text-dark);
+    }
+
+    .neo-btn-yellow {
+      background-color: var(--accent-yellow);
+      color: var(--text-dark);
+    }
+
+    .neo-btn-coral {
+      background-color: var(--accent-coral);
+      color: var(--text-dark);
+    }
+
+    .neo-btn-purple {
+      background-color: var(--accent-purple);
+      color: var(--text-dark);
+    }
+
+    .neo-btn-dark {
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+      border-color: var(--border-black);
+    }
+
+    .neo-btn-dark:hover:not(:disabled) {
+      border-color: var(--accent-lime);
+    }
+
+    .neo-input {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      border: 2px solid var(--border-black);
+      font-family: var(--font-mono);
+      outline: none;
+      border-radius: 8px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .neo-input:focus {
+      border-color: var(--accent-lime);
+      box-shadow: 3px 3px 0px #000000;
+    }
+
+    .neo-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-black);
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.14s ease, border-color 0.14s ease;
+    }
+
+    .neo-checkbox:checked {
+      background-color: var(--accent-lime);
+      border-color: var(--border-black);
+    }
+
+    .neo-checkbox:checked::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 11px;
+      color: var(--text-dark);
+    }
+
+    .view-hidden {
+      display: none !important;
+    }
+
+    /* --prism_syntax_theme-- */
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: #F4F6F8;
+      background: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.58;
+      tab-size: 2;
+      hyphens: none;
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #64748B;
+      font-style: italic;
+    }
+
+    .token.keyword,
+    .token.atrule,
+    .token.rule,
+    .token.important {
+      color: #FB7185;
+      font-weight: 700;
+    }
+
+    .token.string,
+    .token.char,
+    .token.attr-value,
+    .token.template-string,
+    .token.regex {
+      color: #A3E635;
+    }
+
+    .token.function,
+    .token.function-variable,
+    .token.method {
+      color: #38BDF8;
+    }
+
+    .token.number,
+    .token.boolean,
+    .token.constant,
+    .token.symbol {
+      color: #FACC15;
+    }
+
+    .token.class-name,
+    .token.builtin,
+    .token.tag,
+    .token.attr-name,
+    .token.namespace,
+    .token.maybe-class-name {
+      color: #C084FC;
+    }
+
+    .token.operator,
+    .token.punctuation,
+    .token.entity,
+    .token.url {
+      color: #CBD5E1;
+    }
+
+    .token.property,
+    .token.variable,
+    .token.parameter {
+      color: #F4F6F8;
+    }
+
+    /* --rocket_meteor_transition-- */
+
+    #rocket-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: #0D0F12;
+      border-left: 4px solid #A3E635;
+      border-right: 4px solid #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform: translateX(100%);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    #rocket-overlay.slide-in {
+      pointer-events: all;
+      animation: curtainSlideIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    #rocket-overlay.slide-out {
+      pointer-events: none;
+      animation: curtainSlideOut 0.44s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+
+    @keyframes curtainSlideIn {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes curtainSlideOut {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-105%); }
+    }
+
+    .rocket-stage {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .rocket-hover {
+      animation: rocketBob 0.52s ease-in-out infinite alternate;
+    }
+
+    .rocket-launch {
+      animation: rocketShootLeft 0.36s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+    }
+
+    @keyframes rocketBob {
+      0% { transform: translateY(-4px) rotate(-1deg); }
+      100% { transform: translateY(4px) rotate(1deg); }
+    }
+
+    @keyframes rocketShootLeft {
+      0% { transform: translateX(0) scale(1); }
+      20% { transform: translateX(22px) scale(0.96); }
+      100% { transform: translateX(-115vw) scale(1.06); }
+    }
+
+    .rocket-flame {
+      transform-origin: left center;
+      animation: flameFlicker 0.13s ease-in-out infinite alternate;
+    }
+
+    @keyframes flameFlicker {
+      0% { transform: scaleX(0.84); }
+      100% { transform: scaleX(1.24); }
+    }
+
+    .meteor-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .meteor-item {
+      position: absolute;
+      right: -200px;
+      animation: meteorDiagonalStreak linear infinite;
+    }
+
+    @keyframes meteorDiagonalStreak {
+      0% {
+        transform: translate(0, -30px) rotate(-14deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-100vw - 280px), 140px) rotate(-14deg);
+        opacity: 0.85;
+      }
+    }
+
+    /* --landing_page_layout-- */
+
+    #landing-view {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-primary);
+      padding: 1rem;
+    }
+
+    .floating-pill-nav {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      background-color: var(--bg-surface);
+      border: 2px solid var(--accent-lime);
+      border-radius: 9999px;
+      box-shadow: var(--shadow-hard);
+      padding: 0.5rem 0.65rem 0.5rem 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0.85rem;
+      z-index: 40;
+    }
+
+    .nav-links-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-pill-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 0.4rem 0.75rem;
+      border-radius: 9999px;
+      transition: background-color 0.14s ease, color 0.14s ease;
+    }
+
+    .nav-pill-link:hover {
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    .landing-main {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.25rem;
+      padding: 2rem 0.25rem;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.1rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .hero-accent-box {
+      display: inline-block;
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+      padding: 0.04em 0.35em;
+      border: 2px solid var(--border-black);
+      box-shadow: 3px 3px 0px #000000;
+      border-radius: 8px;
+    }
+
+    .feature-badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .neo-badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      border: 2px solid var(--border-black);
+      box-shadow: 3px 3px 0px #000000;
+      padding: 0.42rem 0.8rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .landing-grid-two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    /* --workspace_layout-- */
+
+    #workspace-view {
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-primary);
+      overflow: hidden;
+    }
+
+    .ws-header {
+      background-color: var(--bg-surface);
+      border-bottom: 2px solid var(--border-black);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      flex-shrink: 0;
+      z-index: 30;
+    }
+
+    .ws-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ws-file-drawer {
+      width: 305px;
+      background-color: var(--bg-surface);
+      border-right: 2px solid var(--border-black);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      flex-shrink: 0;
+      z-index: 45;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ws-chat-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background-color: var(--bg-primary);
+      min-width: 0;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(13, 15, 18, 0.84);
+      z-index: 40;
+    }
+
+    @media (max-width: 960px) {
+      .ws-file-drawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 86vw;
+        max-width: 340px;
+        box-shadow: 6px 0px 0px #000000;
+        transform: translateX(-105%);
+      }
+
+      .ws-file-drawer.drawer-open {
+        transform: translateX(0%);
+      }
+
+      .hide-on-mobile {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 961px) {
+      .mobile-only-btn {
+        display: none !important;
+      }
+
+      .drawer-backdrop {
+        display: none !important;
+      }
+    }
+
+    /* --chat_stream_and_code_blocks-- */
+
+    .chat-scroll-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      scroll-behavior: smooth;
+    }
+
+    .msg-card {
+      max-width: 840px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: var(--bg-surface);
+      border: 2px solid var(--border-black);
+      box-shadow: 3px 3px 0px #000000;
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      animation: msgFadeUp 0.18s ease-out;
+    }
+
+    @keyframes msgFadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg-card.user-msg {
+      background-color: var(--bg-elevated);
+      border-color: var(--accent-cyan);
+    }
+
+    .msg-card.system-msg {
+      background-color: var(--bg-elevated);
+      border-color: var(--accent-yellow);
+    }
+
+    .code-block-shell {
+      margin-top: 0.7rem;
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-black);
+      box-shadow: 3px 3px 0px #000000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .code-block-topbar {
+      background-color: var(--bg-elevated);
+      border-bottom: 2px solid var(--border-black);
+      padding: 0.45rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .code-block-pre {
+      padding: 0.75rem;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    /* --composer_and_model_switcher-- */
+
+    .composer-dock {
+      background-color: var(--bg-surface);
+      border-top: 2px solid var(--border-black);
+      padding: 0.55rem 0.75rem 0.75rem;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .composer-container {
+      max-width: 840px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.48rem;
+    }
+
+    .vision-preview-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .vision-thumb-card {
+      background-color: var(--bg-elevated);
+      border: 2px solid var(--accent-purple);
+      box-shadow: 2px 2px 0px #000000;
+      border-radius: 8px;
+      padding: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .vision-thumb-img {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1.5px solid var(--border-black);
+      cursor: zoom-in;
+      flex-shrink: 0;
+    }
+
+    #x1-autocomplete-menu {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background-color: var(--bg-elevated);
+      border: 2px solid var(--accent-lime);
+      box-shadow: var(--shadow-hard);
+      border-radius: 10px;
+      z-index: 70;
+      overflow: hidden;
+    }
+
+    .x1-option-row {
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: background-color 0.12s ease;
+    }
+
+    .x1-option-row:last-child {
+      border-bottom: none;
+    }
+
+    .x1-option-row:hover,
+    .x1-option-row.active {
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+    }
+
+    .x1-option-row:hover .x1-opt-hint,
+    .x1-option-row.active .x1-opt-hint {
+      color: var(--text-dark);
+    }
+
+    /* --model_picker_drawer_cards-- */
+
+    .model-tab-strip {
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .model-cat-tab {
+      padding: 0.36rem 0.68rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 2px solid var(--border-black);
+      border-radius: 7px;
+      box-shadow: 2px 2px 0px #000000;
+      background-color: var(--bg-primary);
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .model-cat-tab.active {
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+    }
+
+    .model-catalog-item {
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-black);
+      box-shadow: 3px 3px 0px #000000;
+      border-radius: 10px;
+      padding: 0.68rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .model-catalog-item.is-primary {
+      border-color: var(--accent-lime);
+    }
+
+    .model-catalog-item.is-small {
+      border-color: var(--accent-yellow);
+    }
+
+    .meta-tag-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.08rem 0.38rem;
+      border-radius: 4px;
+      border: 1.5px solid #000000;
+      color: #0D0F12;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.22rem;
+    }
+
+    /* --modals_and_line_viewer-- */
+
+    .neo-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background-color: rgba(13, 15, 18, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+    }
+
+    .line-viewer-grid {
+      display: flex;
+      overflow: auto;
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-black);
+      border-radius: 8px;
+      flex: 1;
+      min-height: 260px;
+      max-height: 62dvh;
+    }
+
+    .line-gutter {
+      padding: 0.75rem 0.5rem;
+      background-color: var(--bg-elevated);
+      border-right: 2px solid var(--border-black);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.58;
+      color: var(--text-muted);
+      text-align: right;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    #toast-banner {
+      position: fixed;
+      bottom: 92px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background-color: var(--accent-lime);
+      color: var(--text-dark);
+      border: 2px solid var(--border-black);
+      box-shadow: var(--shadow-hard);
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      max-width: 92vw;
+      text-align: center;
+    }
+
+    #toast-banner.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       FULL-SCREEN ROCKET & METEOR SLIDE TRANSITION OVERLAY
+       ====================================================================== -->
+  <div id="rocket-overlay" aria-hidden="true">
+    <div id="meteor-layer" class="meteor-layer"></div>
+
+    <div class="rocket-stage">
+      <div id="rocket-vessel" class="rocket-hover">
+        <!-- Custom SVG Rocket Pointing Left (Solid Colors Only) -->
+        <svg width="168" height="90" viewBox="0 0 168 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g class="rocket-flame">
+            <polygon points="124,30 166,45 124,60" fill="#FACC15" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="124,36 148,45 124,54" fill="#FB7185" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+          </g>
+          <polygon points="94,25 122,8 115,27" fill="#A3E635" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="94,65 122,82 115,63" fill="#A3E635" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="114" y="32" width="12" height="26" rx="2" fill="#2E3440" stroke="#000000" stroke-width="3"/>
+          <path d="M44 25H108C112.418 25 116 28.5817 116 33V57C116 61.4183 112.418 65 108 65H44V25Z" fill="#F4F6F8" stroke="#000000" stroke-width="3.5"/>
+          <path d="M44 25L10 45L44 65V25Z" fill="#A3E635" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+          <rect x="80" y="42" width="28" height="6" rx="2" fill="#C084FC" stroke="#000000" stroke-width="2.5"/>
+          <circle cx="64" cy="45" r="10" fill="#38BDF8" stroke="#000000" stroke-width="3"/>
+          <circle cx="61" cy="42" r="3" fill="#F4F6F8"/>
+        </svg>
+      </div>
+
+      <div style="text-align: center;">
+        <p id="rocket-status-text" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; color: #F4F6F8;">
+          Memuat Studio...
+        </p>
+        <div style="width: 210px; height: 10px; background-color: #161A20; border: 2px solid #000000; border-radius: 6px; margin: 0.6rem auto 0; overflow: hidden;">
+          <div id="rocket-progress-fill" style="width: 0%; height: 100%; background-color: #A3E635; transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       VIEW 1: LANDING PAGE (@landing)
+       ====================================================================== -->
+  <section id="landing-view">
+    <header class="floating-pill-nav">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="32" height="32" rx="8" fill="#A3E635" stroke="#000000" stroke-width="2.5"/>
+          <polygon points="10,11 18,25 26,11 21,11 18,17 15,11" fill="#0D0F12"/>
+          <rect x="23" y="21" width="5" height="4" rx="1" fill="#0D0F12"/>
+        </svg>
+        <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em;">val private ai</span>
+      </div>
+
+      <nav class="nav-links-group" aria-label="Navigasi Landing">
+        <a href="#fitur" class="nav-pill-link hide-on-mobile">Fitur</a>
+        <a href="#model" class="nav-pill-link hide-on-mobile">21+ Model</a>
+        <button id="nav-open-studio-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.45rem 0.95rem; border-radius: 9999px; font-size: 0.84rem;">
+          <span>Buka Studio</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </nav>
+    </header>
+
+    <main class="landing-main">
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1.3rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.45rem; background-color: var(--bg-elevated); border: 2px solid var(--border-black); box-shadow: 3px 3px 0px #000000; padding: 0.32rem 0.75rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>MULTI-MODEL STUDIO &bull; VANNAPI + OPENAI + CUSTOM</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Studio AI Coding.<br />
+          <span class="hero-accent-box">Pilih Model Bebas</span> &amp; Hemat.
+        </h1>
+
+        <p style="font-size: clamp(1rem, 2.5vw, 1.18rem); color: var(--text-muted); max-width: 580px; font-weight: 500;">
+          21+ model siap pakai (Claude 5/4, GPT-4.1, DeepSeek R1, Gemini 2.5, Qwen Coder) + Custom Model &amp; Fetch <code>/v1/models</code> otomatis.
+        </p>
+
+        <div id="fitur" class="feature-badge-strip">
+          <span class="neo-badge-chip">
+            <i class="fa-solid fa-sliders" style="color: var(--accent-lime);"></i>
+            <span>Primary / Small Toggle</span>
+          </span>
+          <span class="neo-badge-chip">
+            <i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i>
+            <span>Prism Syntax Color</span>
+          </span>
+          <span class="neo-badge-chip">
+            <i class="fa-solid fa-eye" style="color: var(--accent-purple);"></i>
+            <span>Vision Compress</span>
+          </span>
+          <span class="neo-badge-chip">
+            <i class="fa-solid fa-bolt" style="color: var(--accent-yellow);"></i>
+            <span>Anti-Boros Token</span>
+          </span>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.25rem;">
+          <button id="hero-start-coding-btn" type="button" class="neo-btn neo-btn-lime" style="padding: 0.85rem 1.45rem; font-size: 1rem;">
+            <i class="fa-solid fa-terminal"></i>
+            <span>Mulai Coding</span>
+          </button>
+
+          <button id="hero-config-btn" type="button" class="neo-btn neo-btn-dark" style="padding: 0.85rem 1.15rem; font-size: 0.92rem;">
+            <i class="fa-solid fa-key" style="color: var(--accent-yellow);"></i>
+            <span>Setup Base URL &amp; Key</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="model" class="landing-grid-two">
+        <div class="neo-card" style="padding: 1rem 1.1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--accent-purple);">
+              <i class="fa-solid fa-microchip"></i> MULTI-PROVIDER MODEL DRAWER
+            </span>
+            <span style="background-color: var(--accent-purple); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">
+              /V1/MODELS
+            </span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Ganti model 1-tap langsung di composer, tambah model custom sendiri, atau tarik daftar model langsung dari server endpoint kamu.
+          </p>
+        </div>
+
+        <div class="neo-card" style="padding: 1rem 1.1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--accent-cyan);">
+              <i class="fa-solid fa-bolt"></i> ANTI-BOROS &amp; VISION ENGINE
+            </span>
+            <span style="background-color: var(--accent-yellow); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">
+              ULTRA HEMAT
+            </span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Pangkas komentar &amp; spasi otomatis, kompres gambar Vision di Canvas, serta lacak total token yang berhasil dihemat per sesi.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer style="width: 100%; max-width: 960px; margin: 0 auto; padding-top: 0.75rem; border-top: 2px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted);">
+      <span>val private ai &bull; https://api.vanns.my.id/v1</span>
+      <span style="color: var(--accent-lime);">root@zeroo22</span>
+    </footer>
+  </section>
+
+  <!-- ======================================================================
+       VIEW 2: STUDIO WORKSPACE (100dvh ANDROID & DESKTOP)
+       ====================================================================== -->
+  <section id="workspace-view" class="view-hidden">
+    <!-- Top Bar -->
+    <header class="ws-header">
+      <div style="display: flex; align-items: center; gap: 0.4rem; min-width: 0;">
+        <button id="mobile-drawer-toggle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.4rem 0.58rem;" title="Buka File Drawer">
+          <i class="fa-solid fa-folder-open" style="color: var(--accent-cyan);"></i>
+          <span id="mobile-file-badge" style="font-family: var(--font-mono); font-size: 0.72rem;">2</span>
+        </button>
+
+        <button id="ws-home-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.55rem;" title="Kembali ke Landing">
+          <svg width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="32" height="32" rx="8" fill="#A3E635" stroke="#000000" stroke-width="2.5"/>
+            <polygon points="10,11 18,25 26,11 21,11 18,17 15,11" fill="#0D0F12"/>
+          </svg>
+          <span class="hide-on-mobile" style="font-size: 0.84rem;">val private ai</span>
+        </button>
+
+        <!-- Prominent Header Model Switcher Pill -->
+        <button id="header-model-pill" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.62rem; font-size: 0.74rem; font-family: var(--font-mono); max-width: 245px; overflow: hidden;" title="Pilih atau Tambah Model">
+          <i class="fa-solid fa-microchip" style="color: var(--accent-lime); flex-shrink: 0;"></i>
+          <span id="header-active-model-label" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">claude-sonnet-5-5</span>
+          <span id="header-vision-tag" style="background-color: var(--accent-purple); color: var(--text-dark); padding: 0.06rem 0.34rem; border-radius: 4px; font-size: 0.62rem; font-weight: 700; border: 1px solid #000; flex-shrink: 0;">
+            VISION
+          </span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 0.66rem; color: var(--text-muted); flex-shrink: 0;"></i>
+        </button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.38rem;">
+        <button id="clear-chat-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Bersihkan Riwayat Chat">
+          <i class="fa-solid fa-broom" style="color: var(--accent-coral);"></i>
+          <span class="hide-on-mobile">Clear</span>
+        </button>
+
+        <button id="open-config-modal-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.4rem 0.7rem; font-size: 0.75rem;" title="Pengaturan Base URL & API Key">
+          <i class="fa-solid fa-key"></i>
+          <span class="hide-on-mobile">API &amp; Key</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Workspace Split Body -->
+    <div class="ws-body">
+      <div id="drawer-backdrop" class="drawer-backdrop view-hidden"></div>
+
+      <!-- LEFT COLLAPSIBLE FILE DRAWER -->
+      <aside id="ws-file-drawer" class="ws-file-drawer" aria-label="File Manager">
+        <div style="padding: 0.75rem; border-bottom: 2px solid var(--border-black); display: flex; flex-direction: column; gap: 0.55rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan);">
+              <i class="fa-solid fa-folder-tree"></i> FILE WORKSPACE
+            </span>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <span id="drawer-active-count" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-lime);">1/2 aktif</span>
+              <button id="close-drawer-mobile-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm mobile-only-btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem;">
+            <label for="code-file-upload" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.46rem 0.5rem; font-size: 0.75rem; cursor: pointer;">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <span>Upload File</span>
+            </label>
+            <input id="code-file-upload" type="file" multiple accept=".ts,.tsx,.js,.jsx,.py,.php,.html,.css,.json,.md,.env,.txt,.sql,.sh,.yml,.yaml" style="display: none;" />
+
+            <button id="toggle-new-file-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.46rem 0.5rem; font-size: 0.75rem;">
+              <i class="fa-solid fa-plus"></i>
+              <span>File Baru</span>
+            </button>
+          </div>
+
+          <!-- Inline Create New File -->
+          <div id="new-file-box" class="view-hidden" style="display: flex; gap: 0.35rem;">
+            <input id="new-file-input" type="text" placeholder="contoh: api.ts" class="neo-input" style="flex: 1; padding: 0.42rem 0.55rem; font-size: 0.76rem;" />
+            <button id="confirm-new-file-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.65rem; font-size: 0.76rem;">
+              Buat
+            </button>
+          </div>
+        </div>
+
+        <!-- File List -->
+        <div style="flex: 1; overflow-y: auto; padding: 0.65rem; display: flex; flex-direction: column; gap: 0.45rem;">
+          <p style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+            Centang file untuk dikirim ke AI (uncheck = 0 token). Klik nama file untuk baca/edit.
+          </p>
+          <div id="drawer-file-list" style="display: flex; flex-direction: column; gap: 0.45rem;"></div>
+        </div>
+
+        <!-- Anti-Boros Compression Mode Switcher -->
+        <div style="padding: 0.75rem; border-top: 2px solid var(--border-black); background-color: var(--bg-elevated);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--accent-yellow);">
+              <i class="fa-solid fa-bolt"></i> ANTI-BOROS TOKEN
+            </span>
+            <span id="saved-tokens-drawer-label" style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--accent-lime);">
+              Hemat: 0 tok
+            </span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem;">
+            <button type="button" data-mode="ultra" class="token-mode-btn neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
+              Ultra Hemat
+            </button>
+            <button type="button" data-mode="balanced" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
+              Balanced
+            </button>
+            <button type="button" data-mode="full" class="token-mode-btn neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.42rem 0.25rem; font-size: 0.7rem;">
+              Full
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER CHAT WORKSPACE -->
+      <main class="ws-chat-main">
+        <!-- Context & Saved Token Status Strip -->
+        <div style="padding: 0.38rem 0.85rem; background-color: var(--bg-surface); border-bottom: 2px solid var(--border-black); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+          <div id="context-pill-bar" style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">
+            <span>Konteks:</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.68rem;">
+            <span id="session-saved-badge" style="background-color: var(--bg-elevated); color: var(--accent-lime); border: 1.5px solid var(--border-black); padding: 0.08rem 0.45rem; border-radius: 5px; font-weight: 700;">
+              <i class="fa-solid fa-piggy-bank"></i> Hemat: 0 tok
+            </span>
+          </div>
+        </div>
+
+        <!-- Messages Feed -->
+        <div id="chat-feed" class="chat-scroll-area"></div>
+
+        <!-- Composer Dock -->
+        <div class="composer-dock">
+          <div class="composer-container">
+            <!-- Vision Thumbnails Preview Strip -->
+            <div id="vision-preview-strip" class="vision-preview-strip view-hidden"></div>
+
+            <!-- Floating x1 Autocomplete Menu -->
+            <div id="x1-autocomplete-menu" class="view-hidden" role="listbox" aria-label="x1 Prefix Commands"></div>
+
+            <!-- Row 1: Prominent Model Switcher Pill + Primary/Small 1-Tap Toggle -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.38rem; flex-wrap: wrap; min-width: 0;">
+                <!-- Model Picker Trigger Pill -->
+                <button id="composer-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.34rem 0.62rem; font-size: 0.73rem; font-family: var(--font-mono); max-width: 230px;" title="Buka Pemilih Model">
+                  <i class="fa-solid fa-robot" style="color: var(--accent-cyan);"></i>
+                  <span id="composer-active-model-name" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Claude Sonnet 5.5</span>
+                  <i class="fa-solid fa-caret-down" style="color: var(--accent-lime);"></i>
+                </button>
+
+                <!-- 1-Tap Primary vs Small (Hemat) Toggle Pill -->
+                <button id="slot-toggle-pill-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.34rem 0.58rem; font-size: 0.71rem; font-family: var(--font-mono);" title="Switch cepat antara Primary Model dan Small Model (Hemat)">
+                  <i class="fa-solid fa-repeat"></i>
+                  <span id="slot-toggle-label">Slot: PRIMARY</span>
+                </button>
+              </div>
+
+              <!-- Live Token Estimator Badge -->
+              <div id="live-token-badge" style="background-color: var(--accent-yellow); color: var(--text-dark); border: 2px solid var(--border-black); box-shadow: 2px 2px 0px #000000; border-radius: 6px; padding: 0.22rem 0.58rem; font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700;">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span id="live-token-value">~0 tok</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Vision Upload + Compression Cycle -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.38rem;">
+                <label for="vision-image-upload" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.32rem 0.6rem; font-size: 0.73rem; cursor: pointer;">
+                  <i class="fa-solid fa-image"></i>
+                  <span>Upload Gambar</span>
+                </label>
+                <input id="vision-image-upload" type="file" accept="image/*" multiple style="display: none;" />
+
+                <button id="quick-mode-cycle-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.58rem; font-size: 0.71rem; font-family: var(--font-mono);">
+                  <i class="fa-solid fa-compress" style="color: var(--accent-lime);"></i>
+                  <span id="quick-mode-text">Ultra Hemat</span>
+                </button>
+              </div>
+
+              <span style="font-family: var(--font-mono); font-size: 0.67rem; color: var(--text-muted);">
+                Paste gambar (<strong style="color: var(--accent-purple);">Ctrl+V</strong>) / ketik <strong style="color: var(--accent-lime);">x1</strong>
+              </span>
+            </div>
+
+            <!-- Row 3: Prompt Textarea & Send Button -->
+            <div style="display: flex; align-items: flex-end; gap: 0.5rem;">
+              <textarea
+                id="prompt-textarea"
+                rows="2"
+                placeholder="Tulis prompt coding, paste gambar, atau ketik x1..."
+                class="neo-input"
+                style="flex: 1; padding: 0.58rem 0.72rem; font-size: 0.85rem; resize: none; max-height: 140px;"
+              ></textarea>
+
+              <button id="send-btn" type="button" class="neo-btn neo-btn-lime" style="height: 48px; padding: 0 1rem; font-size: 0.88rem; flex-shrink: 0;">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span class="hide-on-mobile">Kirim</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       MODAL 1: EXPANDED MODEL PICKER & MULTI-MODEL MANAGER
+       ====================================================================== -->
+  <div id="model-picker-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-labelledby="model-picker-title">
+    <div class="neo-card-elevated" style="width: 100%; max-width: 640px; max-height: 92dvh; display: flex; flex-direction: column; padding: 1rem; gap: 0.75rem; overflow: hidden;">
+      <!-- Modal Header -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
+        <div style="display: flex; align-items: center; gap: 0.45rem;">
+          <i class="fa-solid fa-microchip" style="color: var(--accent-lime);"></i>
+          <h2 id="model-picker-title" style="font-size: 1rem; font-weight: 700;">Pilih &amp; Kelola Model AI</h2>
+          <span id="model-total-count-badge" style="background-color: var(--accent-cyan); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.08rem 0.42rem; border-radius: 4px; border: 1.5px solid #000;">21</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <button id="fetch-models-server-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.34rem 0.62rem; font-size: 0.72rem;" title="Tarik daftar model dari {baseURL}/models">
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+            <span>Fetch /v1/models</span>
+          </button>
+
+          <button id="close-model-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.34rem 0.6rem; font-size: 0.8rem;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Primary & Small Model Summary Bar -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.45rem;">
+        <div style="background-color: var(--bg-primary); border: 2px solid var(--accent-lime); border-radius: 8px; padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem;">
+          <div style="color: var(--accent-lime); font-weight: 700;">PRIMARY MODEL</div>
+          <div id="summary-primary-id" style="color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">vanns/claude-sonnet-5-5</div>
+        </div>
+        <div style="background-color: var(--bg-primary); border: 2px solid var(--accent-yellow); border-radius: 8px; padding: 0.45rem 0.6rem; font-family: var(--font-mono); font-size: 0.72rem;">
+          <div style="color: var(--accent-yellow); font-weight: 700;">SMALL MODEL (HEMAT)</div>
+          <div id="summary-small-id" style="color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">vanns/claude-haiku-4-5</div>
+        </div>
+      </div>
+
+      <!-- Search Filter & Add Custom Toggle -->
+      <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+        <div style="position: relative; flex: 1; min-width: 190px;">
+          <input id="model-search-input" type="text" placeholder="Cari model (opus, sonnet, gpt, deepseek, gemini...)" class="neo-input" style="width: 100%; padding: 0.48rem 0.7rem 0.48rem 2rem; font-size: 0.78rem;" />
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 0.68rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.76rem;"></i>
+        </div>
+
+        <button id="toggle-custom-model-form-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.46rem 0.72rem; font-size: 0.75rem;">
+          <i class="fa-solid fa-plus"></i>
+          <span>Tambah Model Custom</span>
+        </button>
+      </div>
+
+      <!-- Inline + Tambah Model Custom Form -->
+      <div id="custom-model-inline-form" class="view-hidden" style="background-color: var(--bg-primary); border: 2px solid var(--accent-lime); border-radius: 10px; padding: 0.7rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-lime);">
+          + TAMBAH MODEL CUSTOM KE LOCALSTORAGE
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.45rem;">
+          <input id="custom-model-id-input" type="text" placeholder="Model ID (misal: claude-3-7-sonnet)" class="neo-input" style="padding: 0.45rem 0.6rem; font-size: 0.76rem;" />
+          <input id="custom-model-name-input" type="text" placeholder="Display Name (misal: Claude 3.7 Sonnet)" class="neo-input" style="padding: 0.45rem 0.6rem; font-size: 0.76rem;" />
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.74rem; cursor: pointer;">
+            <input id="custom-model-vision-cb" type="checkbox" checked class="neo-checkbox" style="width: 17px; height: 17px; min-width: 17px;" />
+            <span>Dukung Vision / Gambar (attachment)</span>
+          </label>
+          <button id="save-custom-model-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.42rem 0.85rem; font-size: 0.75rem;">
+            <i class="fa-solid fa-check"></i> Simpan Model
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div id="model-category-tabs" class="model-tab-strip" role="tablist">
+        <button type="button" data-cat="all" class="model-cat-tab active">Semua</button>
+        <button type="button" data-cat="Claude 5" class="model-cat-tab">Claude 5</button>
+        <button type="button" data-cat="Claude 4" class="model-cat-tab">Claude 4</button>
+        <button type="button" data-cat="Multi-Provider" class="model-cat-tab">Multi-Provider</button>
+        <button type="button" data-cat="Custom" class="model-cat-tab">Custom</button>
+      </div>
+
+      <!-- Scrollable Model List -->
+      <div id="model-catalog-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.55rem; padding-right: 0.15rem;"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: API ENDPOINT CONFIG & OPENCODE JSON IMPORTER
+       ====================================================================== -->
+  <div id="config-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-labelledby="config-modal-title">
+    <div class="neo-card-elevated" style="width: 100%; max-width: 560px; max-height: 92dvh; overflow-y: auto; padding: 1.05rem; display: flex; flex-direction: column; gap: 0.85rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-plug" style="color: var(--accent-lime);"></i>
+          <h2 id="config-modal-title" style="font-size: 1rem; font-weight: 700;">VannAPI Base URL, Key &amp; JSON Import</h2>
+        </div>
+        <button id="close-config-modal-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.32rem 0.6rem; font-size: 0.8rem;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Base URL & API Key -->
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-cyan);">
+          BASE URL ENDPOINT
+        </label>
+        <input id="cfg-baseurl" type="text" placeholder="https://api.vanns.my.id/v1" class="neo-input" style="padding: 0.5rem 0.68rem; font-size: 0.78rem;" />
+
+        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-lime); margin-top: 0.15rem;">
+          API KEY (DISIMPAN LOKAL DI BROWSER)
+        </label>
+        <div style="display: flex; gap: 0.4rem;">
+          <input id="cfg-apikey" type="password" placeholder="Paste API Key di sini..." class="neo-input" style="flex: 1; padding: 0.5rem 0.68rem; font-size: 0.78rem;" />
+          <button id="toggle-key-eye-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0 0.7rem;">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+
+        <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--text-muted); margin-top: 0.15rem;">
+          PROTOCOL MODE
+        </label>
+        <select id="cfg-protocol" class="neo-input" style="padding: 0.5rem 0.68rem; font-size: 0.78rem;">
+          <option value="auto">Auto (Anthropic -&gt; OpenAI Fallback)</option>
+          <option value="anthropic">Anthropic (/v1/messages)</option>
+          <option value="openai">OpenAI Compatible (/v1/chat/completions)</option>
+        </select>
+      </div>
+
+      <!-- Inline + Tambah Model Custom inside API Modal -->
+      <div style="display: flex; flex-direction: column; gap: 0.45rem; border-top: 2px solid var(--border-subtle); padding-top: 0.7rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-purple);">
+            QUICK ADD CUSTOM MODEL / FETCH SERVER
+          </span>
+          <div style="display: flex; gap: 0.35rem;">
+            <button id="api-modal-fetch-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.28rem 0.55rem; font-size: 0.7rem;">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Fetch /v1/models
+            </button>
+            <button id="api-modal-open-picker-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.28rem 0.55rem; font-size: 0.7rem;">
+              <i class="fa-solid fa-list"></i> Daftar Model
+            </button>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.35rem;">
+          <input id="cfg-quick-model-id" type="text" placeholder="Model ID..." class="neo-input" style="padding: 0.42rem 0.55rem; font-size: 0.74rem;" />
+          <input id="cfg-quick-model-name" type="text" placeholder="Nama Model..." class="neo-input" style="padding: 0.42rem 0.55rem; font-size: 0.74rem;" />
+          <button id="cfg-quick-add-btn" type="button" class="neo-btn neo-btn-purple neo-btn-sm" style="padding: 0.42rem 0.65rem; font-size: 0.74rem;">
+            + Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Paste OpenCode JSON Config Box -->
+      <div style="display: flex; flex-direction: column; gap: 0.42rem; border-top: 2px solid var(--border-subtle); padding-top: 0.7rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <label style="font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700; color: var(--accent-yellow);">
+            PASTE OPENCODE JSON CONFIG
+          </label>
+          <button id="import-json-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.28rem 0.6rem; font-size: 0.72rem;">
+            <i class="fa-solid fa-file-import"></i> Import JSON
+          </button>
+        </div>
+        <textarea id="cfg-json-paste" rows="3" placeholder='Paste JSON config dengan "baseURL", "apiKey", "model", "small_model", "models"...' class="neo-input" style="padding: 0.48rem 0.62rem; font-size: 0.74rem; resize: vertical;"></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; gap: 0.5rem; margin-top: 0.15rem;">
+        <button id="modal-reset-all-btn" type="button" class="neo-btn neo-btn-coral neo-btn-sm" style="padding: 0.5rem 0.8rem; font-size: 0.76rem;">
+          <i class="fa-solid fa-rotate-left"></i> x1 --reset
+        </button>
+
+        <button id="save-config-btn" type="button" class="neo-btn neo-btn-lime neo-btn-sm" style="padding: 0.5rem 1.05rem; font-size: 0.8rem;">
+          <i class="fa-solid fa-check"></i> Simpan Config
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 3: LINE-NUMBERED FILE VIEWER & EDITOR WITH SYNTAX HIGHLIGHTING
+       ====================================================================== -->
+  <div id="file-viewer-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-labelledby="viewer-file-title">
+    <div class="neo-card-elevated" style="width: 100%; max-width: 760px; max-height: 92dvh; display: flex; flex-direction: column; padding: 1rem; gap: 0.75rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; border-bottom: 2px solid var(--border-black); padding-bottom: 0.55rem;">
+        <div style="display: flex; align-items: center; gap: 0.45rem; min-width: 0;">
+          <span id="viewer-lang-badge" style="background-color: var(--accent-cyan); color: var(--text-dark); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; padding: 0.12rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">TSX</span>
+          <h3 id="viewer-file-title" style="font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">page.tsx</h3>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+          <label style="display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.72rem; background-color: var(--bg-primary); padding: 0.28rem 0.55rem; border-radius: 6px; border: 2px solid var(--border-black); cursor: pointer;">
+            <input id="viewer-include-cb" type="checkbox" class="neo-checkbox" style="width: 16px; height: 16px; min-width: 16px;" />
+            <span>Kirim AI</span>
+          </label>
+
+          <button id="viewer-toggle-edit-btn" type="button" class="neo-btn neo-btn-yellow neo-btn-sm" style="padding: 0.35rem 0.65rem; font-size: 0.74rem;">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span id="viewer-edit-label">Edit Kode</span>
+          </button>
+
+          <button id="viewer-copy-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.55rem; font-size: 0.74rem;" title="Copy isi file">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+
+          <button id="viewer-download-btn" type="button" class="neo-btn neo-btn-cyan neo-btn-sm" style="padding: 0.35rem 0.55rem; font-size: 0.74rem;" title="Download file">
+            <i class="fa-solid fa-download"></i>
+          </button>
+
+          <button id="close-file-viewer-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.35rem 0.55rem; font-size: 0.74rem;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Syntax Highlighted Read Mode -->
+      <div id="viewer-read-container" class="line-viewer-grid">
+        <div id="viewer-line-gutter" class="line-gutter" aria-hidden="true">1</div>
+        <pre style="margin: 0; padding: 0.75rem; flex: 1; overflow-x: auto;"><code id="viewer-highlighted-code" class="language-tsx"></code></pre>
+      </div>
+
+      <!-- Raw Edit Mode -->
+      <textarea id="viewer-edit-textarea" spellcheck="false" class="neo-input view-hidden" style="width: 100%; min-height: 260px; max-height: 62dvh; padding: 0.75rem; font-size: 0.8rem; line-height: 1.58; resize: vertical;"></textarea>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">
+        <span id="viewer-meta-stats">0 baris &bull; ~0 tok</span>
+        <span style="color: var(--accent-lime);">Inspeksi lokal (0 token)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 4: VISION IMAGE LIGHTBOX PREVIEW
+       ====================================================================== -->
+  <div id="image-lightbox-modal" class="neo-modal-backdrop view-hidden" role="dialog" aria-modal="true" aria-label="Preview Gambar Vision">
+    <div class="neo-card-elevated" style="max-width: 92vw; max-height: 90dvh; padding: 0.85rem; display: flex; flex-direction: column; gap: 0.65rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+        <span id="lightbox-caption" style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); font-weight: 700;">Preview Vision</span>
+        <button id="close-lightbox-btn" type="button" class="neo-btn neo-btn-dark neo-btn-sm" style="padding: 0.3rem 0.6rem; font-size: 0.78rem;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <img id="lightbox-img" src="" alt="Preview lampiran vision" style="max-width: 100%; max-height: 75dvh; border-radius: 8px; border: 2px solid var(--border-black); object-fit: contain;" />
+    </div>
+  </div>
+
+  <!-- Toast Banner -->
+  <div id="toast-banner" role="status" aria-live="polite"></div>
+
+  <script>
+
+    // --builtin_model_catalog--
+
+    const BUILTIN_MODELS = [
+      // VannAPI Claude 5 Series
+      { id: 'vanns/claude-opus-5-5', name: 'Claude Opus 5.5', category: 'Claude 5', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Flagship', isCustom: false },
+      { id: 'vanns/claude-opus-5', name: 'Claude Opus 5', category: 'Claude 5', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'vanns/claude-sonnet-5-5', name: 'Claude Sonnet 5.5', category: 'Claude 5', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Default Primary', isCustom: false },
+      { id: 'vanns/claude-sonnet-5', name: 'Claude Sonnet 5', category: 'Claude 5', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Balanced', isCustom: false },
+      { id: 'vanns/claude-haiku-5-5', name: 'Claude Haiku 5.5', category: 'Claude 5', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Fast & Hemat', isCustom: false },
+
+      // VannAPI Claude 4 Series
+      { id: 'vanns/claude-opus-4-8', name: 'Claude Opus 4.8', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'vanns/claude-opus-4-7', name: 'Claude Opus 4.7', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'vanns/claude-opus-4-6', name: 'Claude Opus 4.6', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'vanns/claude-opus-4-5', name: 'Claude Opus 4.5', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'vanns/claude-sonnet-4-6', name: 'Claude Sonnet 4.6', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Coding', isCustom: false },
+      { id: 'vanns/claude-sonnet-4-5', name: 'Claude Sonnet 4.5', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Coding', isCustom: false },
+      { id: 'vanns/claude-haiku-4-5', name: 'Claude Haiku 4.5', category: 'Claude 4', provider: 'VannAPI', vision: true, reasoning: true, context: '200K', badge: 'Ultra Hemat', isCustom: false },
+
+      // Multi-Provider Built-in Coding & Vision Models
+      { id: 'gpt-4.1', name: 'GPT-4.1', category: 'Multi-Provider', provider: 'OpenAI', vision: true, reasoning: false, context: '1M', badge: 'Coding', isCustom: false },
+      { id: 'gpt-4o', name: 'GPT-4o', category: 'Multi-Provider', provider: 'OpenAI', vision: true, reasoning: false, context: '128K', badge: 'Multimodal', isCustom: false },
+      { id: 'o3-mini', name: 'o3-mini', category: 'Multi-Provider', provider: 'OpenAI', vision: false, reasoning: true, context: '200K', badge: 'Reasoning', isCustom: false },
+      { id: 'deepseek-reasoner', name: 'DeepSeek R1 Reasoner', category: 'Multi-Provider', provider: 'DeepSeek', vision: false, reasoning: true, context: '128K', badge: 'DeepThink', isCustom: false },
+      { id: 'deepseek-chat', name: 'DeepSeek V3 Chat', category: 'Multi-Provider', provider: 'DeepSeek', vision: false, reasoning: false, context: '128K', badge: 'Hemat', isCustom: false },
+      { id: 'gemini-2.5-pro', name: 'Gemini 2.5 Pro', category: 'Multi-Provider', provider: 'Google', vision: true, reasoning: true, context: '1M', badge: 'Flagship', isCustom: false },
+      { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', category: 'Multi-Provider', provider: 'Google', vision: true, reasoning: true, context: '1M', badge: 'Ultra Hemat', isCustom: false },
+      { id: 'grok-3', name: 'Grok 3', category: 'Multi-Provider', provider: 'xAI', vision: false, reasoning: true, context: '131K', badge: 'Coding', isCustom: false },
+      { id: 'qwen-2.5-coder-32b', name: 'Qwen 2.5 Coder 32B', category: 'Multi-Provider', provider: 'Alibaba', vision: false, reasoning: false, context: '128K', badge: 'Hemat', isCustom: false }
+    ];
+
+    const STORAGE_KEYS = {
+      FILES: 'val_private_ai_files_v3',
+      MESSAGES: 'val_private_ai_msgs_v3',
+      CONFIG: 'val_private_ai_cfg_v3',
+      CUSTOM_MODELS: 'val_private_ai_custom_models_v3'
+    };
+
+    const X1_COMMANDS = [
+      { cmd: 'x1 --help', hint: 'Daftar perintah cepat & shortcut Studio' },
+      { cmd: 'x1 --models', hint: 'Buka Model Picker & Multi-Provider Manager' },
+      { cmd: 'x1 --themelist', hint: 'Spesifikasi tema Neobrutalism Dark solid' },
+      { cmd: 'x1 --sizelist', hint: 'Preset ukuran layar: phone, windows, multisize' },
+      { cmd: 'x1 --reset', hint: 'Hapus localStorage, riwayat chat & reset bersih' }
+    ];
+
+    const DEFAULT_FILES = [
+      {
+        id: 'file-app-tsx',
+        name: 'page.tsx',
+        included: true,
+        content: `import React, { useState } from 'react';
+
+export default function PrivateCodingStudio() {
+  const [model, setModel] = useState<string>('vanns/claude-sonnet-5-5');
+
+  return (
+    <main className="p-4 bg-[#0D0F12] text-[#F4F6F8]">
+      <h1 className="text-xl font-bold">val private ai</h1>
+      <p>Active Model: {model}</p>
+    </main>
+  );
+}`
+      },
+      {
+        id: 'file-api-py',
+        name: 'token_optimizer.py',
+        included: false,
+        content: `def compress_prompt(raw_text: str) -> str:
+    """Pangkas baris kosong berlebih sebelum dikirim ke LLM."""
+    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+    return "\\n".join(lines)`
+      }
+    ];
+
+    const DEFAULT_MESSAGES = [
+      {
+        id: 'msg-init',
+        role: 'ai',
+        text: 'Selamat datang di **val private ai**. Gunakan tombol **Model Picker** di toolbar bawah untuk memilih dari **21+ model** (Claude 5/4, GPT-4.1, DeepSeek R1, Gemini 2.5, Qwen Coder), toggle cepat **Primary vs Small (Hemat)**, atau tarik model otomatis lewat **Fetch /v1/models**.',
+        tokensUsed: 0,
+        images: []
+      }
+    ];
+
+    const state = {
+      files: [],
+      messages: [],
+      customModels: [],
+      pendingImages: [],
+      viewerFileId: null,
+      viewerEditMode: false,
+      x1SelectedIdx: 0,
+      modelFilterCat: 'all',
+      modelSearchQuery: '',
+      isSending: false,
+      config: {
+        baseURL: 'https://api.vanns.my.id/v1',
+        apiKey: '',
+        protocol: 'auto',
+        primaryModel: 'vanns/claude-sonnet-5-5',
+        smallModel: 'vanns/claude-haiku-4-5',
+        activeSlot: 'primary',
+        compressionMode: 'ultra',
+        totalSavedTokens: 0
+      }
+    };
+
+    // --init_application--
+
+    function initApplication() {
+      loadLocalState();
+      buildMeteorsAndStars();
+      bindAllEvents();
+      renderFileDrawer();
+      renderChatMessages();
+      syncAllModelUI();
+      updateLiveTokenEstimator();
+    }
+
+    // --load_local_state--
+
+    function loadLocalState() {
+      try {
+        const rawFiles = localStorage.getItem(STORAGE_KEYS.FILES);
+        const rawMsgs = localStorage.getItem(STORAGE_KEYS.MESSAGES);
+        const rawCfg = localStorage.getItem(STORAGE_KEYS.CONFIG);
+        const rawCustomModels = localStorage.getItem(STORAGE_KEYS.CUSTOM_MODELS);
+
+        state.files = rawFiles ? JSON.parse(rawFiles) : structuredClone(DEFAULT_FILES);
+        state.messages = rawMsgs ? JSON.parse(rawMsgs) : structuredClone(DEFAULT_MESSAGES);
+        state.customModels = rawCustomModels ? JSON.parse(rawCustomModels) : [];
+
+        if (rawCfg) {
+          state.config = { ...state.config, ...JSON.parse(rawCfg) };
+        }
+      } catch (err) {
+        state.files = structuredClone(DEFAULT_FILES);
+        state.messages = structuredClone(DEFAULT_MESSAGES);
+        state.customModels = [];
+      }
+    }
+
+    // --save_local_state--
+
+    function saveLocalState() {
+      try {
+        localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(state.files));
+        localStorage.setItem(STORAGE_KEYS.MESSAGES, JSON.stringify(state.messages));
+        localStorage.setItem(STORAGE_KEYS.CONFIG, JSON.stringify(state.config));
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_MODELS, JSON.stringify(state.customModels));
+      } catch (err) {
+        showToast('Storage browser penuh.');
+      }
+    }
+
+    // --get_all_models--
+
+    function getAllModels() {
+      return [...BUILTIN_MODELS, ...state.customModels];
+    }
+
+    // --get_active_model_obj--
+
+    function getActiveModelObj() {
+      const targetId =
+        state.config.activeSlot === 'small'
+          ? state.config.smallModel
+          : state.config.primaryModel;
+
+      const all = getAllModels();
+      return (
+        all.find((m) => m.id === targetId) || {
+          id: targetId,
+          name: targetId.replace(/^vanns\//, ''),
+          category: 'Custom',
+          provider: 'Custom',
+          vision: true,
+          reasoning: false,
+          context: '200K',
+          badge: 'Active',
+          isCustom: true
+        }
+      );
+    }
+
+    // --normalize_api_model_id--
+
+    function normalizeApiModelId(modelId) {
+      return String(modelId || '').replace(/^vanns\//, '');
+    }
+
+    // --show_toast--
+
+    let toastTimeout = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast-banner');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        el.classList.remove('visible');
+      }, 2400);
+    }
+
+    // --sync_all_model_ui--
+
+    function syncAllModelUI() {
+      const activeObj = getActiveModelObj();
+      const shortId = activeObj.id.replace(/^vanns\//, '');
+
+      // Header Model Pill
+      document.getElementById('header-active-model-label').textContent = shortId;
+      const visionTag = document.getElementById('header-vision-tag');
+      if (activeObj.vision) {
+        visionTag.textContent = 'VISION';
+        visionTag.style.backgroundColor = 'var(--accent-purple)';
+      } else {
+        visionTag.textContent = 'TEXT';
+        visionTag.style.backgroundColor = 'var(--accent-yellow)';
+      }
+
+      // Composer Model Picker Pill
+      document.getElementById('composer-active-model-name').textContent = activeObj.name || shortId;
+
+      // 1-Tap Primary vs Small (Hemat) Slot Toggle Pill
+      const slotBtn = document.getElementById('slot-toggle-pill-btn');
+      const slotLabel = document.getElementById('slot-toggle-label');
+      if (state.config.activeSlot === 'small') {
+        slotLabel.textContent = 'Slot: SMALL (HEMAT)';
+        slotBtn.classList.remove('neo-btn-lime');
+        slotBtn.classList.add('neo-btn-yellow');
+      } else {
+        slotLabel.textContent = 'Slot: PRIMARY';
+        slotBtn.classList.remove('neo-btn-yellow');
+        slotBtn.classList.add('neo-btn-lime');
+      }
+
+      // Compression Mode UI
+      const modeLabels = {
+        ultra: 'Ultra Hemat',
+        balanced: 'Balanced',
+        full: 'Full'
+      };
+      document.getElementById('quick-mode-text').textContent = modeLabels[state.config.compressionMode] || 'Ultra Hemat';
+
+      document.querySelectorAll('.token-mode-btn').forEach((btn) => {
+        const m = btn.getAttribute('data-mode');
+        if (m === state.config.compressionMode) {
+          btn.classList.remove('neo-btn-dark');
+          btn.classList.add('neo-btn-lime');
+        } else {
+          btn.classList.remove('neo-btn-lime');
+          btn.classList.add('neo-btn-dark');
+        }
+      });
+
+      // Saved Tokens Counter
+      const savedFormatted = `${state.config.totalSavedTokens.toLocaleString('id-ID')} tok`;
+      document.getElementById('session-saved-badge').innerHTML = `<i class="fa-solid fa-piggy-bank"></i> Hemat: ${savedFormatted}`;
+      document.getElementById('saved-tokens-drawer-label').textContent = `Hemat: ${savedFormatted}`;
+
+      // Modal Summary Labels
+      document.getElementById('summary-primary-id').textContent = state.config.primaryModel;
+      document.getElementById('summary-small-id').textContent = state.config.smallModel;
+      document.getElementById('model-total-count-badge').textContent = String(getAllModels().length);
+
+      // Config Modal Fields
+      document.getElementById('cfg-baseurl').value = state.config.baseURL;
+      document.getElementById('cfg-apikey').value = state.config.apiKey;
+      document.getElementById('cfg-protocol').value = state.config.protocol;
+    }
+
+    // --render_model_catalog--
+
+    function renderModelCatalog() {
+      const listEl = document.getElementById('model-catalog-list');
+      const allModels = getAllModels();
+      const q = state.modelSearchQuery.trim().toLowerCase();
+
+      const filtered = allModels.filter((m) => {
+        const matchCat =
+          state.modelFilterCat === 'all' ||
+          (state.modelFilterCat === 'Custom' ? m.isCustom : m.category === state.modelFilterCat);
+
+        if (!matchCat) return false;
+        if (!q) return true;
+
+        return (
+          m.id.toLowerCase().includes(q) ||
+          m.name.toLowerCase().includes(q) ||
+          (m.provider || '').toLowerCase().includes(q) ||
+          (m.badge || '').toLowerCase().includes(q)
+        );
+      });
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<div style="padding: 1.25rem; border: 2px dashed var(--border-subtle); border-radius: 10px; text-align: center; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">Tidak ada model yang cocok dengan filter "${escapeHtml(state.modelSearchQuery)}".</div>`;
+        return;
+      }
+
+      listEl.innerHTML = filtered
+        .map((m) => {
+          const isPrimary = state.config.primaryModel === m.id;
+          const isSmall = state.config.smallModel === m.id;
+          const cardClass = `model-catalog-item ${isPrimary ? 'is-primary' : ''} ${isSmall ? 'is-small' : ''}`;
+
+          return `
+            <div class="${cardClass}">
+              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                <div style="min-width: 0; flex: 1;">
+                  <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                    <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">${escapeHtml(m.name)}</span>
+                    ${isPrimary ? `<span class="meta-tag-badge" style="background-color: var(--accent-lime);">PRIMARY</span>` : ''}
+                    ${isSmall ? `<span class="meta-tag-badge" style="background-color: var(--accent-yellow);">SMALL / HEMAT</span>` : ''}
+                  </div>
+                  <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.12rem; word-break: break-all;">
+                    ${escapeHtml(m.id)} &bull; ${escapeHtml(m.provider || 'Custom')}
+                  </div>
+                </div>
+
+                <!-- Metadata Badges -->
+                <div style="display: flex; align-items: center; gap: 0.28rem; flex-wrap: wrap;">
+                  ${
+                    m.vision
+                      ? `<span class="meta-tag-badge" style="background-color: var(--accent-purple);"><i class="fa-solid fa-eye"></i> Vision</span>`
+                      : `<span class="meta-tag-badge" style="background-color: #94A3B8;">Text</span>`
+                  }
+                  ${
+                    m.reasoning
+                      ? `<span class="meta-tag-badge" style="background-color: var(--accent-cyan);"><i class="fa-solid fa-brain"></i> Reasoning</span>`
+                      : ''
+                  }
+                  <span class="meta-tag-badge" style="background-color: #F4F6F8;">${escapeHtml(m.context || '200K')}</span>
+                  ${
+                    m.badge
+                      ? `<span class="meta-tag-badge" style="background-color: var(--accent-yellow);">${escapeHtml(m.badge)}</span>`
+                      : ''
+                  }
+                </div>
+              </div>
+
+              <!-- Quick Action Buttons -->
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 0.45rem;">
+                <div style="display: flex; align-items: center; gap: 0.38rem; flex-wrap: wrap;">
+                  <button type="button" class="set-primary-model-btn neo-btn ${isPrimary ? 'neo-btn-lime' : 'neo-btn-dark'} neo-btn-sm" data-model-id="${escapeHtml(m.id)}" style="padding: 0.3rem 0.6rem; font-size: 0.71rem;">
+                    <i class="fa-solid fa-star"></i> Set as Primary
+                  </button>
+                  <button type="button" class="set-small-model-btn neo-btn ${isSmall ? 'neo-btn-yellow' : 'neo-btn-dark'} neo-btn-sm" data-model-id="${escapeHtml(m.id)}" style="padding: 0.3rem 0.6rem; font-size: 0.71rem;">
+                    <i class="fa-solid fa-bolt"></i> Set as Small (Hemat)
+                  </button>
+                </div>
+
+                ${
+                  m.isCustom
+                    ? `<button type="button" class="delete-custom-model-btn neo-btn neo-btn-coral neo-btn-sm" data-model-id="${escapeHtml(m.id)}" style="padding: 0.3rem 0.55rem; font-size: 0.71rem;" title="Hapus model custom">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>`
+                    : ''
+                }
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+
+      listEl.querySelectorAll('.set-primary-model-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-model-id');
+          state.config.primaryModel = id;
+          state.config.activeSlot = 'primary';
+          saveLocalState();
+          syncAllModelUI();
+          renderModelCatalog();
+          showToast(`Primary Model: ${id.replace(/^vanns\//, '')}`);
+        });
+      });
+
+      listEl.querySelectorAll('.set-small-model-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-model-id');
+          state.config.smallModel = id;
+          state.config.activeSlot = 'small';
+          saveLocalState();
+          syncAllModelUI();
+          renderModelCatalog();
+          showToast(`Small (Hemat) Model: ${id.replace(/^vanns\//, '')}`);
+        });
+      });
+
+      listEl.querySelectorAll('.delete-custom-model-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-model-id');
+          state.customModels = state.customModels.filter((cm) => cm.id !== id);
+          if (state.config.primaryModel === id) state.config.primaryModel = 'vanns/claude-sonnet-5-5';
+          if (state.config.smallModel === id) state.config.smallModel = 'vanns/claude-haiku-4-5';
+          saveLocalState();
+          syncAllModelUI();
+          renderModelCatalog();
+          showToast('Model custom dihapus.');
+        });
+      });
+    }
+
+    // --add_custom_model_entry--
+
+    function addCustomModelEntry(rawId, rawName, supportsVision) {
+      const cleanId = rawId.trim();
+      if (!cleanId) {
+        showToast('Isi Model ID terlebih dahulu.');
+        return false;
+      }
+
+      const displayName = rawName.trim() || cleanId.replace(/^vanns\//, '');
+      const existingIdx = state.customModels.findIndex((m) => m.id.toLowerCase() === cleanId.toLowerCase());
+
+      const newEntry = {
+        id: cleanId,
+        name: displayName,
+        category: 'Custom',
+        provider: 'Custom',
+        vision: Boolean(supportsVision),
+        reasoning: true,
+        context: '200K',
+        badge: 'Custom',
+        isCustom: true
+      };
+
+      if (existingIdx >= 0) {
+        state.customModels[existingIdx] = newEntry;
+      } else {
+        state.customModels.unshift(newEntry);
+      }
+
+      state.config.primaryModel = cleanId;
+      state.config.activeSlot = 'primary';
+      saveLocalState();
+      syncAllModelUI();
+      renderModelCatalog();
+      showToast(`Model ditambahkan: ${displayName}`);
+      return true;
+    }
+
+    // --fetch_models_from_endpoint--
+
+    async function fetchModelsFromEndpoint(triggerBtn) {
+      const baseUrl = (document.getElementById('cfg-baseurl')?.value || state.config.baseURL || 'https://api.vanns.my.id/v1')
+        .trim()
+        .replace(/\/+$/, '');
+      const apiKey = (document.getElementById('cfg-apikey')?.value || state.config.apiKey || '').trim();
+
+      const originalHtml = triggerBtn.innerHTML;
+      triggerBtn.disabled = true;
+      triggerBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Fetching...`;
+
+      try {
+        const headers = { 'Content-Type': 'application/json' };
+        if (apiKey && apiKey !== 'PASTE_YOUR_API_KEY_HERE') {
+          headers['Authorization'] = `Bearer ${apiKey}`;
+          headers['x-api-key'] = apiKey;
+        }
+
+        const res = await fetch(`${baseUrl}/models`, { method: 'GET', headers });
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+
+        const payload = await res.json();
+        const rawList = Array.isArray(payload.data) ? payload.data : Array.isArray(payload.models) ? payload.models : [];
+
+        if (rawList.length === 0) {
+          showToast('Endpoint tidak mengembalikan daftar model.');
+          return;
+        }
+
+        let importedCount = 0;
+        const existingIds = new Set(getAllModels().map((m) => m.id.toLowerCase()));
+
+        rawList.forEach((item) => {
+          const mId = typeof item === 'string' ? item : item.id;
+          if (!mId) return;
+          if (!existingIds.has(mId.toLowerCase()) && !existingIds.has(`vanns/${mId.toLowerCase()}`)) {
+            const lower = mId.toLowerCase();
+            const isVision =
+              lower.includes('claude') ||
+              lower.includes('gpt-4') ||
+              lower.includes('gemini') ||
+              lower.includes('vision');
+            state.customModels.push({
+              id: mId,
+              name: item.name || mId,
+              category: 'Custom',
+              provider: item.owned_by || 'Server /v1/models',
+              vision: isVision,
+              reasoning: lower.includes('opus') || lower.includes('r1') || lower.includes('o3') || lower.includes('sonnet-5'),
+              context: '200K',
+              badge: 'Fetched',
+              isCustom: true
+            });
+            existingIds.add(mId.toLowerCase());
+            importedCount++;
+          }
+        });
+
+        saveLocalState();
+        syncAllModelUI();
+        renderModelCatalog();
+        showToast(
+          importedCount > 0
+            ? `${importedCount} model baru diimpor dari /v1/models!`
+            : `Semua ${rawList.length} model server sudah terdaftar.`
+        );
+      } catch (err) {
+        showToast(`Gagal fetch /v1/models: ${err.message}`);
+      } finally {
+        triggerBtn.disabled = false;
+        triggerBtn.innerHTML = originalHtml;
+      }
+    }
+
+    // --build_meteors_and_stars--
+
+    function buildMeteorsAndStars() {
+      const layer = document.getElementById('meteor-layer');
+      layer.innerHTML = '';
+      const palette = ['#A3E635', '#38BDF8', '#C084FC', '#FACC15', '#F4F6F8'];
+
+      for (let i = 0; i < 24; i++) {
+        const isStar = i % 3 === 0;
+        const topPct = Math.floor(Math.random() * 94) + 2;
+        const duration = (Math.random() * 0.72 + 0.45).toFixed(2);
+        const delay = (Math.random() * 0.9).toFixed(2);
+        const color = palette[i % palette.length];
+
+        const el = document.createElement('div');
+        el.className = 'meteor-item';
+        el.style.top = `${topPct}%`;
+        el.style.animationDuration = `${duration}s`;
+        el.style.animationDelay = `-${delay}s`;
+
+        if (isStar) {
+          el.innerHTML = `<svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,0 9,5 14,7 9,9 7,14 5,9 0,7 5,5" fill="${color}"/></svg>`;
+        } else {
+          const w = Math.floor(Math.random() * 85) + 42;
+          el.innerHTML = `<svg width="${w}" height="8" viewBox="0 0 ${w} 8"><polygon points="0,4 ${w},1 ${w},7" fill="${color}"/></svg>`;
+        }
+
+        layer.appendChild(el);
+      }
+    }
+
+    // --trigger_rocket_transition--
+
+    function triggerRocketTransition(targetView, labelText, onComplete) {
+      const overlay = document.getElementById('rocket-overlay');
+      const vessel = document.getElementById('rocket-vessel');
+      const statusText = document.getElementById('rocket-status-text');
+      const progressFill = document.getElementById('rocket-progress-fill');
+
+      statusText.textContent = labelText || 'Memuat Studio...';
+      progressFill.style.width = '0%';
+      vessel.classList.remove('rocket-launch');
+      vessel.classList.add('rocket-hover');
+      overlay.classList.remove('slide-out');
+      overlay.classList.add('slide-in');
+
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          progressFill.style.width = '100%';
+        }, 70);
+      });
+
+      setTimeout(() => {
+        const landing = document.getElementById('landing-view');
+        const workspace = document.getElementById('workspace-view');
+
+        if (targetView === 'workspace') {
+          landing.classList.add('view-hidden');
+          workspace.classList.remove('view-hidden');
+          updateLiveTokenEstimator();
+        } else {
+          workspace.classList.add('view-hidden');
+          landing.classList.remove('view-hidden');
+        }
+      }, 460);
+
+      setTimeout(() => {
+        vessel.classList.remove('rocket-hover');
+        vessel.classList.add('rocket-launch');
+      }, 860);
+
+      setTimeout(() => {
+        overlay.classList.remove('slide-in');
+        overlay.classList.add('slide-out');
+      }, 1100);
+
+      setTimeout(() => {
+        overlay.classList.remove('slide-out');
+        vessel.classList.remove('rocket-launch');
+        vessel.classList.add('rocket-hover');
+        if (typeof onComplete === 'function') onComplete();
+      }, 1560);
+    }
+
+    // --detect_language_info--
+
+    function detectLanguageInfo(langHint, fileName) {
+      const raw = (langHint || '').toLowerCase().trim();
+      const ext = (fileName || '').split('.').pop()?.toLowerCase() || '';
+      const key = raw || ext;
+
+      const map = {
+        tsx: { prism: 'tsx', badge: 'TSX', color: '#C084FC', ext: 'tsx' },
+        typescript: { prism: 'typescript', badge: 'TS', color: '#38BDF8', ext: 'ts' },
+        ts: { prism: 'typescript', badge: 'TS', color: '#38BDF8', ext: 'ts' },
+        jsx: { prism: 'jsx', badge: 'JSX', color: '#C084FC', ext: 'jsx' },
+        javascript: { prism: 'javascript', badge: 'JS', color: '#FACC15', ext: 'js' },
+        js: { prism: 'javascript', badge: 'JS', color: '#FACC15', ext: 'js' },
+        python: { prism: 'python', badge: 'PY', color: '#A3E635', ext: 'py' },
+        py: { prism: 'python', badge: 'PY', color: '#A3E635', ext: 'py' },
+        php: { prism: 'php', badge: 'PHP', color: '#C084FC', ext: 'php' },
+        html: { prism: 'markup', badge: 'HTML', color: '#FB7185', ext: 'html' },
+        xml: { prism: 'markup', badge: 'XML', color: '#FB7185', ext: 'xml' },
+        svg: { prism: 'markup', badge: 'SVG', color: '#FB7185', ext: 'svg' },
+        css: { prism: 'css', badge: 'CSS', color: '#38BDF8', ext: 'css' },
+        json: { prism: 'json', badge: 'JSON', color: '#FACC15', ext: 'json' },
+        bash: { prism: 'bash', badge: 'SH', color: '#A3E635', ext: 'sh' },
+        sh: { prism: 'bash', badge: 'SH', color: '#A3E635', ext: 'sh' },
+        sql: { prism: 'sql', badge: 'SQL', color: '#38BDF8', ext: 'sql' }
+      };
+
+      return map[key] || { prism: 'javascript', badge: (key || 'CODE').toUpperCase(), color: '#38BDF8', ext: key || 'txt' };
+    }
+
+    // --highlight_code_with_prism--
+
+    function highlightCodeWithPrism(code, prismLang) {
+      try {
+        if (window.Prism && Prism.languages[prismLang]) {
+          return Prism.highlight(code, Prism.languages[prismLang], prismLang);
+        }
+      } catch (err) {
+        // Fallback to escaped text
+      }
+      return escapeHtml(code);
+    }
+
+    // --estimate_tokens--
+
+    function estimateTokens(text) {
+      if (!text) return 0;
+      return Math.ceil(text.length / 3.8);
+    }
+
+    // --compress_code_for_context--
+
+    function compressCodeForContext(code, mode) {
+      if (mode === 'full') return code;
+      if (mode === 'balanced') {
+        return code.replace(/\n\s*\n\s*\n/g, '\n\n').trim();
+      }
+      return code
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/(^|[^:])\/\/.*$/gm, '$1')
+        .replace(/^\s*#.*$/gm, '')
+        .replace(/^\s*[\r\n]/gm, '')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim();
+    }
+
+    // --compute_payload_token_breakdown--
+
+    function computePayloadTokenBreakdown(promptVal) {
+      const mode = state.config.compressionMode;
+      const activeFiles = state.files.filter((f) => f.included);
+      const inactiveFiles = state.files.filter((f) => !f.included);
+
+      let rawTokens = estimateTokens(promptVal);
+      let compressedTokens = estimateTokens(promptVal);
+
+      activeFiles.forEach((f) => {
+        rawTokens += estimateTokens(f.content) + 6;
+        compressedTokens += estimateTokens(compressCodeForContext(f.content, mode)) + 6;
+      });
+
+      // Unchecked files save 100% of their raw tokens
+      inactiveFiles.forEach((f) => {
+        rawTokens += estimateTokens(f.content);
+      });
+
+      state.pendingImages.forEach((img) => {
+        rawTokens += img.rawEstTokens || img.estTokens;
+        compressedTokens += img.estTokens;
+      });
+
+      const historyLimit = mode === 'ultra' ? 4 : mode === 'balanced' ? 8 : state.messages.length;
+      const allHist = state.messages.filter((m) => m.role === 'user' || m.role === 'ai');
+      allHist.forEach((m) => {
+        rawTokens += estimateTokens(m.text);
+      });
+      allHist.slice(-historyLimit).forEach((m) => {
+        compressedTokens += estimateTokens(m.text);
+      });
+
+      const savedThisTurn = Math.max(0, rawTokens - compressedTokens);
+      return {
+        rawTokens,
+        compressedTokens,
+        savedThisTurn,
+        activeFiles,
+        historyLimit
+      };
+    }
+
+    // --update_live_token_estimator--
+
+    function updateLiveTokenEstimator() {
+      const promptVal = document.getElementById('prompt-textarea')?.value || '';
+      const breakdown = computePayloadTokenBreakdown(promptVal);
+
+      const tokenEl = document.getElementById('live-token-value');
+      if (tokenEl) {
+        tokenEl.textContent = `~${breakdown.compressedTokens} tok`;
+      }
+
+      const activeCountText = `${breakdown.activeFiles.length}/${state.files.length} aktif`;
+      document.getElementById('drawer-active-count').textContent = activeCountText;
+      document.getElementById('mobile-file-badge').textContent = `${state.files.length}`;
+
+      const pillBar = document.getElementById('context-pill-bar');
+      if (breakdown.activeFiles.length === 0 && state.pendingImages.length === 0) {
+        pillBar.innerHTML = `<span>Konteks:</span> <span style="background-color: var(--bg-elevated); padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid var(--border-black); color: var(--accent-lime);">0 file (0 tok)</span>`;
+      } else {
+        const fPills = breakdown.activeFiles
+          .map(
+            (f) =>
+              `<span style="background-color: var(--bg-elevated); padding: 0.1rem 0.42rem; border-radius: 4px; border: 1.5px solid var(--border-black); color: var(--accent-cyan);"><i class="fa-solid fa-file-code"></i> ${escapeHtml(f.name)}</span>`
+          )
+          .join('');
+        const imgPill =
+          state.pendingImages.length > 0
+            ? `<span style="background-color: var(--bg-elevated); padding: 0.1rem 0.42rem; border-radius: 4px; border: 1.5px solid var(--accent-purple); color: var(--accent-purple);"><i class="fa-solid fa-image"></i> ${state.pendingImages.length} img</span>`
+            : '';
+        pillBar.innerHTML = `<span>Konteks:</span> ${fPills} ${imgPill}`;
+      }
+    }
+
+    // --compress_image_attachment--
+
+    function compressImageAttachment(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error('Gagal membaca gambar'));
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onerror = () => reject(new Error('Format gambar tidak didukung'));
+          img.onload = () => {
+            const isUltra = state.config.compressionMode === 'ultra';
+            const maxDim = isUltra ? 640 : 1024;
+            const quality = isUltra ? 0.65 : 0.82;
+
+            const rawEstTokens = Math.max(170, Math.round((img.width * img.height) / 750));
+
+            let targetW = img.width;
+            let targetH = img.height;
+            if (targetW > maxDim || targetH > maxDim) {
+              if (targetW >= targetH) {
+                targetH = Math.round((targetH * maxDim) / targetW);
+                targetW = maxDim;
+              } else {
+                targetW = Math.round((targetW * maxDim) / targetH);
+                targetH = maxDim;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = targetW;
+            canvas.height = targetH;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#0D0F12';
+            ctx.fillRect(0, 0, targetW, targetH);
+            ctx.drawImage(img, 0, 0, targetW, targetH);
+
+            const dataUrl = canvas.toDataURL('image/jpeg', quality);
+            const base64Data = dataUrl.split(',')[1] || '';
+            const sizeKB = Math.max(1, Math.round((base64Data.length * 3) / 4 / 1024));
+            const estTokens = Math.max(85, Math.round((targetW * targetH) / 750));
+
+            resolve({
+              id: `img-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+              name: file.name || 'pasted-image.jpg',
+              mediaType: 'image/jpeg',
+              dataUrl,
+              base64Data,
+              width: targetW,
+              height: targetH,
+              sizeKB,
+              estTokens,
+              rawEstTokens
+            });
+          };
+          img.src = String(ev.target?.result || '');
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // --handle_image_files_input--
+
+    async function handleImageFilesInput(fileList) {
+      if (!fileList || fileList.length === 0) return;
+      const activeModel = getActiveModelObj();
+      if (!activeModel.vision) {
+        showToast(`Peringatan: ${activeModel.name} ditandai text-only.`);
+      }
+
+      for (const f of Array.from(fileList)) {
+        if (!f.type.startsWith('image/')) continue;
+        try {
+          const compressed = await compressImageAttachment(f);
+          state.pendingImages.push(compressed);
+        } catch (err) {
+          showToast(err.message);
+        }
+      }
+      renderVisionPreviewStrip();
+      updateLiveTokenEstimator();
+    }
+
+    // --render_vision_preview_strip--
+
+    function renderVisionPreviewStrip() {
+      const strip = document.getElementById('vision-preview-strip');
+      if (state.pendingImages.length === 0) {
+        strip.classList.add('view-hidden');
+        strip.innerHTML = '';
+        return;
+      }
+
+      strip.classList.remove('view-hidden');
+      strip.innerHTML = state.pendingImages
+        .map(
+          (img) => `
+          <div class="vision-thumb-card">
+            <img src="${img.dataUrl}" alt="${escapeHtml(img.name)}" class="vision-thumb-img" data-zoom-id="${img.id}" />
+            <div style="display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.68rem; line-height: 1.3;">
+              <span style="color: var(--text-primary); font-weight: 700;">${img.width}&times;${img.height}</span>
+              <span style="color: var(--text-muted);">${img.sizeKB} KB</span>
+              <span style="color: var(--accent-yellow);">~${img.estTokens} tok</span>
+            </div>
+            <button type="button" class="remove-vision-btn neo-btn neo-btn-coral neo-btn-sm" data-remove-id="${img.id}" style="padding: 0.15rem 0.42rem; font-size: 0.72rem; margin-left: 0.2rem;" title="Hapus gambar">
+              &times;
+            </button>
+          </div>
+        `
+        )
+        .join('');
+
+      strip.querySelectorAll('.vision-thumb-img').forEach((imgEl) => {
+        imgEl.addEventListener('click', () => {
+          const item = state.pendingImages.find((i) => i.id === imgEl.getAttribute('data-zoom-id'));
+          if (item) openImageLightbox(item.dataUrl, `${item.name} (${item.width}x${item.height} • ${item.sizeKB} KB)`);
+        });
+      });
+
+      strip.querySelectorAll('.remove-vision-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-remove-id');
+          state.pendingImages = state.pendingImages.filter((i) => i.id !== id);
+          renderVisionPreviewStrip();
+          updateLiveTokenEstimator();
+        });
+      });
+    }
+
+    // --open_image_lightbox--
+
+    function openImageLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption || 'Preview Vision';
+      document.getElementById('image-lightbox-modal').classList.remove('view-hidden');
+    }
+
+    // --render_file_drawer--
+
+    function renderFileDrawer() {
+      const listEl = document.getElementById('drawer-file-list');
+      listEl.innerHTML = '';
+
+      if (state.files.length === 0) {
+        listEl.innerHTML = `<div style="padding: 0.85rem; border: 2px dashed var(--border-subtle); border-radius: 8px; text-align: center; font-size: 0.78rem; color: var(--text-muted);">Belum ada file. Klik Upload File atau + File Baru.</div>`;
+        updateLiveTokenEstimator();
+        return;
+      }
+
+      state.files.forEach((file) => {
+        const langInfo = detectLanguageInfo('', file.name);
+        const tok = estimateTokens(compressCodeForContext(file.content, state.config.compressionMode));
+
+        const row = document.createElement('div');
+        row.style.cssText = `
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.45rem;
+          padding: 0.48rem 0.55rem;
+          background-color: var(--bg-primary);
+          border: 2px solid ${file.included ? 'var(--border-black)' : '#1E232B'};
+          border-radius: 8px;
+        `;
+
+        row.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.45rem; min-width: 0; flex: 1;">
+            <input type="checkbox" class="neo-checkbox drawer-file-cb" data-id="${file.id}" ${file.included ? 'checked' : ''} />
+            <span style="background-color: ${langInfo.color}; color: #0D0F12; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; padding: 0.06rem 0.32rem; border-radius: 4px; border: 1px solid #000; flex-shrink: 0;">
+              ${langInfo.badge}
+            </span>
+            <button type="button" class="open-viewer-btn" data-id="${file.id}" style="background: none; border: none; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; text-align: left; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;">
+              ${escapeHtml(file.name)}
+            </button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.3rem; flex-shrink: 0;">
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; color: ${file.included ? 'var(--accent-yellow)' : 'var(--text-muted)'};">
+              ${file.included ? tok + 't' : '0t'}
+            </span>
+            <button type="button" class="delete-drawer-file-btn" data-id="${file.id}" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.2rem; font-size: 0.76rem;" title="Hapus file">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+
+        listEl.appendChild(row);
+      });
+
+      listEl.querySelectorAll('.drawer-file-cb').forEach((cb) => {
+        cb.addEventListener('change', (e) => {
+          const f = state.files.find((item) => item.id === e.target.getAttribute('data-id'));
+          if (f) {
+            f.included = e.target.checked;
+            saveLocalState();
+            renderFileDrawer();
+            updateLiveTokenEstimator();
+          }
+        });
+      });
+
+      listEl.querySelectorAll('.open-viewer-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          openFileViewerModal(btn.getAttribute('data-id'));
+        });
+      });
+
+      listEl.querySelectorAll('.delete-drawer-file-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          state.files = state.files.filter((f) => f.id !== id);
+          saveLocalState();
+          renderFileDrawer();
+          updateLiveTokenEstimator();
+          showToast('File dihapus.');
+        });
+      });
+
+      updateLiveTokenEstimator();
+    }
+
+    // --open_file_viewer_modal--
+
+    function openFileViewerModal(fileId) {
+      const file = state.files.find((f) => f.id === fileId);
+      if (!file) return;
+
+      state.viewerFileId = file.id;
+      state.viewerEditMode = false;
+
+      const langInfo = detectLanguageInfo('', file.name);
+      const badgeEl = document.getElementById('viewer-lang-badge');
+      badgeEl.textContent = langInfo.badge;
+      badgeEl.style.backgroundColor = langInfo.color;
+
+      document.getElementById('viewer-file-title').textContent = file.name;
+      document.getElementById('viewer-include-cb').checked = file.included;
+      document.getElementById('viewer-edit-label').textContent = 'Edit Kode';
+
+      document.getElementById('viewer-read-container').classList.remove('view-hidden');
+      document.getElementById('viewer-edit-textarea').classList.add('view-hidden');
+
+      renderHighlightedViewerCode(file.content, langInfo.prism);
+      document.getElementById('file-viewer-modal').classList.remove('view-hidden');
+    }
+
+    // --render_highlighted_viewer_code--
+
+    function renderHighlightedViewerCode(content, prismLang) {
+      const lines = content.split('\n');
+      let gutterStr = '';
+      for (let i = 1; i <= lines.length; i++) {
+        gutterStr += i + '\n';
+      }
+      document.getElementById('viewer-line-gutter').textContent = gutterStr;
+
+      const codeEl = document.getElementById('viewer-highlighted-code');
+      codeEl.className = `language-${prismLang}`;
+      codeEl.innerHTML = highlightCodeWithPrism(content, prismLang);
+
+      document.getElementById('viewer-meta-stats').textContent = `${lines.length} baris • ~${estimateTokens(content)} tok`;
+    }
+
+    // --save_or_update_workspace_file--
+
+    function saveOrUpdateWorkspaceFile(fileName, content) {
+      const cleanName = fileName.trim() || `snippet-${Date.now().toString().slice(-4)}.tsx`;
+      const existing = state.files.find((f) => f.name.toLowerCase() === cleanName.toLowerCase());
+
+      if (existing) {
+        existing.content = content;
+        existing.included = true;
+        saveLocalState();
+        renderFileDrawer();
+        showToast(`Diperbarui: ${existing.name}`);
+        return;
+      }
+
+      state.files.unshift({
+        id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+        name: cleanName,
+        included: true,
+        content
+      });
+      saveLocalState();
+      renderFileDrawer();
+      showToast(`Tersimpan ke File: ${cleanName}`);
+    }
+
+    // --render_chat_messages--
+
+    function renderChatMessages() {
+      const feed = document.getElementById('chat-feed');
+      feed.innerHTML = '';
+
+      state.messages.forEach((msg) => {
+        const card = document.createElement('div');
+        const extraClass = msg.role === 'user' ? 'user-msg' : msg.role === 'system' ? 'system-msg' : '';
+        card.className = `msg-card ${extraClass}`;
+
+        const roleHeader =
+          msg.role === 'user'
+            ? `<span style="color: var(--accent-cyan);"><i class="fa-solid fa-user"></i> Kamu</span>`
+            : msg.role === 'system'
+            ? `<span style="color: var(--accent-yellow);"><i class="fa-solid fa-terminal"></i> x1 system</span>`
+            : `<span style="color: var(--accent-lime);"><i class="fa-solid fa-robot"></i> val private ai ${msg.modelUsed ? `(${escapeHtml(msg.modelUsed)})` : ''}</span>`;
+
+        const tokBadge =
+          typeof msg.tokensUsed === 'number' && msg.tokensUsed > 0
+            ? `<span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">${msg.tokensUsed} tok</span>`
+            : '';
+
+        const imagesHtml =
+          Array.isArray(msg.images) && msg.images.length > 0
+            ? `<div style="display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.55rem;">
+                ${msg.images
+                  .map(
+                    (im) =>
+                      `<img src="${im.dataUrl}" alt="${escapeHtml(im.name)}" class="chat-msg-img" style="width: 84px; height: 84px; object-fit: cover; border-radius: 8px; border: 2px solid var(--accent-purple); cursor: zoom-in;" />`
+                  )
+                  .join('')}
+              </div>`
+            : '';
+
+        card.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700;">
+            ${roleHeader}
+            ${tokBadge}
+          </div>
+          ${imagesHtml}
+          <div style="font-size: 0.9rem; line-height: 1.6;">
+            ${renderFormattedContent(msg.text)}
+          </div>
+        `;
+
+        feed.appendChild(card);
+      });
+
+      feed.querySelectorAll('.chat-msg-img').forEach((imgEl) => {
+        imgEl.addEventListener('click', () => {
+          openImageLightbox(imgEl.src, imgEl.alt || 'Lampiran Gambar');
+        });
+      });
+
+      feed.querySelectorAll('.copy-snippet-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const decoded = decodeURIComponent(btn.getAttribute('data-code') || '');
+          navigator.clipboard?.writeText(decoded);
+          showToast('Kode berhasil di-copy.');
+        });
+      });
+
+      feed.querySelectorAll('.save-snippet-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const decoded = decodeURIComponent(btn.getAttribute('data-code') || '');
+          const fname = btn.getAttribute('data-fname') || 'ai-code.tsx';
+          saveOrUpdateWorkspaceFile(fname, decoded);
+        });
+      });
+
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    // --render_formatted_content--
+
+    function renderFormattedContent(rawText) {
+      const fenceRegex = /```([a-zA-Z0-9_.-]*)(?::([^\n]+))?\n([\s\S]*?)```/g;
+      let cursor = 0;
+      let html = '';
+      let match;
+      let idx = 0;
+
+      while ((match = fenceRegex.exec(rawText)) !== null) {
+        const plainBefore = rawText.slice(cursor, match.index);
+        if (plainBefore.trim()) {
+          html += `<div style="white-space: pre-wrap;">${formatInlineText(escapeHtml(plainBefore.trim()))}</div>`;
+        }
+
+        idx++;
+        const langHint = (match[1] || '').trim();
+        const explicitFile = (match[2] || '').trim();
+        const codeText = match[3].replace(/\n$/, '');
+        const langInfo = detectLanguageInfo(langHint, explicitFile);
+        const lineCount = codeText.split('\n').length;
+        const targetFileName = explicitFile || `code-${idx}.${langInfo.ext}`;
+        const highlightedHtml = highlightCodeWithPrism(codeText, langInfo.prism);
+        const encoded = encodeURIComponent(codeText);
+
+        html += `
+          <div class="code-block-shell">
+            <div class="code-block-topbar">
+              <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;">
+                <span style="background-color: ${langInfo.color}; color: #0D0F12; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1.5px solid #000;">
+                  ${langInfo.badge}
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--text-primary);">
+                  ${escapeHtml(targetFileName)}
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted);">
+                  (${lineCount} baris)
+                </span>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.35rem;">
+                <button type="button" class="neo-btn neo-btn-dark neo-btn-sm copy-snippet-btn" data-code="${encoded}" style="padding: 0.24rem 0.55rem; font-size: 0.72rem;">
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button type="button" class="neo-btn neo-btn-cyan neo-btn-sm save-snippet-btn" data-code="${encoded}" data-fname="${escapeHtml(targetFileName)}" style="padding: 0.24rem 0.6rem; font-size: 0.72rem;">
+                  <i class="fa-solid fa-file-import"></i> Simpan ke File
+                </button>
+              </div>
+            </div>
+            <pre class="code-block-pre"><code class="language-${langInfo.prism}">${highlightedHtml}</code></pre>
+          </div>
+        `;
+
+        cursor = fenceRegex.lastIndex;
+      }
+
+      const tail = rawText.slice(cursor);
+      if (tail.trim()) {
+        html += `<div style="white-space: pre-wrap; margin-top: ${idx > 0 ? '0.55rem' : '0'};">${formatInlineText(escapeHtml(tail.trim()))}</div>`;
+      }
+
+      return html;
+    }
+
+    // --format_inline_text--
+
+    function formatInlineText(escaped) {
+      return escaped
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code style="background-color: var(--bg-primary); border: 1px solid var(--border-subtle); padding: 0.06rem 0.35rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-lime);">$1</code>');
+    }
+
+    // --escape_html--
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // --handle_x1_dropdown--
+
+    function handleX1Dropdown() {
+      const textarea = document.getElementById('prompt-textarea');
+      const menu = document.getElementById('x1-autocomplete-menu');
+      const val = textarea.value.trim().toLowerCase();
+
+      if (val.startsWith('x1')) {
+        const matches = X1_COMMANDS.filter((c) => c.cmd.startsWith(val) || val === 'x1');
+        if (matches.length === 0) {
+          menu.classList.add('view-hidden');
+          return;
+        }
+
+        state.x1SelectedIdx = Math.min(state.x1SelectedIdx, matches.length - 1);
+        menu.innerHTML = matches
+          .map(
+            (item, i) => `
+            <div class="x1-option-row ${i === state.x1SelectedIdx ? 'active' : ''}" data-cmd="${item.cmd}" role="option">
+              <span style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem;">${item.cmd}</span>
+              <span class="x1-opt-hint" style="font-size: 0.74rem; color: var(--text-muted); text-align: right;">${item.hint}</span>
+            </div>
+          `
+          )
+          .join('');
+
+        menu.classList.remove('view-hidden');
+
+        menu.querySelectorAll('.x1-option-row').forEach((row) => {
+          row.addEventListener('click', () => {
+            textarea.value = row.getAttribute('data-cmd');
+            menu.classList.add('view-hidden');
+            handleSendAction();
+          });
+        });
+      } else {
+        menu.classList.add('view-hidden');
+        state.x1SelectedIdx = 0;
+      }
+    }
+
+    // --run_x1_command--
+
+    function runX1Command(rawCmd) {
+      const cmd = rawCmd.trim().toLowerCase();
+      document.getElementById('x1-autocomplete-menu').classList.add('view-hidden');
+      document.getElementById('prompt-textarea').value = '';
+
+      if (cmd === 'x1 --models') {
+        openModelPickerModal();
+        return true;
+      }
+
+      if (cmd === 'x1 --reset') {
+        localStorage.removeItem(STORAGE_KEYS.FILES);
+        localStorage.removeItem(STORAGE_KEYS.MESSAGES);
+        localStorage.removeItem(STORAGE_KEYS.CONFIG);
+        localStorage.removeItem(STORAGE_KEYS.CUSTOM_MODELS);
+        state.files = structuredClone(DEFAULT_FILES);
+        state.customModels = [];
+        state.pendingImages = [];
+        state.config = {
+          baseURL: 'https://api.vanns.my.id/v1',
+          apiKey: '',
+          protocol: 'auto',
+          primaryModel: 'vanns/claude-sonnet-5-5',
+          smallModel: 'vanns/claude-haiku-4-5',
+          activeSlot: 'primary',
+          compressionMode: 'ultra',
+          totalSavedTokens: 0
+        };
+        state.messages = [
+          {
+            id: `msg-reset-${Date.now()}`,
+            role: 'system',
+            text: 'Sesi di-reset bersih (`x1 --reset`). Semua localStorage, riwayat chat, custom model, dan file dikembalikan ke default.',
+            tokensUsed: 0,
+            images: []
+          }
+        ];
+        renderVisionPreviewStrip();
+        renderFileDrawer();
+        renderChatMessages();
+        syncAllModelUI();
+        updateLiveTokenEstimator();
+        showToast('Session & storage di-reset bersih!');
+        return true;
+      }
+
+      if (cmd === 'x1 --help') {
+        state.messages.push({
+          id: `msg-help-${Date.now()}`,
+          role: 'system',
+          text: '**Perintah Cepat `x1` (0 Token):**\n• `x1 --help` — Menampilkan daftar perintah & shortcut\n• `x1 --models` — Membuka pemilih 21+ model & custom model manager\n• `x1 --themelist` — Menampilkan tema Neobrutalism Dark solid\n• `x1 --sizelist` — Menampilkan preset layar (`phone`, `windows`, `multisize`)\n• `x1 --reset` — Menghapus semua cache, riwayat & reset Studio',
+          tokensUsed: 0,
+          images: []
+        });
+        saveLocalState();
+        renderChatMessages();
+        return true;
+      }
+
+      if (cmd === 'x1 --themelist') {
+        state.messages.push({
+          id: `msg-theme-${Date.now()}`,
+          role: 'system',
+          text: '**Daftar Tema (`themelist`):**\n• `neobrutalism` (Aktif — 100% Solid Dark `#0D0F12` + Lime `#A3E635`)\n• `glassmorphism` | `flat design` | `skeuomorphism` | `bento grid design` | `ilustrative design`',
+          tokensUsed: 0,
+          images: []
+        });
+        saveLocalState();
+        renderChatMessages();
+        return true;
+      }
+
+      if (cmd === 'x1 --sizelist') {
+        state.messages.push({
+          id: `msg-size-${Date.now()}`,
+          role: 'system',
+          text: '**Preset Target Layar (`sizelist`):**\n• `phone` — Android 100dvh + Slide-over File Drawer\n• `windows` — Desktop Multi-Pane Split Studio\n• `multisize` — Adaptif otomatis Phone & Windows',
+          tokensUsed: 0,
+          images: []
+        });
+        saveLocalState();
+        renderChatMessages();
+        return true;
+      }
+
+      return false;
+    }
+
+    // --handle_send_action--
+
+    async function handleSendAction() {
+      if (state.isSending) return;
+
+      const textarea = document.getElementById('prompt-textarea');
+      const promptText = textarea.value.trim();
+      const attachedImages = [...state.pendingImages];
+
+      if (!promptText && attachedImages.length === 0) return;
+
+      if (promptText.toLowerCase().startsWith('x1 --')) {
+        if (runX1Command(promptText)) return;
+      }
+
+      const breakdown = computePayloadTokenBreakdown(promptText);
+      const compressedFiles = breakdown.activeFiles.map((f) => ({
+        name: f.name,
+        content: compressCodeForContext(f.content, state.config.compressionMode)
+      }));
+
+      const activeModelObj = getActiveModelObj();
+      const targetDisplayId = activeModelObj.id;
+      const targetApiModelId = normalizeApiModelId(targetDisplayId);
+
+      // Accumulate saved tokens from compression + unchecked files + image optimization
+      state.config.totalSavedTokens += breakdown.savedThisTurn;
+
+      state.messages.push({
+        id: `msg-u-${Date.now()}`,
+        role: 'user',
+        text: promptText || '(Analisa gambar lampiran)',
+        tokensUsed: breakdown.compressedTokens,
+        images: attachedImages
+      });
+
+      textarea.value = '';
+      state.pendingImages = [];
+      document.getElementById('x1-autocomplete-menu').classList.add('view-hidden');
+      renderVisionPreviewStrip();
+      renderChatMessages();
+      syncAllModelUI();
+      updateLiveTokenEstimator();
+
+      state.isSending = true;
+      const sendBtn = document.getElementById('send-btn');
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i>`;
+
+      try {
+        let replyText = '';
+        const key = (state.config.apiKey || '').trim();
+
+        if (key && key !== 'PASTE_YOUR_API_KEY_HERE') {
+          replyText = await sendRequestToEndpoint({
+            promptText: promptText || 'Jelaskan dan bantu coding dari gambar ini.',
+            compressedFiles,
+            images: attachedImages,
+            apiModelId: targetApiModelId,
+            historyLimit: breakdown.historyLimit
+          });
+        } else {
+          await new Promise((r) => setTimeout(r, 380));
+          replyText = buildOfflineDemoReply(promptText, compressedFiles, attachedImages, targetDisplayId, breakdown.savedThisTurn);
+        }
+
+        state.messages.push({
+          id: `msg-ai-${Date.now()}`,
+          role: 'ai',
+          text: replyText,
+          tokensUsed: estimateTokens(replyText),
+          modelUsed: targetDisplayId.replace(/^vanns\//, ''),
+          images: []
+        });
+      } catch (err) {
+        state.messages.push({
+          id: `msg-err-${Date.now()}`,
+          role: 'system',
+          text: `Error Endpoint (${targetApiModelId}): ${err.message}. Cek API Key atau Protocol Mode di menu API & Key.`,
+          tokensUsed: 0,
+          images: []
+        });
+      } finally {
+        state.isSending = false;
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i><span class="hide-on-mobile">Kirim</span>`;
+        saveLocalState();
+        renderChatMessages();
+        updateLiveTokenEstimator();
+      }
+    }
+
+    // --send_request_to_endpoint--
+
+    async function sendRequestToEndpoint({ promptText, compressedFiles, images, apiModelId, historyLimit }) {
+      const cleanBaseUrl = (state.config.baseURL || 'https://api.vanns.my.id/v1').replace(/\/+$/, '');
+      const apiKey = state.config.apiKey.trim();
+      const protocol = state.config.protocol || 'auto';
+
+      const fileContext =
+        compressedFiles.length > 0
+          ? `\n\n[ACTIVE FILES - ${state.config.compressionMode.toUpperCase()}]:\n` +
+            compressedFiles.map((f) => `File: ${f.name}\n\`\`\`\n${f.content}\n\`\`\``).join('\n')
+          : '';
+
+      const systemPrompt =
+        state.config.compressionMode === 'ultra'
+          ? 'Kamu adalah val private ai, senior developer. Jawab sangat ringkas, langsung ke kode tanpa basa-basi agar hemat token. Wajib sertakan bahasa & nama file pada code block seperti ```tsx:App.tsx atau ```py:main.py.'
+          : 'Kamu adalah val private ai, senior developer. Jawab padat, terstruktur, dan sertakan bahasa & nama file pada setiap blok kode seperti ```tsx:App.tsx.';
+
+      const recentHistory = state.messages
+        .slice(-(historyLimit + 1), -1)
+        .filter((m) => m.role === 'user' || m.role === 'ai');
+
+      if (protocol === 'anthropic') {
+        return await callAnthropicEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
+      }
+
+      if (protocol === 'openai') {
+        return await callOpenAiEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
+      }
+
+      try {
+        return await callAnthropicEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
+      } catch (anthErr) {
+        return await callOpenAiEndpoint(cleanBaseUrl, apiKey, apiModelId, systemPrompt, recentHistory, promptText + fileContext, images);
+      }
+    }
+
+    // --call_anthropic_endpoint--
+
+    async function callAnthropicEndpoint(baseUrl, apiKey, modelId, systemPrompt, history, userFullText, images) {
+      const formattedHistory = history.map((m) => ({
+        role: m.role === 'ai' ? 'assistant' : 'user',
+        content: m.text
+      }));
+
+      const userContentBlocks = [];
+      images.forEach((im) => {
+        userContentBlocks.push({
+          type: 'image',
+          source: {
+            type: 'base64',
+            media_type: im.mediaType,
+            data: im.base64Data
+          }
+        });
+      });
+      userContentBlocks.push({
+        type: 'text',
+        text: userFullText
+      });
+
+      const res = await fetch(`${baseUrl}/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: modelId,
+          max_tokens: 4096,
+          system: systemPrompt,
+          messages: [...formattedHistory, { role: 'user', content: userContentBlocks }]
+        })
+      });
+
+      if (!res.ok) {
+        const errBody = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${errBody.slice(0, 120)}`);
+      }
+
+      const data = await res.json();
+      if (Array.isArray(data.content)) {
+        return data.content
+          .filter((b) => b.type === 'text')
+          .map((b) => b.text)
+          .join('\n');
+      }
+      return data.choices?.[0]?.message?.content || 'Respons kosong dari server.';
+    }
+
+    // --call_openai_endpoint--
+
+    async function callOpenAiEndpoint(baseUrl, apiKey, modelId, systemPrompt, history, userFullText, images) {
+      const formattedHistory = history.map((m) => ({
+        role: m.role === 'ai' ? 'assistant' : 'user',
+        content: m.text
+      }));
+
+      let userContentPayload;
+      if (images.length > 0) {
+        userContentPayload = [{ type: 'text', text: userFullText }];
+        images.forEach((im) => {
+          userContentPayload.push({
+            type: 'image_url',
+            image_url: { url: im.dataUrl }
+          });
+        });
+      } else {
+        userContentPayload = userFullText;
+      }
+
+      const res = await fetch(`${baseUrl}/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: modelId,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            ...formattedHistory,
+            { role: 'user', content: userContentPayload }
+          ]
+        })
+      });
+
+      if (!res.ok) {
+        const errBody = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${errBody.slice(0, 120)}`);
+      }
+
+      const data = await res.json();
+      return data.choices?.[0]?.message?.content || 'Respons kosong dari server.';
+    }
+
+    // --build_offline_demo_reply--
+
+    function buildOfflineDemoReply(promptText, compressedFiles, images, displayModelId, savedThisTurn) {
+      const visionNote =
+        images.length > 0
+          ? `Terdeteksi **${images.length} gambar Vision** terkompresi (${images.map((i) => `${i.width}x${i.height} • ~${i.estTokens} tok`).join(', ')}). `
+          : '';
+
+      const fileNote =
+        compressedFiles.length > 0
+          ? `Membaca **${compressedFiles.length} file aktif** (${compressedFiles.map((f) => `\`${f.name}\``).join(', ')}). `
+          : '';
+
+      const savedNote = savedThisTurn > 0 ? `Berhasil menghemat **${savedThisTurn} token** pada request ini. ` : '';
+
+      return `**Mode Preview Offline (${displayModelId})**: ${visionNote}${fileNote}${savedNote}Isi API Key di tombol **API & Key** untuk terhubung langsung ke \`${state.config.baseURL}\`.\n\n\`\`\`tsx:MultiModelClient.tsx\nimport React from 'react';\n\nexport async function sendPrompt(baseURL: string, model: string, prompt: string) {\n  const cleanModel = model.replace(/^vanns\\//, '');\n  const res = await fetch(\`\${baseURL}/messages\`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ model: cleanModel, max_tokens: 4096, messages: [{ role: 'user', content: prompt }] })\n  });\n  return res.json();\n}\n\`\`\``;
+    }
+
+    // --import_opencode_json_config--
+
+    function importOpenCodeJsonConfig() {
+      const rawJson = document.getElementById('cfg-json-paste').value.trim();
+      if (!rawJson) {
+        showToast('Paste JSON config terlebih dahulu.');
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(rawJson);
+
+        if (parsed.model) {
+          ensureModelInCatalog(parsed.model, parsed.model.replace(/^vanns\//, ''));
+          state.config.primaryModel = parsed.model;
+          state.config.activeSlot = 'primary';
+        }
+
+        if (parsed.small_model) {
+          ensureModelInCatalog(parsed.small_model, parsed.small_model.replace(/^vanns\//, ''));
+          state.config.smallModel = parsed.small_model;
+        }
+
+        if (parsed.provider && typeof parsed.provider === 'object') {
+          Object.entries(parsed.provider).forEach(([provKey, provObj]) => {
+            if (provObj?.options?.baseURL) {
+              state.config.baseURL = provObj.options.baseURL;
+            }
+            if (provObj?.options?.apiKey && provObj.options.apiKey !== 'PASTE_YOUR_API_KEY_HERE') {
+              state.config.apiKey = provObj.options.apiKey;
+            }
+            if (provObj?.models && typeof provObj.models === 'object') {
+              Object.entries(provObj.models).forEach(([mKey, meta]) => {
+                const fullId = mKey.includes('/') ? mKey : `${provKey}/${mKey}`;
+                ensureModelInCatalog(fullId, meta?.name || mKey, Boolean(meta?.attachment ?? true));
+              });
+            }
+          });
+        }
+
+        saveLocalState();
+        syncAllModelUI();
+        renderModelCatalog();
+        showToast('OpenCode JSON Config berhasil diimpor!');
+      } catch (err) {
+        showToast('Format JSON tidak valid.');
+      }
+    }
+
+    // --ensure_model_in_catalog--
+
+    function ensureModelInCatalog(modelId, displayName, hasVision = true) {
+      if (!modelId) return;
+      const all = getAllModels();
+      if (!all.some((m) => m.id.toLowerCase() === modelId.toLowerCase())) {
+        state.customModels.push({
+          id: modelId,
+          name: displayName || modelId,
+          category: 'Custom',
+          provider: 'JSON Import',
+          vision: hasVision,
+          reasoning: true,
+          context: '200K',
+          badge: 'Imported',
+          isCustom: true
+        });
+      }
+    }
+
+    // --open_model_picker_modal--
+
+    function openModelPickerModal() {
+      syncAllModelUI();
+      renderModelCatalog();
+      document.getElementById('model-picker-modal').classList.remove('view-hidden');
+    }
+
+    // --bind_all_events--
+
+    function bindAllEvents() {
+      // Landing -> Workspace Rocket Slide Transition
+      document.getElementById('nav-open-studio-btn').addEventListener('click', () => {
+        triggerRocketTransition('workspace', 'Memuat Studio...');
+      });
+
+      document.getElementById('hero-start-coding-btn').addEventListener('click', () => {
+        triggerRocketTransition('workspace', 'Memuat Studio...');
+      });
+
+      document.getElementById('hero-config-btn').addEventListener('click', () => {
+        triggerRocketTransition('workspace', 'Memuat Studio...', () => {
+          document.getElementById('config-modal').classList.remove('view-hidden');
+        });
+      });
+
+      // Workspace -> Landing Rocket Slide Transition
+      document.getElementById('ws-home-btn').addEventListener('click', () => {
+        triggerRocketTransition('landing', 'Kembali ke @landing...');
+      });
+
+      // Mobile File Drawer Toggle
+      const drawerEl = document.getElementById('ws-file-drawer');
+      const backdropEl = document.getElementById('drawer-backdrop');
+
+      document.getElementById('mobile-drawer-toggle-btn').addEventListener('click', () => {
+        drawerEl.classList.add('drawer-open');
+        backdropEl.classList.remove('view-hidden');
+      });
+
+      const closeMobileDrawer = () => {
+        drawerEl.classList.remove('drawer-open');
+        backdropEl.classList.add('view-hidden');
+      };
+
+      document.getElementById('close-drawer-mobile-btn').addEventListener('click', closeMobileDrawer);
+      backdropEl.addEventListener('click', closeMobileDrawer);
+
+      // Model Picker Modal Triggers (Header Pill + Composer Pill)
+      document.getElementById('header-model-pill').addEventListener('click', openModelPickerModal);
+      document.getElementById('composer-model-picker-btn').addEventListener('click', openModelPickerModal);
+
+      document.getElementById('close-model-picker-btn').addEventListener('click', () => {
+        document.getElementById('model-picker-modal').classList.add('view-hidden');
+      });
+
+      // 1-Tap Toggle between Primary Model and Small Model (Hemat)
+      document.getElementById('slot-toggle-pill-btn').addEventListener('click', () => {
+        state.config.activeSlot = state.config.activeSlot === 'primary' ? 'small' : 'primary';
+        saveLocalState();
+        syncAllModelUI();
+        const activeObj = getActiveModelObj();
+        showToast(
+          state.config.activeSlot === 'small'
+            ? `Mode Small (Hemat): ${activeObj.name}`
+            : `Mode Primary: ${activeObj.name}`
+        );
+      });
+
+      // Model Search Input
+      document.getElementById('model-search-input').addEventListener('input', (e) => {
+        state.modelSearchQuery = e.target.value;
+        renderModelCatalog();
+      });
+
+      // Model Category Tabs
+      document.querySelectorAll('.model-cat-tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.model-cat-tab').forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+          state.modelFilterCat = tab.getAttribute('data-cat');
+          renderModelCatalog();
+        });
+      });
+
+      // + Tambah Model Custom Inline Form inside Model Picker
+      document.getElementById('toggle-custom-model-form-btn').addEventListener('click', () => {
+        const form = document.getElementById('custom-model-inline-form');
+        form.classList.toggle('view-hidden');
+        if (!form.classList.contains('view-hidden')) {
+          document.getElementById('custom-model-id-input').focus();
+        }
+      });
+
+      document.getElementById('save-custom-model-btn').addEventListener('click', () => {
+        const idVal = document.getElementById('custom-model-id-input').value;
+        const nameVal = document.getElementById('custom-model-name-input').value;
+        const visionVal = document.getElementById('custom-model-vision-cb').checked;
+        if (addCustomModelEntry(idVal, nameVal, visionVal)) {
+          document.getElementById('custom-model-id-input').value = '';
+          document.getElementById('custom-model-name-input').value = '';
+          document.getElementById('custom-model-inline-form').classList.add('view-hidden');
+        }
+      });
+
+      // Fetch /v1/models Buttons
+      document.getElementById('fetch-models-server-btn').addEventListener('click', (e) => {
+        fetchModelsFromEndpoint(e.currentTarget);
+      });
+
+      document.getElementById('api-modal-fetch-btn').addEventListener('click', (e) => {
+        fetchModelsFromEndpoint(e.currentTarget);
+      });
+
+      // Quick Add Custom Model inside API Config Modal
+      document.getElementById('cfg-quick-add-btn').addEventListener('click', () => {
+        const idVal = document.getElementById('cfg-quick-model-id').value;
+        const nameVal = document.getElementById('cfg-quick-model-name').value;
+        if (addCustomModelEntry(idVal, nameVal, true)) {
+          document.getElementById('cfg-quick-model-id').value = '';
+          document.getElementById('cfg-quick-model-name').value = '';
+        }
+      });
+
+      document.getElementById('api-modal-open-picker-btn').addEventListener('click', () => {
+        document.getElementById('config-modal').classList.add('view-hidden');
+        openModelPickerModal();
+      });
+
+      // Clear Chat Button
+      document.getElementById('clear-chat-btn').addEventListener('click', () => {
+        state.messages = [
+          {
+            id: `msg-clear-${Date.now()}`,
+            role: 'system',
+            text: 'Riwayat chat dibersihkan. Konteks kembali ke 0 token.',
+            tokensUsed: 0,
+            images: []
+          }
+        ];
+        saveLocalState();
+        renderChatMessages();
+        updateLiveTokenEstimator();
+        showToast('Chat dibersihkan.');
+      });
+
+      // API Config Modal Open/Close/Save
+      document.getElementById('open-config-modal-btn').addEventListener('click', () => {
+        syncAllModelUI();
+        document.getElementById('config-modal').classList.remove('view-hidden');
+      });
+
+      document.getElementById('close-config-modal-btn').addEventListener('click', () => {
+        document.getElementById('config-modal').classList.add('view-hidden');
+      });
+
+      document.getElementById('toggle-key-eye-btn').addEventListener('click', () => {
+        const keyInput = document.getElementById('cfg-apikey');
+        keyInput.type = keyInput.type === 'password' ? 'text' : 'password';
+      });
+
+      document.getElementById('import-json-btn').addEventListener('click', importOpenCodeJsonConfig);
+
+      document.getElementById('save-config-btn').addEventListener('click', () => {
+        state.config.baseURL = document.getElementById('cfg-baseurl').value.trim() || 'https://api.vanns.my.id/v1';
+        state.config.apiKey = document.getElementById('cfg-apikey').value.trim();
+        state.config.protocol = document.getElementById('cfg-protocol').value;
+        saveLocalState();
+        syncAllModelUI();
+        updateLiveTokenEstimator();
+        document.getElementById('config-modal').classList.add('view-hidden');
+        showToast('Konfigurasi endpoint & API Key disimpan.');
+      });
+
+      document.getElementById('modal-reset-all-btn').addEventListener('click', () => {
+        document.getElementById('config-modal').classList.add('view-hidden');
+        runX1Command('x1 --reset');
+      });
+
+      // Token Compression Mode Buttons
+      document.querySelectorAll('.token-mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.config.compressionMode = btn.getAttribute('data-mode');
+          saveLocalState();
+          syncAllModelUI();
+          renderFileDrawer();
+          updateLiveTokenEstimator();
+          showToast(`Mode: ${state.config.compressionMode.toUpperCase()}`);
+        });
+      });
+
+      document.getElementById('quick-mode-cycle-btn').addEventListener('click', () => {
+        const order = ['ultra', 'balanced', 'full'];
+        const next = order[(order.indexOf(state.config.compressionMode) + 1) % order.length];
+        state.config.compressionMode = next;
+        saveLocalState();
+        syncAllModelUI();
+        renderFileDrawer();
+        updateLiveTokenEstimator();
+        showToast(`Mode Token: ${next.toUpperCase()}`);
+      });
+
+      // Code File Upload & Inline Creation
+      document.getElementById('code-file-upload').addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
+        Array.from(files).forEach((f) => {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            saveOrUpdateWorkspaceFile(f.name, String(ev.target?.result || ''));
+          };
+          reader.readAsText(f);
+        });
+        e.target.value = '';
+      });
+
+      document.getElementById('toggle-new-file-btn').addEventListener('click', () => {
+        const box = document.getElementById('new-file-box');
+        box.classList.toggle('view-hidden');
+        if (!box.classList.contains('view-hidden')) {
+          document.getElementById('new-file-input').focus();
+        }
+      });
+
+      document.getElementById('confirm-new-file-btn').addEventListener('click', () => {
+        const inp = document.getElementById('new-file-input');
+        const fname = inp.value.trim();
+        if (!fname) {
+          showToast('Isi nama file dulu.');
+          return;
+        }
+        saveOrUpdateWorkspaceFile(fname, `// ${fname}\n`);
+        inp.value = '';
+        document.getElementById('new-file-box').classList.add('view-hidden');
+      });
+
+      // File Viewer Modal Controls
+      document.getElementById('close-file-viewer-btn').addEventListener('click', () => {
+        document.getElementById('file-viewer-modal').classList.add('view-hidden');
+        state.viewerFileId = null;
+      });
+
+      document.getElementById('viewer-include-cb').addEventListener('change', (e) => {
+        const f = state.files.find((item) => item.id === state.viewerFileId);
+        if (f) {
+          f.included = e.target.checked;
+          saveLocalState();
+          renderFileDrawer();
+          updateLiveTokenEstimator();
+        }
+      });
+
+      document.getElementById('viewer-toggle-edit-btn').addEventListener('click', () => {
+        const f = state.files.find((item) => item.id === state.viewerFileId);
+        if (!f) return;
+
+        const readContainer = document.getElementById('viewer-read-container');
+        const editTextarea = document.getElementById('viewer-edit-textarea');
+        const editLabel = document.getElementById('viewer-edit-label');
+
+        if (!state.viewerEditMode) {
+          state.viewerEditMode = true;
+          editTextarea.value = f.content;
+          readContainer.classList.add('view-hidden');
+          editTextarea.classList.remove('view-hidden');
+          editLabel.textContent = 'Simpan & Preview';
+          editTextarea.focus();
+        } else {
+          state.viewerEditMode = false;
+          f.content = editTextarea.value;
+          saveLocalState();
+          renderFileDrawer();
+          updateLiveTokenEstimator();
+          const langInfo = detectLanguageInfo('', f.name);
+          renderHighlightedViewerCode(f.content, langInfo.prism);
+          editTextarea.classList.add('view-hidden');
+          readContainer.classList.remove('view-hidden');
+          editLabel.textContent = 'Edit Kode';
+          showToast('Perubahan file disimpan.');
+        }
+      });
+
+      document.getElementById('viewer-copy-btn').addEventListener('click', () => {
+        const f = state.files.find((item) => item.id === state.viewerFileId);
+        if (!f) return;
+        const text = state.viewerEditMode ? document.getElementById('viewer-edit-textarea').value : f.content;
+        navigator.clipboard?.writeText(text);
+        showToast('Isi file disalin.');
+      });
+
+      document.getElementById('viewer-download-btn').addEventListener('click', () => {
+        const f = state.files.find((item) => item.id === state.viewerFileId);
+        if (!f) return;
+        const text = state.viewerEditMode ? document.getElementById('viewer-edit-textarea').value : f.content;
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = f.name;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast(`Mengunduh ${f.name}...`);
+      });
+
+      // Vision Image Upload & Ctrl+V Paste
+      document.getElementById('vision-image-upload').addEventListener('change', (e) => {
+        handleImageFilesInput(e.target.files);
+        e.target.value = '';
+      });
+
+      const promptTextarea = document.getElementById('prompt-textarea');
+      promptTextarea.addEventListener('paste', (e) => {
+        const items = e.clipboardData?.items;
+        if (!items) return;
+        const pastedImages = [];
+        for (const item of Array.from(items)) {
+          if (item.type.startsWith('image/')) {
+            const file = item.getAsFile();
+            if (file) pastedImages.push(file);
+          }
+        }
+        if (pastedImages.length > 0) {
+          e.preventDefault();
+          handleImageFilesInput(pastedImages);
+          showToast('Gambar ditempel & dikompresi.');
+        }
+      });
+
+      // Image Lightbox Close
+      document.getElementById('close-lightbox-btn').addEventListener('click', () => {
+        document.getElementById('image-lightbox-modal').classList.add('view-hidden');
+      });
+
+      // Prompt Input & x1 Command Keyboard Navigation
+      promptTextarea.addEventListener('input', () => {
+        handleX1Dropdown();
+        updateLiveTokenEstimator();
+      });
+
+      promptTextarea.addEventListener('keydown', (e) => {
+        const menu = document.getElementById('x1-autocomplete-menu');
+        const isOpen = !menu.classList.contains('view-hidden');
+
+        if (isOpen) {
+          const rows = menu.querySelectorAll('.x1-option-row');
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            state.x1SelectedIdx = (state.x1SelectedIdx + 1) % rows.length;
+            handleX1Dropdown();
+            return;
+          }
+          if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            state.x1SelectedIdx = (state.x1SelectedIdx - 1 + rows.length) % rows.length;
+            handleX1Dropdown();
+            return;
+          }
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            const chosen = rows[state.x1SelectedIdx]?.getAttribute('data-cmd');
+            if (chosen) {
+              promptTextarea.value = chosen;
+              menu.classList.add('view-hidden');
+              handleSendAction();
+            }
+            return;
+          }
+          if (e.key === 'Escape') {
+            menu.classList.add('view-hidden');
+            return;
+          }
+        }
+
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSendAction();
+        }
+      });
+
+      document.getElementById('send-btn').addEventListener('click', handleSendAction);
+    }
+
+    window.addEventListener('DOMContentLoaded', initApplication);
+  </script>
+</body>
+</html>
